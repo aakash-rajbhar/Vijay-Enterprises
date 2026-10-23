@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 type Item = {
   number: string;
@@ -18,6 +19,7 @@ export function ServiceAccordion({ items }: { items: readonly Item[] }) {
   const preview = useRef<HTMLDivElement>(null);
   const wrap = useRef<HTMLDivElement>(null);
   const target = useRef({ x: 0, y: 0 });
+  const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
     let raf = 0;
@@ -36,7 +38,7 @@ export function ServiceAccordion({ items }: { items: readonly Item[] }) {
   }, []);
 
   const onMove = (e: React.MouseEvent) => {
-    if (!wrap.current) return;
+    if (reduced || !wrap.current) return;
     const rect = wrap.current.getBoundingClientRect();
     target.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
   };
@@ -50,13 +52,15 @@ export function ServiceAccordion({ items }: { items: readonly Item[] }) {
           <div
             key={item.number}
             className={`border-b border-white/10 transition-opacity duration-300 ${dim ? "opacity-40" : "opacity-100"}`}
-            onMouseEnter={() => setHovered(i)}
+            onMouseEnter={() => { if (!reduced) setHovered(i); }}
             onMouseLeave={() => setHovered(null)}
           >
             <button
               onClick={() => setOpen(isOpen ? null : i)}
               className="group flex w-full items-center gap-4 py-6 text-left md:gap-8 md:py-8"
               aria-expanded={isOpen}
+              aria-controls={`service-detail-${i}`}
+              id={`service-trigger-${i}`}
             >
               <span className="w-8 shrink-0 font-mono text-xs text-spark">{item.number}</span>
               <span className="flex-1 font-display text-[clamp(1.5rem,3vw,2.75rem)] leading-none transition-transform duration-300 group-hover:translate-x-2">
@@ -70,7 +74,13 @@ export function ServiceAccordion({ items }: { items: readonly Item[] }) {
                 </svg>
               </span>
             </button>
-            <div className={`grid transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+            <div
+              id={`service-detail-${i}`}
+              role="region"
+              aria-labelledby={`service-trigger-${i}`}
+              aria-hidden={!isOpen}
+              className={`grid transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+            >
               <div className="overflow-hidden">
                 <div className="pb-6 pl-12 md:pl-16 md:pb-8">
                   <p className="max-w-[62ch] text-steel-300">{item.detail}</p>

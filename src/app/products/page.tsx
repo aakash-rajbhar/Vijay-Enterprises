@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   title: "Products | Vijay Enterprises",
   description:
     "Machine parts, covers and panels, hoppers, ladders, tables, gates, jali designs and metal frames made to order in Delhi NCR.",
+  alternates: { canonical: "/products" },
+  openGraph: {
+    title: "Products | Vijay Enterprises",
+    description: "Custom machine parts, covers, hoppers, ladders, gates, jali and metal frames made to order.",
+    url: "/products",
+  },
 };
 
 export default function ProductsPage() {
@@ -108,7 +114,7 @@ export default function ProductsPage() {
             <div className="md:col-span-4 md:text-right">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 rounded-pill bg-spark px-6 py-3 text-sm text-white transition-colors hover:bg-spark-deep"
+                className="inline-flex items-center gap-3 rounded-pill bg-spark-deep px-6 py-3 text-sm text-white transition-colors hover:bg-spark-deep-hover"
               >
                 Request a quote
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink/15">

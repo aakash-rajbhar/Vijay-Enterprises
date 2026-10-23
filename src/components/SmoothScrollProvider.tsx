@@ -28,7 +28,12 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
+    const refresh = () => ScrollTrigger.refresh();
+    document.fonts?.ready.then(refresh);
+    window.addEventListener("load", refresh);
+
     return () => {
+      window.removeEventListener("load", refresh);
       gsap.ticker.remove(tick);
       lenis.destroy();
     };

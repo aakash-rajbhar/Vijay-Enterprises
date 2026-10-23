@@ -17,6 +17,8 @@ export function Accordion({ items }: { items: Item[] }) {
               onClick={() => setOpen(isOpen ? null : i)}
               className="group flex w-full items-center gap-4 py-6 text-left md:gap-8 md:py-8"
               aria-expanded={isOpen}
+              aria-controls={`accordion-detail-${i}`}
+              id={`accordion-trigger-${i}`}
             >
               <span className="w-8 font-mono text-xs text-spark">{item.number}</span>
               <span className="flex-1 font-display text-[clamp(1.5rem,3vw,2.75rem)] leading-none transition-transform duration-300 group-hover:translate-x-2">
@@ -30,7 +32,13 @@ export function Accordion({ items }: { items: Item[] }) {
                 </svg>
               </span>
             </button>
-            <div className={`grid transition-all duration-500 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+            <div
+              id={`accordion-detail-${i}`}
+              role="region"
+              aria-labelledby={`accordion-trigger-${i}`}
+              aria-hidden={!isOpen}
+              className={`grid transition-all duration-500 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+            >
               <div className="overflow-hidden">
                 <div className="pb-6 pl-12 md:pl-16 md:pb-8">
                   <p className="max-w-[62ch] text-steel-300">{item.detail}</p>

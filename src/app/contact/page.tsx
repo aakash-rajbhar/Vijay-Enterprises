@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: "Contact | Vijay Enterprises",
   description:
     "Request a quote from Vijay Enterprises in Tughlakabad Village, New Delhi. Email your drawing, material, thickness, quantity and delivery location. Delhi NCR only.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact | Vijay Enterprises",
+    description: "Send your drawing and requirements for a sheet metal fabrication quote in Delhi NCR.",
+    url: "/contact",
+  },
 };
 
 function ContactSection({ product }: { product?: string }) {
@@ -30,7 +36,7 @@ function ContactSection({ product }: { product?: string }) {
           </div>
 
           <div className="md:col-span-5">
-            <div className="rounded-[var(--radius-card)] bg-ink p-6 text-white md:p-8">
+            <div data-nav-theme="dark" className="rounded-[var(--radius-card)] bg-ink p-6 text-white md:p-8">
               <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">Workshop</p>
               <p className="mt-4 font-display text-2xl leading-tight">{site.address}</p>
               <a href={`mailto:${site.email}`} className="mt-3 inline-block text-sm text-steel-300 underline underline-offset-4 hover:text-white">

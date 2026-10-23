@@ -11,7 +11,7 @@ export function PillButton({ href, children, variant = "primary", className = ""
   const base = "inline-flex items-center gap-3 rounded-pill px-6 py-3 text-sm transition-all";
   const styles =
     variant === "primary"
-      ? "bg-spark text-white hover:bg-spark-deep group"
+      ? "bg-spark-deep text-white hover:bg-spark-deep-hover group"
       : variant === "secondary"
         ? "bg-white text-ink"
         : "border border-white/60 text-white";

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { Section, Container } from "@/components/Section";
 import { Eyebrow } from "@/components/Eyebrow";
@@ -13,6 +12,12 @@ export const metadata: Metadata = {
   title: "About | Vijay Enterprises",
   description:
     "Vijay Enterprises is a founder-led metal fabrication workshop in Tughlakabad Village, New Delhi, led by Vijay Rajbhar with 30+ years in the metal industry.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About | Vijay Enterprises",
+    description: "A founder-led metal fabrication workshop in Tughlakabad Village, New Delhi, with 30+ years of experience.",
+    url: "/about",
+  },
 };
 
 const principles = [
@@ -125,7 +130,7 @@ export default function AboutPage() {
           <div className="mt-10 border-t border-steel-200">
             {principles.map((p) => (
               <div key={p.number} className="grid gap-3 border-b border-steel-200 py-6 md:grid-cols-12 md:gap-8 md:py-8">
-                <span className="font-mono text-xs text-spark md:col-span-1">{p.number}</span>
+                <span className="font-mono text-xs text-spark-ink md:col-span-1">{p.number}</span>
                 <h3 className="font-display text-2xl leading-none md:col-span-4">{p.title}</h3>
                 <p className="max-w-[52ch] text-sm text-steel-500 md:col-span-7">{p.desc}</p>
               </div>

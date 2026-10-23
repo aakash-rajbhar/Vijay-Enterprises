@@ -4,16 +4,10 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { machines } from "@/lib/services";
+import { machines } from "@/lib/machines";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const machineImages = [
-  "/images/placeholder/placeholder-machine-tl4020.jpg",
-  "/images/placeholder/placeholder-machine-hawk.jpg",
-  "/images/placeholder/placeholder-machine-genius.jpg",
-];
 
 export function MachineStack() {
   const list = useRef<HTMLDivElement>(null);
@@ -49,7 +43,7 @@ export function MachineStack() {
           <div className="grid gap-6 md:grid-cols-2 md:items-center md:gap-10">
             <div data-image-reveal className="relative aspect-[16/10] overflow-hidden rounded-[20px] bg-steel-900">
               <Image
-                src={machineImages[i]}
+                src={m.image}
                 alt={`Placeholder machine image for ${m.name}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -57,7 +51,7 @@ export function MachineStack() {
               />
             </div>
             <div>
-              <div className={`flex h-9 w-9 items-center justify-center rounded-full ${i === 0 ? "bg-spark text-white" : "bg-white/5 text-steel-300"}`}>
+              <div className={`flex h-9 w-9 items-center justify-center rounded-full ${i === 0 ? "bg-spark text-ink" : "bg-white/5 text-steel-300"}`}>
                 <span className="font-mono text-[10px]">0{i + 1}</span>
               </div>
               <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">{m.role}</p>

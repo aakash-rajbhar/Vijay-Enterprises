@@ -72,12 +72,6 @@ export const capacityTable = [
   { process: "Fabrication", machine: "In-house", capacity: "To drawing" },
 ] as const;
 
-export const machines = [
-  { name: "TL Series TL4020", role: "Laser cutting", desc: "Precision laser sheet cutting up to 25 mm." },
-  { name: "CNC Press Brake Hawk 150-31", role: "Bending", desc: "Forming and bending for panels and brackets." },
-  { name: "NC Shearing \"Genius\" series", role: "Shearing", desc: "Straight cuts up to 12 mm thick, 3 m wide." },
-] as const;
-
 export const processChain = [
   { number: "01", label: "Cut" },
   { number: "02", label: "Shear" },

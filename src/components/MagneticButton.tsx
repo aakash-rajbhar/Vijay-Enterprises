@@ -33,7 +33,7 @@ export function MagneticButton({ children, className = "", onMouseMove, onMouseL
       data-cursor-enquire
       onMouseMove={move}
       onMouseLeave={leave}
-      className={`group inline-flex items-center gap-3 rounded-pill bg-spark px-6 py-3 text-sm text-white transition-[transform,background-color] duration-300 ease-out will-change-transform hover:bg-spark-deep ${className}`}
+      className={`group inline-flex items-center gap-3 rounded-pill bg-spark-deep px-6 py-3 text-sm text-white transition-[transform,background-color] duration-300 ease-out will-change-transform hover:bg-spark-deep-hover ${className}`}
       {...props}
     >
       <span>{children}</span>

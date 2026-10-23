@@ -15,11 +15,14 @@ export function ScrollWords({ children, faded, className = "" }: { children: str
     if (reduced || !ref.current) return;
     const el = ref.current;
     const words = el.querySelectorAll("[data-w]");
+    const root = getComputedStyle(el);
+    const startColor = root.getPropertyValue("--color-steel-300").trim();
+    const endColor = root.getPropertyValue("--color-ink").trim();
     const tween = gsap.fromTo(
       words,
-      { color: "#B6B8BD" },
+      { color: startColor },
       {
-        color: "#0A0A0B",
+        color: endColor,
         stagger: 0.08,
         ease: "none",
         scrollTrigger: { trigger: el, start: "top 78%", end: "bottom 55%", scrub: true },

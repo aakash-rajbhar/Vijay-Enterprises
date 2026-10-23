@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/components/Hero";
@@ -11,18 +12,24 @@ import { NumberedRow } from "@/components/NumberedRow";
 import { GlassCard } from "@/components/GlassCard";
 import { ProcessStrip } from "@/components/ProcessStrip";
 import { ClosingCTA } from "@/components/ClosingCTA";
-import { servicesList, machines } from "@/lib/services";
+import { servicesList } from "@/lib/services";
+import { machines } from "@/lib/machines";
 import { productCategories } from "@/lib/products";
 
 
-const productImages: Record<string, string> = {
-  "machine-parts": "/images/placeholder/placeholder-machine-parts.jpg",
-  "covers-and-panels": "/images/placeholder/placeholder-covers-panels.jpg",
-  hoppers: "/images/placeholder/placeholder-hoppers.jpg",
-  ladders: "/images/placeholder/placeholder-ladders.jpg",
-  "jali-designs": "/images/placeholder/placeholder-jali.jpg",
-  "metal-frames": "/images/placeholder/placeholder-frames.jpg",
+export const metadata: Metadata = {
+  title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
+  description:
+    "Laser cutting, shearing, bending, welding and fabrication under one roof in Tughlakabad, New Delhi. Delhi NCR only. Email your drawing for a quote.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
+    description: "One roof for precision sheet metal fabrication in Delhi NCR.",
+    url: "/",
+  },
 };
+
+
 
 export default function HomePage() {
   return (
@@ -119,14 +126,14 @@ export default function HomePage() {
               <GlassCard key={m.name}>
                 <div data-image-reveal className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-steel-900">
                   <Image
-                    src={`/images/placeholder/placeholder-machine-${["tl4020", "hawk", "genius"][i]}.jpg`}
+                    src={m.image}
                     alt={`Placeholder machine image for ${m.name}`}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="image-drift object-cover grayscale contrast-110" data-cursor="view"
                   />
                 </div>
-                <div className={`mt-6 flex h-9 w-9 items-center justify-center rounded-full ${i === 0 ? "bg-spark text-white" : "bg-ink/5 text-ink"}`}>
+                <div className={`mt-6 flex h-9 w-9 items-center justify-center rounded-full ${i === 0 ? "bg-spark text-ink" : "bg-ink/5 text-ink"}`}>
                   <span className="font-mono text-[10px]">0{i + 1}</span>
                 </div>
                 <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">{m.role}</p>
@@ -156,7 +163,7 @@ export default function HomePage() {
               <Link key={cat.slug} href="/products" className="group" data-cursor-row>
                 <div data-image-reveal className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-card)] border border-black/5 bg-steel-900">
                   <Image
-                    src={productImages[cat.slug]}
+                    src={cat.image}
                     alt={`Placeholder product image for ${cat.name}`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

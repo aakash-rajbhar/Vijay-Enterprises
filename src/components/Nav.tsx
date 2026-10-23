@@ -14,6 +14,9 @@ export function Nav() {
   const [entered, setEntered] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const quoteRef = useRef<HTMLAnchorElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const reduced = usePrefersReducedMotion();
 
@@ -44,21 +47,43 @@ export function Nav() {
     };
   }, [open]);
 
-  const closeMenu = useCallback(() => {
+  const closeMenu = useCallback((restoreFocus = false) => {
     setEntered(false);
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setOpen(false), reduced ? 0 : 480);
+    closeTimer.current = setTimeout(() => {
+      setOpen(false);
+      if (restoreFocus) triggerRef.current?.focus();
+    }, reduced ? 0 : 480);
   }, [reduced]);
 
   useEffect(() => {
     if (!open) return;
     const id = requestAnimationFrame(() => setEntered(true));
+    const focusTimer = setTimeout(() => closeRef.current?.focus(), 80);
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeMenu();
+      if (e.key === "Escape") {
+        closeMenu(true);
+        return;
+      }
+      if (e.key !== "Tab" || !menuRef.current) return;
+      const focusables = Array.from(
+        menuRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+      ).filter((el) => el.offsetParent !== null);
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => {
       cancelAnimationFrame(id);
+      clearTimeout(focusTimer);
       window.removeEventListener("keydown", onKey);
     };
   }, [open, closeMenu]);
@@ -128,6 +153,7 @@ export function Nav() {
               </span>
             </Link>
             <button
+              ref={triggerRef}
               onClick={() => setOpen(true)}
               className={`rounded-pill border px-4 py-2 text-sm md:hidden ${light ? "border-ink/20" : "border-white/30"}`}
               aria-expanded={open}
@@ -142,6 +168,7 @@ export function Nav() {
 
       {open && (
         <div
+          ref={menuRef}
           id="mobile-menu"
           role="dialog"
           aria-modal="true"
@@ -153,18 +180,18 @@ export function Nav() {
         >
           <div className="flex h-full flex-col">
             <div className="mx-auto flex w-full max-w-[1360px] items-center justify-between px-4 py-6 md:px-8">
-              <Link href="/" onClick={closeMenu} className="flex items-center gap-2 text-sm">
+              <Link href="/" onClick={() => closeMenu()} className="flex items-center gap-2 text-sm">
                 <span className="h-2 w-2 bg-spark" aria-hidden="true" />
                 <span className="font-display">Vijay Enterprises</span>
               </Link>
-              <button onClick={closeMenu} className="rounded-pill border border-white/30 px-4 py-2 text-sm">
+              <button ref={closeRef} onClick={() => closeMenu(true)} className="rounded-pill border border-white/30 px-4 py-2 text-sm">
                 Close
               </button>
             </div>
             <div className="mx-auto flex w-full max-w-[1360px] flex-1 flex-col justify-center px-4 md:px-8">
               <nav className="flex flex-col gap-3">
                 {menuLinks.map((l, i) => (
-                  <Link key={l.href} href={l.href} onClick={closeMenu} className="group flex items-baseline gap-5 md:gap-7">
+                  <Link key={l.href} href={l.href} onClick={() => closeMenu()} className="group flex items-baseline gap-5 md:gap-7">
                     <span className="w-7 shrink-0 font-mono text-sm text-steel-500">{i.toString().padStart(2, "0")}</span>
                     <span className="block overflow-hidden pb-[0.06em]">
                       <span

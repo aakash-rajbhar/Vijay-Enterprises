@@ -88,14 +88,14 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
 
     return (
       <div className="rounded-[var(--radius-card)] border border-steel-200 bg-white p-6 md:p-8" role="status" aria-live="polite">
-        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-spark">Email ready</p>
+        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-spark-ink">Email ready</p>
         <h2 className="mt-4 font-display text-3xl leading-tight">Your email app should open.</h2>
         <p className="mt-4 max-w-[48ch] text-sm text-steel-500">
           If it did not open, use the button below. Attach the drawing to the email before sending.
         </p>
         <a
           href={href}
-          className="mt-6 inline-flex items-center gap-3 rounded-pill bg-spark px-5 py-3 text-sm text-white transition-colors hover:bg-spark-deep"
+          className="mt-6 inline-flex items-center gap-3 rounded-pill bg-spark-deep px-5 py-3 text-sm text-white transition-colors hover:bg-spark-deep-hover"
         >
           Open the email again
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
@@ -251,7 +251,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
         </p>
         <button
           type="submit"
-          className="inline-flex h-12 items-center justify-center gap-3 rounded-pill bg-spark px-6 text-sm text-white transition-colors hover:bg-spark-deep"
+          className="inline-flex h-12 items-center justify-center gap-3 rounded-pill bg-spark-deep px-6 text-sm text-white transition-colors hover:bg-spark-deep-hover"
         >
           Send enquiry
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink/15">

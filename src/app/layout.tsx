@@ -9,6 +9,8 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { PageTransition } from "@/components/PageTransition";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ImageReveal } from "@/components/ImageReveal";
+import { JsonLd } from "@/components/JsonLd";
+import { site } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,12 +36,33 @@ export const metadata: Metadata = {
   title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
   description:
     "Laser cutting, shearing, bending, welding and fabrication under one roof in Tughlakabad, New Delhi. Delhi NCR only. Email for quotes.",
-  metadataBase: new URL("https://vijay-enterprises.in"),
+  metadataBase: new URL(site.url),
+  applicationName: site.name,
+  category: "Manufacturing",
+  keywords: [
+    "sheet metal fabrication Delhi",
+    "laser cutting Delhi NCR",
+    "CNC bending New Delhi",
+    "metal fabrication Tughlakabad",
+    "custom machine parts Delhi",
+  ],
+  authors: [{ name: site.name }],
+  creator: site.name,
+  publisher: site.name,
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
     description:
       "One roof for precision sheet metal fabrication. Laser up to 25 mm, shear 12 mm × 3 m. Email your drawing for a quote.",
     type: "website",
+    locale: "en_IN",
+    siteName: site.name,
+    url: site.url,
+  },
+  twitter: {
+    card: "summary",
+    title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
+    description: "Laser cutting, shearing, bending, welding and fabrication under one roof in Delhi NCR.",
   },
 };
 
@@ -49,8 +72,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${interTight.variable} ${jetbrains.variable}`}>
+    <html lang="en-IN" className={`${inter.variable} ${interTight.variable} ${jetbrains.variable}`}>
       <body>
+        <JsonLd />
         <a className="skip-link" href="#main">
           Skip to content
         </a>

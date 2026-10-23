@@ -8,6 +8,7 @@ import { MaskedLines } from "@/components/MaskedLines";
 export const metadata: Metadata = {
   title: "404 | Vijay Enterprises",
   description: "Page not found. Return to Vijay Enterprises or send a drawing for a quote.",
+  robots: { index: false, follow: false },
 };
 
 export default function NotFound() {

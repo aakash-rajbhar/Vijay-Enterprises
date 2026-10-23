@@ -1,5 +1,6 @@
 export const site = {
   name: "Vijay Enterprises",
+  url: "https://vijay-enterprises.in",
   address: "Tughlakabad Village, New Delhi 110020",
   email: "info@vijay-enterprises.com",
   quoteHref: "mailto:info@vijay-enterprises.com?subject=Quote%20request%20%E2%80%94%20Vijay%20Enterprises&body=Name%3A%0ACompany%3A%0AEmail%3A%0AWhat%20you%20need%3A%0AMaterial%3A%0AThickness%3A%0AQuantity%3A%0ADelivery%20location%20(Delhi%20NCR)%3A%0AMessage%3A%0A%0APlease%20attach%20your%20drawing%20or%20sketch.",

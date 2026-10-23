@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   title: "Services | Vijay Enterprises",
   description:
     "Laser cutting up to 25 mm, shearing 12 mm × 3 m, CNC press-brake bending, welding, fabrication, machine parts and product design in Delhi NCR.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Services | Vijay Enterprises",
+    description: "Laser cutting up to 25 mm, shearing 12 mm × 3 m and CNC bending in Delhi NCR.",
+    url: "/services",
+  },
 };
 
 const orderSteps = [
@@ -53,7 +59,7 @@ export default function ServicesPage() {
             {processChain.map((p, i) => (
               <div key={p.number} className="contents">
                 <div className="flex items-center gap-3 rounded-pill border border-steel-200 bg-white px-4 py-3 md:shrink-0">
-                  <span className="font-mono text-[10px] text-spark">{p.number}</span>
+                  <span className="font-mono text-[10px] text-spark-ink">{p.number}</span>
                   <span className="text-sm">{p.label}</span>
                 </div>
                 {i < processChain.length - 1 && (
@@ -130,7 +136,7 @@ export default function ServicesPage() {
           <div className="mt-10 grid border-t border-steel-200 sm:grid-cols-2 lg:grid-cols-4">
             {orderSteps.map((s) => (
               <div key={s.number} className="border-b border-steel-200 py-6 sm:border-r sm:pr-6 sm:last:border-r-0 lg:py-8">
-                <span className="font-mono text-xs text-spark">{s.number}</span>
+                <span className="font-mono text-xs text-spark-ink">{s.number}</span>
                 <h3 className="mt-3 font-display text-2xl leading-none">{s.title}</h3>
                 <p className="mt-3 max-w-[32ch] text-sm text-steel-500">{s.desc}</p>
               </div>
@@ -164,7 +170,7 @@ export default function ServicesPage() {
                 </a>
                 .
               </p>
-              <Link href="/contact" className="mt-7 inline-flex items-center gap-3 rounded-pill bg-spark px-5 py-3 text-sm text-white transition-colors hover:bg-spark-deep">
+              <Link href="/contact" className="mt-7 inline-flex items-center gap-3 rounded-pill bg-spark-deep px-5 py-3 text-sm text-white transition-colors hover:bg-spark-deep-hover">
                 Request a quote
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
                   <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
