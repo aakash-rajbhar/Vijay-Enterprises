@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>The Flat Pattern</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1440px; height: 900px; overflow: hidden; }
+  body { background: #e6e0d2; font-family: "Arial Narrow", Arial, sans-serif; color: #1f3a4d; }
+  .sheet {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(rgba(31,58,77,.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(31,58,77,.055) 1px, transparent 1px),
+      radial-gradient(120% 100% at 70% 0%, #fbf7ec 0%, #f3efe4 55%, #e8e1d1 100%);
+    background-size: 24px 24px, 24px 24px, 100% 100%;
+  }
+  .edge { position: absolute; inset: 22px; border: 1.5px solid rgba(31,58,77,.55); }
+  .edge:after { content: ""; position: absolute; inset: 7px; border: .5px solid rgba(31,58,77,.35); }
+  .content { position: absolute; inset: 52px 62px; }
+  .topline { display: flex; justify-content: space-between; font-size: 13px; letter-spacing: .17em; text-transform: uppercase; color: #50636e; }
+  .topline b { color: #c44536; font-weight: 700; }
+  h1 { margin-top: 20px; font-family: Georgia, serif; font-size: 76px; line-height: .92; letter-spacing: -.03em; color: #1f3a4d; font-weight: 700; }
+  h1 em { font-style: normal; color: #c44536; }
+  .sub { margin-top: 8px; font-size: 24px; letter-spacing: .04em; color: #536873; }
+  .main { margin-top: 32px; display: grid; grid-template-columns: 1.35fr .65fr; gap: 38px; }
+  .drawing { position: relative; border: 1.5px solid #1f3a4d; background: rgba(255,255,255,.28); height: 500px; }
+  .drawing .caption { position: absolute; top: -10px; left: 16px; background: #f3efe4; padding: 0 8px; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: #50636e; }
+  .part { position: absolute; inset: 34px 40px 72px; }
+  .dim { position: absolute; font-family: "Courier New", monospace; font-size: 14px; color: #c44536; background: #f3efe4; padding: 0 3px; }
+  .notes { display: flex; flex-direction: column; justify-content: space-between; }
+  .note { border-top: 1px solid rgba(31,58,77,.35); padding: 12px 0 13px; }
+  .note:last-child { border-bottom: 1px solid rgba(31,58,77,.35); }
+  .note .n { font-family: "Courier New", monospace; font-size: 13px; color: #c44536; letter-spacing: .05em; }
+  .note .t { margin-top: 2px; font-size: 27px; font-weight: 700; letter-spacing: .01em; }
+  .note .d { margin-top: 2px; font-size: 14px; color: #536873; letter-spacing: .03em; }
+  .titleblock {
+    margin-top: 22px; border: 1.5px solid #1f3a4d; display: grid; grid-template-columns: 1.4fr .8fr .8fr .8fr .8fr;
+  }
+  .tb { padding: 8px 10px 9px; border-right: 1px solid rgba(31,58,77,.35); }
+  .tb:last-child { border-right: 0; }
+  .tb .k { font-family: "Courier New", monospace; font-size: 10px; letter-spacing: .14em; color: #7a8b93; text-transform: uppercase; }
+  .tb .v { font-size: 17px; font-weight: 700; margin-top: 2px; }
+  .tb .v.red { color: #c44536; }
+  .folded { position: absolute; right: 96px; bottom: 86px; width: 190px; height: 150px; }
+  .callout { position: absolute; right: 72px; top: 76px; border: 1.5px solid #c44536; background: #f3efe4; padding: 9px 12px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #c44536; transform: rotate(1.4deg); }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="edge"></div>
+  <div class="content">
+    <div class="topline"><span>Vijay Enterprises · Tughlakabad · New Delhi</span><span><b>DWG</b> VE-001 · Rev. C</span></div>
+    <h1>Send the drawing.<br />We return the <em>part.</em></h1>
+    <div class="sub">Laser cut · Bend · Shear · Weld · Fabricate — one accountable supplier</div>
+    <div class="main">
+      <div class="drawing">
+        <div class="caption">Flat pattern — bracket, 3 mm MS</div>
+        <svg class="part" viewBox="0 0 720 390" aria-hidden="true">
+          <g fill="none" stroke="#1f3a4d" stroke-width="3">
+            <path d="M90 290 L90 90 L260 90 L260 160 L420 160 L420 90 L590 90 L590 290 L420 290 L420 235 L260 235 L260 290 Z"/>
+          </g>
+          <g stroke="#c44536" stroke-width="1.6" stroke-dasharray="8 6">
+            <line x1="260" y1="90" x2="260" y2="290"/><line x1="420" y1="90" x2="420" y2="290"/>
+          </g>
+          <g stroke="#50636e" stroke-width="1">
+            <line x1="90" y1="320" x2="590" y2="320"/><line x1="90" y1="314" x2="90" y2="326"/><line x1="590" y1="314" x2="590" y2="326"/>
+            <line x1="70" y1="90" x2="70" y2="290"/><line x1="64" y1="90" x2="76" y2="90"/><line x1="64" y1="290" x2="76" y2="290"/>
+          </g>
+          <g fill="#c44536" font-family="Courier New, monospace" font-size="15">
+            <text x="296" y="340">640</text><text x="18" y="196">240</text>
+            <text x="268" y="80">BEND 90°</text><text x="428" y="80">BEND 90°</text>
+          </g>
+          <g fill="#1f3a4d">
+            <circle cx="130" cy="130" r="6"/><circle cx="130" cy="250" r="6"/><circle cx="550" cy="130" r="6"/><circle cx="550" cy="250" r="6"/>
+          </g>
+          <g fill="#7a8b93" font-family="Arial Narrow, Arial" font-size="13" letter-spacing="1.5">
+            <text x="96" y="360">4 × Ø6 THRU</text><text x="500" y="360">TOL ±0.2</text>
+          </g>
+        </svg>
+        <div class="callout">Capacity in the notes →</div>
+        <svg class="folded" viewBox="0 0 220 170" aria-hidden="true">
+          <g fill="none" stroke="#1f3a4d" stroke-width="2.5">
+            <path d="M25 120 L95 145 L190 105 L118 78 Z" fill="#d9d2c1"/>
+            <path d="M25 120 L25 62 L95 88 L95 145 Z" fill="#e8e1d1"/>
+            <path d="M95 88 L190 48 L190 105 L95 145 Z" fill="#cfc7b4"/>
+            <path d="M25 62 L118 22 L190 48 L95 88 Z" fill="#f3efe4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="notes">
+        <div class="note"><div class="n">01 / CUT</div><div class="t">Laser cutting</div><div class="d">Up to 25 mm · TL4020</div></div>
+        <div class="note"><div class="n">02 / BEND</div><div class="t">Press brake</div><div class="d">CNC Hawk 150-31</div></div>
+        <div class="note"><div class="n">03 / SHEAR</div><div class="t">Shearing</div><div class="d">12 mm thick · 3 m wide</div></div>
+        <div class="note"><div class="n">04 / WELD</div><div class="t">Welding</div><div class="d">MIG / TIG fabrication</div></div>
+        <div class="note"><div class="n">05 / FINISH</div><div class="t">Fabrication</div><div class="d">One-off and production</div></div>
+      </div>
+    </div>
+    <div class="titleblock">
+      <div class="tb"><div class="k">Business</div><div class="v">Vijay Enterprises</div></div>
+      <div class="tb"><div class="k">Quote</div><div class="v red">Email drawing</div></div>
+      <div class="tb"><div class="k">Founder</div><div class="v">30+ yrs</div></div>
+      <div class="tb"><div class="k">Reach</div><div class="v">Delhi NCR</div></div>
+      <div class="tb"><div class="k">Sheet</div><div class="v">1 / 1</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

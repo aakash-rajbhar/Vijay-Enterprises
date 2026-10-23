@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>The Load Path</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1440px; height: 900px; overflow: hidden; }
+  body { background: #d9d5cc; color: #1c1c1c; font-family: "Courier New", monospace; }
+  .ground {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(90% 70% at 50% 38%, #efebe2 0%, #d9d5cc 55%, #c4c0b7 100%);
+  }
+  .ground:after { content: ""; position: absolute; inset: 0; opacity: .25; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E"); mix-blend-mode: multiply; }
+  .top { position: absolute; top: 42px; left: 58px; right: 58px; display: flex; justify-content: space-between; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: #565650; }
+  .top b { color: #c33b2f; }
+  h1 { position: absolute; left: 58px; top: 112px; width: 470px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 88px; line-height: .86; letter-spacing: -.025em; font-weight: 700; }
+  h1 em { font-style: normal; color: #c33b2f; }
+  .intro { position: absolute; left: 62px; top: 330px; width: 380px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 22px; line-height: 1.45; color: #3f3f3b; }
+  .action { position: absolute; left: 62px; top: 500px; border: 2px solid #1c1c1c; padding: 14px 20px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 20px; letter-spacing: .12em; text-transform: uppercase; background: #c33b2f; color: #f7f3e9; box-shadow: 7px 7px 0 #1c1c1c; }
+  .readout { position: absolute; left: 62px; bottom: 58px; display: flex; gap: 34px; }
+  .cell .k { font-size: 10px; letter-spacing: .18em; color: #6e6d66; text-transform: uppercase; }
+  .cell .v { font-family: "Arial Narrow", Arial, sans-serif; font-size: 34px; font-weight: 700; margin-top: 2px; }
+  .cell .v small { font-family: "Courier New", monospace; font-size: 12px; font-weight: 400; color: #6e6d66; }
+  svg { position: absolute; right: 40px; top: 70px; width: 850px; height: 780px; overflow: visible; }
+  .label { font-family: "Courier New", monospace; font-size: 12px; letter-spacing: .10em; fill: #3f3f3b; }
+  .value { font-family: "Arial Narrow", Arial, sans-serif; font-size: 18px; font-weight: 700; fill: #1c1c1c; }
+  .accent { fill: #c33b2f; }
+  .node { fill: #1c1c1c; }
+  .active { fill: #c33b2f; }
+  .leader { stroke: #565650; stroke-width: 1; stroke-dasharray: 3 4; }
+</style>
+</head>
+<body>
+<div class="ground">
+  <div class="top"><span>Vijay Enterprises · one roof</span><span><b>load path</b> / sheet metal</span></div>
+  <h1>The part<br />never leaves<br /><em>the roof.</em></h1>
+  <div class="intro">Five processes, one structure. Each member carries the next, so a drawing moves from cut to bend to shear to weld without a handoff.</div>
+  <div class="action">Send your drawing</div>
+  <div class="readout">
+    <div class="cell"><div class="k">Laser</div><div class="v">25 <small>mm</small></div></div>
+    <div class="cell"><div class="k">Shear</div><div class="v">12 <small>mm</small></div></div>
+    <div class="cell"><div class="k">Width</div><div class="v">3 <small>m</small></div></div>
+    <div class="cell"><div class="k">Brake</div><div class="v">150 <small>T</small></div></div>
+  </div>
+  <svg viewBox="0 0 850 780" aria-hidden="true">
+    <g stroke="#8d8d88" stroke-width="1">
+      <line x1="0" y1="720" x2="850" y2="720"/>
+    </g>
+    <g stroke="#1c1c1c" stroke-width="12" stroke-linecap="round">
+      <line x1="310" y1="120" x2="560" y2="250"/>
+      <line x1="560" y1="250" x2="310" y2="390"/>
+      <line x1="310" y1="390" x2="560" y2="520"/>
+      <line x1="560" y1="520" x2="310" y2="650"/>
+    </g>
+    <g stroke="#c33b2f" stroke-width="2.2">
+      <line x1="310" y1="120" x2="310" y2="390"/>
+      <line x1="560" y1="250" x2="560" y2="520"/>
+      <line x1="310" y1="390" x2="560" y2="520"/>
+      <line x1="560" y1="250" x2="310" y2="650"/>
+      <line x1="310" y1="120" x2="560" y2="520"/>
+    </g>
+    <g class="node">
+      <circle cx="310" cy="120" r="9"/><circle cx="560" cy="250" r="9"/><circle cx="310" cy="390" r="9"/><circle cx="560" cy="520" r="9"/><circle cx="310" cy="650" r="9"/>
+    </g>
+    <circle class="active" cx="560" cy="520" r="12"/>
+    <g class="leader">
+      <line x1="310" y1="120" x2="170" y2="94"/><line x1="560" y1="250" x2="700" y2="222"/>
+      <line x1="310" y1="390" x2="170" y2="366"/><line x1="560" y1="520" x2="708" y2="494"/>
+      <line x1="310" y1="650" x2="170" y2="626"/>
+    </g>
+    <g class="label">
+      <text x="54" y="76">01 / CUT</text><text x="716" y="212">02 / BEND</text>
+      <text x="54" y="348">03 / SHEAR</text><text x="724" y="486">04 / WELD</text>
+      <text x="54" y="610">05 / FABRICATE</text>
+    </g>
+    <g class="value">
+      <text x="54" y="98">25 mm</text><text x="716" y="234">150 T</text>
+      <text x="54" y="370">12 mm</text><text x="724" y="508">MIG / TIG</text>
+      <text x="54" y="632">one-off</text>
+    </g>
+    <g class="label">
+      <text x="392" y="300" fill="#c33b2f">member 04 · 12 mm × 3 m</text>
+      <text x="392" y="318" fill="#c33b2f">load transferred from SHEAR</text>
+    </g>
+    <g stroke="#1c1c1c" stroke-width="1.5">
+      <line x1="560" y1="520" x2="560" y2="720"/><line x1="548" y1="720" x2="572" y2="720"/>
+    </g>
+    <text class="label" x="578" y="716">ground</text>
+  </svg>
+</div>
+</body>
+</html>

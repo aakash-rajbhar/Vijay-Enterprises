@@ -1,0 +1,201 @@
+{
+  "title": "Choose the visual world",
+  "question": "The roll assigned The Workshop Board. Keep it, take The Flat Pattern, choose a challenger, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "kind": "assigned",
+      "label": "The Workshop Board",
+      "kicker": "THE ROLL",
+      "lineage": "Delhi NCR enamel trade boards and one-roof workshop rate signs",
+      "thesis": "The whole shop painted on one enamel board: five processes, real capacities, one quote action.",
+      "palette": ["#0b3a3a", "#f1e6cc", "#b33a2b", "#c9a227"],
+      "materials": ["vitreous enamel", "painted rules", "brass screws"],
+      "viewport": "A full-bleed enamel board carries the trade name, the one-roof process chain, calibrated capacity figures, and a red quote plaque.",
+      "risk": "Sign-painter pastiche if the lettering or rules lose precision; long content must extend as further panels, not collapse into a generic page.",
+      "raised": [
+        {
+          "from": "challenger-tensegrity",
+          "raise": "The five processes are drawn as one connected load path, not a flat service list."
+        },
+        {
+          "from": "challenger-vu",
+          "raise": "Capacities are calibrated scales with real thickness limits, not prose claims."
+        },
+        {
+          "from": "challenger-posada",
+          "raise": "Rate rows use a dense broadside hierarchy with one clear reading order."
+        },
+        {
+          "from": "challenger-code-cascade",
+          "raise": "A thickness selector updates the cut, shear, and bend limits live."
+        },
+        {
+          "from": "challenger-forging",
+          "raise": "A material journey strip shows flat sheet to cut to bent to welded with measured states."
+        },
+        {
+          "from": "challenger-webgl",
+          "raise": "One full-bleed enamel ground and one orchestrated scroll transition, with no scattered effects."
+        }
+      ],
+      "html": ".impeccable/mocks/decision/assigned.html"
+    },
+    {
+      "id": "model-pick",
+      "kind": "pick",
+      "label": "The Flat Pattern",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "sheet-metal flat patterns and fabrication drawings",
+      "thesis": "The site is the drawing the buyer sends: a flat part that folds into the finished job as you read.",
+      "palette": ["#f3efe4", "#1f3a4d", "#c44536", "#9aa3a8"],
+      "materials": ["drafting paper", "graphite linework", "red dimension ink"],
+      "viewport": "A full-bleed flat pattern with a title block, dimension callouts, and the five processes as bend notes; the folded part lands as you scroll.",
+      "risk": "Blueprint and technical-drawing identities are common in industrial sites; only the folding demonstration and real capacity dimensions keep it from being a skin.",
+      "html": ".impeccable/mocks/decision/model-pick.html"
+    },
+    {
+      "id": "challenger-tensegrity",
+      "kind": "challenger",
+      "catalogId": "kinetic-sculpture-automata-tensegrity-breathing-column",
+      "label": "The Load Path",
+      "verdict": "competitive",
+      "lineage": "tensegrity sculpture and engineering force diagrams",
+      "thesis": "The one-roof promise as a tension structure: every process carries and is carried by the next.",
+      "palette": ["#1c1c1c", "#d9d5cc", "#c33b2f", "#8d8d88"],
+      "materials": ["carbon rods", "red cord", "concrete ground"],
+      "viewport": "A full-height tensegrity column whose cords map cut, bend, shear, weld, and fabricate; selecting a member reveals its capacity and dependency.",
+      "case": "Fuses strongly: the process chain becomes a load path, but lay buyers identify with a workshop board faster.",
+      "risk": "The sculpture can read as an art installation rather than a working fabricator.",
+      "html": ".impeccable/mocks/decision/challenger-tensegrity.html"
+    },
+    {
+      "id": "challenger-vu",
+      "kind": "challenger",
+      "catalogId": "signals-instruments-vu-meter-bridge",
+      "label": "The Capacity Bridge",
+      "verdict": "competitive",
+      "lineage": "VU meter bridges and calibrated instrument panels",
+      "thesis": "Every capacity as a calibrated needle: laser, shear, and press brake read against their true limits.",
+      "palette": ["#f2e8d5", "#1b1a17", "#b23a2e", "#6b4f2a"],
+      "materials": ["ivory meter faces", "glass", "walnut"],
+      "viewport": "A bridge of capacity meters, each needle set to the confirmed thickness and width limits, with the machine model printed beneath.",
+      "case": "Capacities read instantly, but the audio-desk origin costs audience identification.",
+      "risk": "VU is an audio object; without strict calibration it becomes retro decoration.",
+      "html": ".impeccable/mocks/decision/challenger-vu.html"
+    },
+    {
+      "id": "challenger-posada",
+      "kind": "challenger",
+      "catalogId": "posters-covers-sleeves-posada-calavera-broadside",
+      "label": "The Trade Broadside",
+      "verdict": "declined",
+      "lineage": "relief-printed broadsides and trade notices",
+      "thesis": "The shop's capabilities printed as one loud, dense trade sheet.",
+      "palette": ["#efe6d2", "#171512", "#b53228"],
+      "materials": ["relief engraving", "newsprint"],
+      "viewport": "A shouting headline over an engraved image band, with rates and services in two tight columns.",
+      "risk": "The Mexican broadside origin is not the buyer's visual home.",
+      "kept": "Dense two-column rate rows and one unmistakable broadside hierarchy.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "headline", "x": 1, "y": 0, "w": 10, "h": 2, "accent": true },
+          { "label": "engraved band", "x": 1, "y": 2, "w": 10, "h": 4 },
+          { "label": "two-column rates", "x": 1, "y": 6, "w": 5, "h": 4 },
+          { "label": "notice + action", "x": 6, "y": 6, "w": 5, "h": 4 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-code-cascade",
+      "kind": "challenger",
+      "catalogId": "pop-culture-shelf-code-cascade-terminal",
+      "label": "The Cutting List",
+      "verdict": "declined",
+      "lineage": "phosphor terminal code cascades",
+      "thesis": "A live production readout where every job resolves out of falling part codes.",
+      "palette": ["#050807", "#8dffb0", "#f4fff7"],
+      "materials": ["phosphor glyphs", "black glass"],
+      "viewport": "A dark terminal field where job codes fall until one resolution holds a readable drawing.",
+      "risk": "Cyberpunk terminal is a category costume, not the buyer's world.",
+      "kept": "Live, stateful capacity readouts rather than static prose.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "falling code field", "x": 0, "y": 0, "w": 12, "h": 10 },
+          { "label": "locked job panel", "x": 7, "y": 2, "w": 4, "h": 5, "accent": true },
+          { "label": "capacity rows", "x": 1, "y": 7, "w": 5, "h": 2 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-forging",
+      "kind": "challenger",
+      "catalogId": "metal-forging-patina-blacksmith-scale-shower",
+      "label": "The Heat",
+      "verdict": "declined",
+      "lineage": "forging floors and scale-shedding iron",
+      "thesis": "Each process as a heat and a blow, with the metal visibly changing state.",
+      "palette": ["#1a1512", "#b5431f", "#f2b134", "#6f6a63"],
+      "materials": ["scale", "forged steel", "heat"],
+      "viewport": "A dark forge ground with one white-hot workpiece and force numerals ruled along the blow.",
+      "risk": "Forging is not a confirmed service; the direction would invent capability.",
+      "kept": "A before-and-after material journey with measured states.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "forge ground", "x": 0, "y": 0, "w": 12, "h": 10 },
+          { "label": "white-hot workpiece", "x": 2, "y": 3, "w": 6, "h": 3, "accent": true },
+          { "label": "force numerals", "x": 8, "y": 2, "w": 3, "h": 6 },
+          { "label": "quote action", "x": 1, "y": 8, "w": 4, "h": 1 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-webgl",
+      "kind": "challenger",
+      "catalogId": "webgl-shader-portal",
+      "label": "The Molten Field",
+      "verdict": "declined",
+      "lineage": "full-bleed WebGL studio portals",
+      "thesis": "A single living metal surface with the offer floating on it.",
+      "palette": ["#07131a", "#2de2c5", "#f5f2e8"],
+      "materials": ["fragment shader", "film grain"],
+      "viewport": "A full-screen shader like cooling metal, with thin tracked labels at the margins and a dissolving route change.",
+      "risk": "Generic immersive spectacle: low product clarity and a real performance cost.",
+      "kept": "One full-bleed committed ground and an orchestrated transition.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "shader field", "x": 0, "y": 0, "w": 12, "h": 10 },
+          { "label": "hero word", "x": 2, "y": 4, "w": 8, "h": 2, "accent": true },
+          { "label": "marginal labels", "x": 0, "y": 0, "w": 2, "h": 10 }
+        ]
+      }
+    }
+  ],
+  "reroll": {
+    "registers": ["safer", "bolder"]
+  },
+  "buildPath": {
+    "value": "code",
+    "toggle": false
+  },
+  "canon": true,
+  "canonCard": {
+    "kind": "canon",
+    "label": "The Category Standard",
+    "thesis": "Dark hero, stat strip, service cards, project gallery, contact CTA.",
+    "palette": ["#0f1115", "#ffffff", "#e23b2e", "#8a8f98"],
+    "materials": ["stock photography", "card grid", "system sans"],
+    "viewport": "A dark hero with a headline, three capacity stats, service cards, and a quote button.",
+    "risk": "Indistinguishable from every other fabricator by design.",
+    "html": ".impeccable/mocks/decision/canon.html"
+  },
+  "steer": true
+}

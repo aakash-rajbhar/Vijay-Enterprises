@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>The Capacity Bridge</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1440px; height: 900px; overflow: hidden; }
+  body { background: #2a1d12; color: #1b1a17; font-family: "Arial Narrow", Arial, sans-serif; }
+  .desk {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(100% 80% at 50% 0%, #5d4026 0%, #382515 45%, #21160d 100%);
+  }
+  .desk:after { content: ""; position: absolute; inset: 0; opacity: .22; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.02 .5' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E"); }
+  .frame { position: absolute; left: 46px; right: 46px; top: 46px; bottom: 46px; border: 10px solid #1b1a17; box-shadow: 0 22px 60px rgba(0,0,0,.6), inset 0 0 0 2px #6b4f2a; }
+  .inner { position: absolute; inset: 0; background: linear-gradient(#1b1a17, #2b271f); padding: 26px 30px 24px; }
+  .top { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #6b4f2a; padding-bottom: 12px; }
+  h1 { font-family: Georgia, serif; font-size: 46px; line-height: .95; letter-spacing: -.02em; color: #f2e8d5; font-weight: 700; }
+  h1 em { font-style: normal; color: #b23a2e; }
+  .sub { color: #cbbb9d; font-size: 15px; letter-spacing: .16em; text-transform: uppercase; margin-top: 6px; }
+  .rightmeta { text-align: right; color: #cbbb9d; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; line-height: 1.8; }
+  .rightmeta b { color: #b23a2e; }
+  .bridge { margin-top: 24px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .meter { background: linear-gradient(160deg, #f7eeda, #e7d8b8); border: 2px solid #1b1a17; box-shadow: inset 0 0 0 2px #b9a582, 0 6px 0 #0c0b09; padding: 10px 10px 8px; position: relative; }
+  .meter .brand { font-size: 9px; letter-spacing: .18em; color: #6b5a3f; text-transform: uppercase; display: flex; justify-content: space-between; }
+  .face { position: relative; height: 300px; margin-top: 4px; border: 1px solid #b9a582; overflow: hidden; background: radial-gradient(circle at 50% 88%, #fdf7e8, #eee1c4 70%); }
+  .arc { position: absolute; left: 50%; bottom: -150px; width: 300px; height: 300px; transform: translateX(-50%); border-radius: 50%; border: 2px solid #1b1a17; }
+  .arc.red { border-color: #b23a2e; bottom: -138px; width: 276px; height: 276px; }
+  .tick { position: absolute; left: 50%; bottom: 0; width: 1px; height: 142px; background: #1b1a17; transform-origin: 50% 100%; }
+  .needle { position: absolute; left: 50%; bottom: 0; width: 2px; height: 148px; background: #b23a2e; transform-origin: 50% 100%; box-shadow: 0 0 2px rgba(0,0,0,.4); }
+  .needle:after { content: ""; position: absolute; left: -5px; bottom: -5px; width: 12px; height: 12px; border-radius: 50%; background: #1b1a17; }
+  .reading { position: absolute; left: 0; right: 0; bottom: 6px; text-align: center; font-family: Georgia, serif; font-size: 22px; color: #1b1a17; }
+  .label { margin-top: 9px; border-top: 2px solid #1b1a17; padding-top: 6px; display: flex; justify-content: space-between; align-items: baseline; }
+  .label .n { font-size: 13px; letter-spacing: .10em; text-transform: uppercase; font-weight: 700; }
+  .label .v { font-family: "Courier New", monospace; font-size: 11px; color: #6b5a3f; }
+  .footer { position: absolute; left: 30px; right: 30px; bottom: 22px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #6b4f2a; padding-top: 12px; }
+  .footer .act { background: #b23a2e; color: #f7eeda; font-size: 16px; letter-spacing: .13em; text-transform: uppercase; padding: 11px 18px; box-shadow: 0 4px 0 #6e1f18; }
+  .footer .note { color: #cbbb9d; font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
+  .footer .note b { color: #f2e8d5; }
+</style>
+</head>
+<body>
+<div class="desk">
+  <div class="frame"><div class="inner">
+    <div class="top">
+      <div>
+        <h1>Every limit,<br /><em>on the meter.</em></h1>
+        <div class="sub">Calibrated capacity · Vijay Enterprises</div>
+      </div>
+      <div class="rightmeta"><b>Confirmed</b> machine limits<br />TL4020 · Hawk 150-31<br />Genius NC shear</div>
+    </div>
+    <div class="bridge">
+      <div class="meter">
+        <div class="brand"><span>Laser</span><span>01</span></div>
+        <div class="face">
+          <div class="arc"></div><div class="arc red"></div>
+          <div class="tick" style="transform:rotate(-52deg)"></div><div class="tick" style="transform:rotate(-30deg)"></div><div class="tick" style="transform:rotate(-8deg)"></div><div class="tick" style="transform:rotate(14deg)"></div><div class="tick" style="transform:rotate(36deg)"></div><div class="tick" style="transform:rotate(58deg)"></div>
+          <div class="needle" style="transform:rotate(50deg)"></div>
+          <div class="reading">25</div>
+        </div>
+        <div class="label"><span class="n">Laser cut</span><span class="v">mm</span></div>
+      </div>
+      <div class="meter">
+        <div class="brand"><span>Shear</span><span>02</span></div>
+        <div class="face">
+          <div class="arc"></div><div class="arc red"></div>
+          <div class="tick" style="transform:rotate(-52deg)"></div><div class="tick" style="transform:rotate(-30deg)"></div><div class="tick" style="transform:rotate(-8deg)"></div><div class="tick" style="transform:rotate(14deg)"></div><div class="tick" style="transform:rotate(36deg)"></div><div class="tick" style="transform:rotate(58deg)"></div>
+          <div class="needle" style="transform:rotate(31deg)"></div>
+          <div class="reading">12</div>
+        </div>
+        <div class="label"><span class="n">Shear</span><span class="v">mm</span></div>
+      </div>
+      <div class="meter">
+        <div class="brand"><span>Width</span><span>03</span></div>
+        <div class="face">
+          <div class="arc"></div><div class="arc red"></div>
+          <div class="tick" style="transform:rotate(-52deg)"></div><div class="tick" style="transform:rotate(-30deg)"></div><div class="tick" style="transform:rotate(-8deg)"></div><div class="tick" style="transform:rotate(14deg)"></div><div class="tick" style="transform:rotate(36deg)"></div><div class="tick" style="transform:rotate(58deg)"></div>
+          <div class="needle" style="transform:rotate(44deg)"></div>
+          <div class="reading">3</div>
+        </div>
+        <div class="label"><span class="n">Shear width</span><span class="v">m</span></div>
+      </div>
+      <div class="meter">
+        <div class="brand"><span>Brake</span><span>04</span></div>
+        <div class="face">
+          <div class="arc"></div><div class="arc red"></div>
+          <div class="tick" style="transform:rotate(-52deg)"></div><div class="tick" style="transform:rotate(-30deg)"></div><div class="tick" style="transform:rotate(-8deg)"></div><div class="tick" style="transform:rotate(14deg)"></div><div class="tick" style="transform:rotate(36deg)"></div><div class="tick" style="transform:rotate(58deg)"></div>
+          <div class="needle" style="transform:rotate(56deg)"></div>
+          <div class="reading">150</div>
+        </div>
+        <div class="label"><span class="n">Press brake</span><span class="v">tonnes</span></div>
+      </div>
+      <div class="meter">
+        <div class="brand"><span>Reach</span><span>05</span></div>
+        <div class="face">
+          <div class="arc"></div><div class="arc red"></div>
+          <div class="tick" style="transform:rotate(-52deg)"></div><div class="tick" style="transform:rotate(-30deg)"></div><div class="tick" style="transform:rotate(-8deg)"></div><div class="tick" style="transform:rotate(14deg)"></div><div class="tick" style="transform:rotate(36deg)"></div><div class="tick" style="transform:rotate(58deg)"></div>
+          <div class="needle" style="transform:rotate(6deg)"></div>
+          <div class="reading">NCR</div>
+        </div>
+        <div class="label"><span class="n">Delivery</span><span class="v">Delhi</span></div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="act">Send your drawing</span>
+      <span class="note">Steel thickness and width read against <b>confirmed</b> machine limits, not estimates</span>
+      <span class="note">info@vijay-enterprises.com</span>
+    </div>
+  </div></div>
+</div>
+</body>
+</html>

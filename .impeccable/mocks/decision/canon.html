@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>The Category Standard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1440px; height: 900px; overflow: hidden; }
+  body { background: #0f1115; color: #fff; font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
+  .page { position: absolute; inset: 0; background: radial-gradient(90% 80% at 70% 0%, #262b36 0%, #12151b 55%, #0f1115 100%); }
+  .nav { position: absolute; top: 0; left: 0; right: 0; height: 78px; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .logo { font-size: 19px; font-weight: 800; letter-spacing: .02em; }
+  .links { display: flex; gap: 32px; font-size: 14px; color: #aeb4bf; }
+  .cta { background: #e23b2e; color: #fff; padding: 11px 18px; border-radius: 6px; font-size: 14px; font-weight: 700; }
+  .hero { position: absolute; left: 56px; right: 56px; top: 130px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 54px; align-items: center; }
+  .eyebrow { color: #e23b2e; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+  h1 { margin-top: 14px; font-size: 72px; line-height: .98; letter-spacing: -.035em; font-weight: 800; max-width: 620px; }
+  h1 span { color: #8a8f98; }
+  .lead { margin-top: 20px; max-width: 500px; color: #b8bec8; font-size: 18px; line-height: 1.55; }
+  .actions { margin-top: 30px; display: flex; gap: 14px; }
+  .primary { background: #e23b2e; padding: 14px 22px; border-radius: 6px; font-weight: 700; font-size: 15px; }
+  .secondary { border: 1px solid rgba(255,255,255,.22); padding: 14px 22px; border-radius: 6px; font-size: 15px; color: #dfe3e9; }
+  .stats { margin-top: 42px; display: flex; gap: 36px; border-top: 1px solid rgba(255,255,255,.10); padding-top: 20px; }
+  .stat .v { font-size: 34px; font-weight: 800; }
+  .stat .k { color: #8a8f98; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; margin-top: 3px; }
+  .visual { height: 430px; border-radius: 10px; background: linear-gradient(150deg, #343b48, #1d222b); border: 1px solid rgba(255,255,255,.10); position: relative; overflow: hidden; }
+  .visual:before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(115deg, rgba(255,255,255,.05) 0 2px, transparent 2px 18px); }
+  .visual:after { content: "FACILITY IMAGE"; position: absolute; left: 22px; bottom: 20px; color: #8a8f98; font-size: 11px; letter-spacing: .18em; }
+  .cards { position: absolute; left: 56px; right: 56px; bottom: 64px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .card { border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.03); border-radius: 8px; padding: 18px; }
+  .card .n { color: #e23b2e; font-size: 11px; font-weight: 700; letter-spacing: .14em; }
+  .card .t { margin-top: 9px; font-size: 18px; font-weight: 700; }
+  .card .d { margin-top: 6px; color: #9098a4; font-size: 13px; line-height: 1.45; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="nav">
+    <div class="logo">Vijay Enterprises</div>
+    <div class="links"><span>Services</span><span>Products</span><span>About</span><span>Contact</span></div>
+    <div class="cta">Get a Quote</div>
+  </div>
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Metal fabrication · Delhi NCR</div>
+      <h1>Precision fabrication, <span>all under one roof.</span></h1>
+      <div class="lead">Laser cutting, bending, shearing, welding, and fabrication for machine parts, panels, and custom assemblies.</div>
+      <div class="actions"><div class="primary">Request a Quote</div><div class="secondary">View Services</div></div>
+      <div class="stats">
+        <div class="stat"><div class="v">25 mm</div><div class="k">Laser cutting</div></div>
+        <div class="stat"><div class="v">12 mm</div><div class="k">Shearing</div></div>
+        <div class="stat"><div class="v">30+ yrs</div><div class="k">Experience</div></div>
+      </div>
+    </div>
+    <div class="visual"></div>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="n">01</div><div class="t">Laser Cutting</div><div class="d">Up to 25 mm on the TL4020.</div></div>
+    <div class="card"><div class="n">02</div><div class="t">Sheet Bending</div><div class="d">CNC press brake, Hawk 150-31.</div></div>
+    <div class="card"><div class="n">03</div><div class="t">Shearing</div><div class="d">Up to 12 mm thick and 3 m wide.</div></div>
+    <div class="card"><div class="n">04</div><div class="t">Welding</div><div class="d">MIG, TIG, and fabrication.</div></div>
+  </div>
+</div>
+</body>
+</html>
