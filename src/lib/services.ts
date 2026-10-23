@@ -4,42 +4,63 @@ export const servicesList = [
     title: "Laser sheet cutting",
     description: "Precision cuts on sheet metal with clean edges.",
     spec: "Up to 25 mm · TL Series TL4020",
+    detail:
+      "Sheet metal is cut on the TL Series TL4020. Send a DXF, DWG, PDF or STEP file with material and thickness; we confirm the cut against the 25 mm limit before quoting.",
+    image: "/images/placeholder/placeholder-cut.jpg",
   },
   {
     number: "02",
     title: "Sheet shearing",
     description: "Straight cuts for blanks and panels.",
     spec: "12 mm thick · 3 m wide · NC \"Genius\" series",
+    detail:
+      "Straight cuts for blanks and panels on the NC “Genius” series. The confirmed limit is up to 12 mm thick and 3 m wide. Include the finished size and quantity on the drawing.",
+    image: "/images/placeholder/placeholder-shear.jpg",
   },
   {
     number: "03",
     title: "Sheet bending",
     description: "Forming and folding to drawing specifications.",
     spec: "CNC Press Brake Hawk 150-31",
+    detail:
+      "Forming and folding on the CNC Press Brake Hawk 150-31. Include bend lines, angles, and tolerances on the drawing so the part is set up correctly the first time.",
+    image: "/images/placeholder/placeholder-bend.jpg",
   },
   {
     number: "04",
     title: "Welding",
     description: "MIG/TIG welding for assemblies and frames.",
     spec: "In-house",
+    detail:
+      "MIG and TIG welding for assemblies and frames. Tell us the material and finish so the joint is set up correctly. Welding is quoted from the drawing with the rest of the part.",
+    image: "/images/placeholder/placeholder-weld.jpg",
   },
   {
     number: "05",
     title: "Fabrication",
     description: "One-off parts and production runs under one roof.",
     spec: "One roof",
+    detail:
+      "One-off parts and production runs assembled under one roof. Cutting, shearing, bending, and welding stay with one team, so one supplier answers for the finished part.",
+    image: "/images/placeholder/placeholder-fabricate.jpg",
   },
   {
     number: "06",
     title: "Manufacturing machine parts",
     description: "Custom machine parts to your drawing.",
     spec: "To drawing",
+    detail:
+      "Custom machine parts made from your drawing. Material, thickness, quantity, and tolerance decide the process. Send the file and tell us what the part has to do.",
+    image: "/images/placeholder/placeholder-machine-parts.jpg",
   },
   {
     number: "07",
     title: "Product design",
     description: "Design support for manufacturability.",
     spec: "On request",
+    detail:
+      "Design support for manufacturability. Bring a sketch or a requirement and we review how it can be made, what material suits it, and which process fits the quantity.",
+    image: "/images/placeholder/placeholder-frames.jpg",
   },
 ] as const;
 
@@ -47,6 +68,8 @@ export const capacityTable = [
   { process: "Laser cutting", machine: "TL Series TL4020", capacity: "Up to 25 mm" },
   { process: "Shearing", machine: "NC \"Genius\" series", capacity: "12 mm thick · 3 m wide" },
   { process: "Bending", machine: "CNC Press Brake Hawk 150-31", capacity: "To drawing" },
+  { process: "Welding", machine: "In-house", capacity: "To drawing" },
+  { process: "Fabrication", machine: "In-house", capacity: "To drawing" },
 ] as const;
 
 export const machines = [
