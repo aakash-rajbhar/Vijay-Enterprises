@@ -2,9 +2,22 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
-export function MaskedLines({ lines, className = "", delay = 0 }: { lines: string[]; className?: string; delay?: number }) {
+gsap.registerPlugin(ScrollTrigger);
+
+export function MaskedLines({
+  lines,
+  className = "",
+  delay = 0,
+  scroll = true,
+}: {
+  lines: string[];
+  className?: string;
+  delay?: number;
+  scroll?: boolean;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduced = usePrefersReducedMotion();
 
@@ -14,12 +27,19 @@ export function MaskedLines({ lines, className = "", delay = 0 }: { lines: strin
     const tween = gsap.fromTo(
       els,
       { yPercent: 112 },
-      { yPercent: 0, duration: 1.05, stagger: 0.08, ease: "power3.out", delay }
+      {
+        yPercent: 0,
+        duration: 1.05,
+        stagger: 0.08,
+        ease: "power3.out",
+        delay,
+        scrollTrigger: scroll ? { trigger: ref.current, start: "top 88%", once: true } : undefined,
+      }
     );
     return () => {
       tween.kill();
     };
-  }, [reduced, delay]);
+  }, [reduced, delay, scroll]);
 
   return (
     <span ref={ref} className={className}>

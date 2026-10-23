@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MaskedLines } from "@/components/MaskedLines";
+import { Grain } from "@/components/Grain";
 import { MagneticButton } from "@/components/MagneticButton";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
@@ -14,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function Hero() {
   const frame = useRef<HTMLDivElement>(null);
   const img = useRef<HTMLDivElement>(null);
+  const headline = useRef<HTMLHeadingElement>(null);
   const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -26,6 +28,12 @@ export function Hero() {
       );
       gsap.to(img.current, {
         y: 60,
+        ease: "none",
+        scrollTrigger: { trigger: frame.current, start: "top top", end: "bottom top", scrub: true },
+      });
+      gsap.to(headline.current, {
+        y: -48,
+        opacity: 0,
         ease: "none",
         scrollTrigger: { trigger: frame.current, start: "top top", end: "bottom top", scrub: true },
       });
@@ -50,13 +58,14 @@ export function Hero() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/10" />
+        <Grain />
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <span className="absolute left-[22%] top-0 h-full w-px bg-white/10" />
           <span className="absolute right-[18%] top-0 h-full w-px bg-white/10" />
           <span className="absolute left-0 top-[42%] h-px w-full bg-white/10" />
         </div>
 
-        <div className="relative flex flex-1 flex-col justify-between p-5 md:p-8">
+        <div className="relative z-10 flex flex-1 flex-col justify-between p-5 md:p-8">
           <div className="flex items-start justify-between gap-6 pt-20 font-mono text-[10px] uppercase tracking-[0.14em] text-white/60 md:pt-4">
             <span>Tughlakabad, New Delhi</span>
             <span>Delhi NCR only</span>
@@ -71,8 +80,8 @@ export function Hero() {
             </div>
 
             <div className="md:max-w-[62%] md:text-right">
-              <h1 className="font-display text-[clamp(3.25rem,9vw,9rem)] leading-[0.9] tracking-[-0.04em] text-white">
-                <MaskedLines lines={["Precision metal work,", "cut to your drawing."]} delay={0.15} />
+              <h1 ref={headline} className="font-display text-[clamp(3.25rem,9vw,9rem)] leading-[0.9] tracking-[-0.04em] text-white">
+                <MaskedLines lines={["Precision metal work,", "cut to your drawing."]} delay={0.15} scroll={false} />
               </h1>
               <p className="mt-5 text-base text-steel-300 md:ml-auto md:max-w-[46ch]">
                 Laser cutting, shearing, bending, welding and fabrication under one roof in Tughlakabad, New Delhi.

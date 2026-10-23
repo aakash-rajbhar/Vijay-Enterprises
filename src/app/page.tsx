@@ -5,20 +5,15 @@ import { Marquee } from "@/components/Marquee";
 import { Section, Container } from "@/components/Section";
 import { Eyebrow } from "@/components/Eyebrow";
 import { ScrollWords } from "@/components/ScrollWords";
+import { MaskedLines } from "@/components/MaskedLines";
 import { StatRow } from "@/components/StatRow";
 import { NumberedRow } from "@/components/NumberedRow";
 import { GlassCard } from "@/components/GlassCard";
+import { ProcessStrip } from "@/components/ProcessStrip";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { servicesList, machines } from "@/lib/services";
 import { productCategories } from "@/lib/products";
 
-const processes = [
-  { label: "Cut", image: "/images/placeholder/placeholder-cut.jpg", alt: "Placeholder image representing laser cutting" },
-  { label: "Shear", image: "/images/placeholder/placeholder-shear.jpg", alt: "Placeholder image representing shearing" },
-  { label: "Bend", image: "/images/placeholder/placeholder-bend.jpg", alt: "Placeholder image representing bending" },
-  { label: "Weld", image: "/images/placeholder/placeholder-weld.jpg", alt: "Placeholder image representing welding" },
-  { label: "Fabricate", image: "/images/placeholder/placeholder-fabricate.jpg", alt: "Placeholder image representing fabrication" },
-];
 
 const productImages: Record<string, string> = {
   "machine-parts": "/images/placeholder/placeholder-machine-parts.jpg",
@@ -65,25 +60,7 @@ export default function HomePage() {
               View all services
             </Link>
           </div>
-          <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-5 md:overflow-visible md:px-0">
-            {processes.map((p) => (
-              <Link key={p.label} href="/services" className="group w-[72vw] shrink-0 snap-start sm:w-[42vw] md:w-auto" data-cursor-row>
-                <div className="relative aspect-[3/4] overflow-hidden rounded-[var(--radius-card)] border border-black/5 bg-steel-900">
-                  <Image
-                    src={p.image}
-                    alt={p.alt}
-                    fill
-                    sizes="(max-width: 768px) 72vw, 20vw"
-                    className="object-cover grayscale contrast-110 transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
-                  <span className="absolute bottom-4 left-4 rounded-pill bg-white/10 px-3 py-1 text-xs text-white backdrop-blur-md">
-                    {p.label}
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <ProcessStrip />
         </Container>
       </Section>
 
@@ -109,7 +86,7 @@ export default function HomePage() {
             <div>
               <Eyebrow>Services</Eyebrow>
               <h2 className="mt-6 max-w-[16ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                The work, in order.
+                <MaskedLines lines={["The work, in order."]} />
               </h2>
             </div>
             <Link href="/services" className="hidden text-sm text-steel-300 hover:text-white md:inline">
@@ -130,7 +107,7 @@ export default function HomePage() {
             <div>
               <Eyebrow>Machines</Eyebrow>
               <h2 className="mt-6 max-w-[14ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                Confirmed capacity.
+                <MaskedLines lines={["Confirmed capacity."]} />
               </h2>
             </div>
             <Link href="/services#machines" className="hidden text-sm text-steel-500 hover:text-ink md:inline">
@@ -140,13 +117,13 @@ export default function HomePage() {
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {machines.map((m, i) => (
               <GlassCard key={m.name}>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-steel-900">
+                <div data-image-reveal className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-steel-900">
                   <Image
                     src={`/images/placeholder/placeholder-machine-${["tl4020", "hawk", "genius"][i]}.jpg`}
                     alt={`Placeholder machine image for ${m.name}`}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover grayscale contrast-110"
+                    className="image-drift object-cover grayscale contrast-110" data-cursor="view"
                   />
                 </div>
                 <div className={`mt-6 flex h-9 w-9 items-center justify-center rounded-full ${i === 0 ? "bg-spark text-white" : "bg-ink/5 text-ink"}`}>
@@ -167,7 +144,7 @@ export default function HomePage() {
             <div>
               <Eyebrow>Products</Eyebrow>
               <h2 className="mt-6 max-w-[14ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                Parts and structures.
+                <MaskedLines lines={["Parts and structures."]} />
               </h2>
             </div>
             <Link href="/products" className="hidden text-sm text-steel-500 hover:text-ink md:inline">
@@ -177,13 +154,13 @@ export default function HomePage() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {productCategories.slice(0, 6).map((cat) => (
               <Link key={cat.slug} href="/products" className="group" data-cursor-row>
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-card)] border border-black/5 bg-steel-900">
+                <div data-image-reveal className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-card)] border border-black/5 bg-steel-900">
                   <Image
                     src={productImages[cat.slug]}
                     alt={`Placeholder product image for ${cat.name}`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover grayscale contrast-110 transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="image-drift object-cover grayscale contrast-110" data-cursor="view"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
                   <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-ink/20 text-white backdrop-blur-sm transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
@@ -206,13 +183,13 @@ export default function HomePage() {
         <Container>
           <div className="grid gap-10 md:grid-cols-12 md:items-center md:gap-16">
             <div className="md:col-span-5">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-window)] border border-black/5 bg-steel-900">
+              <div data-image-reveal className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-window)] border border-black/5 bg-steel-900">
                 <Image
                   src="/images/placeholder/placeholder-founder.jpg"
                   alt="Placeholder portrait slot for Vijay Rajbhar"
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover grayscale contrast-110"
+                  className="image-drift object-cover grayscale contrast-110" data-cursor="view"
                 />
                 <span className="absolute bottom-4 left-4 rounded-pill bg-ink/60 px-3 py-1 text-[10px] uppercase tracking-[0.12em] text-white backdrop-blur-md">
                   Placeholder portrait
@@ -222,7 +199,7 @@ export default function HomePage() {
             <div className="md:col-span-7">
               <Eyebrow>Founder</Eyebrow>
               <h2 className="mt-6 font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                Vijay Rajbhar
+                <MaskedLines lines={["Vijay Rajbhar"]} />
               </h2>
               <p className="mt-3 font-mono text-xs text-steel-500">30+ years in the metal industry</p>
               <p className="mt-6 max-w-[54ch] text-lg text-steel-500">

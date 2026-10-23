@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Item = {
   number: string;
@@ -17,13 +17,28 @@ export function ServiceAccordion({ items }: { items: readonly Item[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
   const preview = useRef<HTMLDivElement>(null);
   const wrap = useRef<HTMLDivElement>(null);
+  const target = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    let raf = 0;
+    let x = 0;
+    let y = 0;
+    const loop = () => {
+      x += (target.current.x - x) * 0.16;
+      y += (target.current.y - y) * 0.16;
+      if (preview.current) {
+        preview.current.style.transform = `translate3d(${x + 24}px, ${y - 110}px, 0) rotate(-3deg)`;
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   const onMove = (e: React.MouseEvent) => {
-    if (!preview.current || !wrap.current) return;
+    if (!wrap.current) return;
     const rect = wrap.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    preview.current.style.transform = `translate3d(${x + 24}px, ${y - 110}px, 0) rotate(-3deg)`;
+    target.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
   };
 
   return (

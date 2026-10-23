@@ -23,16 +23,20 @@ export function Marquee() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
 
+    let raf = 0;
     const loop = () => {
       pos -= vel * dir;
       if (pos < -1800) pos = 0;
       if (pos > 0) pos = -1800;
       if (ref.current) ref.current.style.transform = `translate3d(${pos}px,0,0)`;
-      requestAnimationFrame(loop);
+      raf = requestAnimationFrame(loop);
     };
-    requestAnimationFrame(loop);
+    raf = requestAnimationFrame(loop);
 
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, [reduced]);
 
   const items = "Laser cutting · Shearing · Bending · Welding · Fabrication · Machine parts · Delhi NCR · ";

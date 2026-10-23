@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { Section, Container } from "@/components/Section";
 import { Eyebrow } from "@/components/Eyebrow";
+import { MaskedLines } from "@/components/MaskedLines";
 import { ServiceAccordion } from "@/components/ServiceAccordion";
 import { SpecTable } from "@/components/SpecTable";
-import { GlassCard } from "@/components/GlassCard";
+import { MachineStack } from "@/components/MachineStack";
 import { ClosingCTA } from "@/components/ClosingCTA";
-import { servicesList, capacityTable, machines, processChain } from "@/lib/services";
+import { servicesList, capacityTable, processChain } from "@/lib/services";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -31,11 +31,6 @@ const required = [
   "Delivery location in Delhi NCR",
 ];
 
-const machineImages = [
-  "/images/placeholder/placeholder-machine-tl4020.jpg",
-  "/images/placeholder/placeholder-machine-hawk.jpg",
-  "/images/placeholder/placeholder-machine-genius.jpg",
-];
 
 export default function ServicesPage() {
   return (
@@ -52,7 +47,7 @@ export default function ServicesPage() {
         <Container>
           <Eyebrow>The chain</Eyebrow>
           <h2 className="mt-6 max-w-[18ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-            The part does not leave the building.
+            <MaskedLines lines={["The part does not", "leave the building."]} />
           </h2>
           <div className="mt-10 grid grid-cols-2 gap-3 md:flex md:items-center">
             {processChain.map((p, i) => (
@@ -81,7 +76,7 @@ export default function ServicesPage() {
             <div>
               <Eyebrow>Services</Eyebrow>
               <h2 className="mt-6 max-w-[16ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                The process list.
+                <MaskedLines lines={["The process list."]} />
               </h2>
             </div>
             <span className="hidden font-mono text-xs text-steel-500 md:block">07 PROCESSES</span>
@@ -98,7 +93,7 @@ export default function ServicesPage() {
             <div className="md:col-span-4">
               <Eyebrow>Capacity</Eyebrow>
               <h2 className="mt-6 font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                Confirmed limits.
+                <MaskedLines lines={["Confirmed limits."]} />
               </h2>
               <p className="mt-5 max-w-[42ch] text-sm text-steel-500">
                 Only the figures the workshop has confirmed. Anything outside this table is a drawing review, not a promise.
@@ -117,32 +112,12 @@ export default function ServicesPage() {
             <div>
               <div id="machines"><Eyebrow>Machines</Eyebrow></div>
               <h2 className="mt-6 max-w-[16ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                What does the work.
+                <MaskedLines lines={["What does the work."]} />
               </h2>
             </div>
             <span className="hidden font-mono text-xs text-steel-500 md:block">03 MACHINES</span>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {machines.map((m, i) => (
-              <GlassCard key={m.name} dark>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-steel-900">
-                  <Image
-                    src={machineImages[i]}
-                    alt={`Placeholder machine image for ${m.name}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover grayscale contrast-110"
-                  />
-                </div>
-                <div className={`mt-6 flex h-9 w-9 items-center justify-center rounded-full ${i === 0 ? "bg-spark text-white" : "bg-white/5 text-steel-300"}`}>
-                  <span className="font-mono text-[10px]">0{i + 1}</span>
-                </div>
-                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">{m.role}</p>
-                <h3 className="mt-2 font-display text-2xl leading-tight">{m.name}</h3>
-                <p className="mt-2 text-sm text-steel-300">{m.desc}</p>
-              </GlassCard>
-            ))}
-          </div>
+          <MachineStack />
         </Container>
       </Section>
 
@@ -150,7 +125,7 @@ export default function ServicesPage() {
         <Container>
           <Eyebrow>How an order works</Eyebrow>
           <h2 className="mt-6 max-w-[20ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-            From drawing to delivery.
+            <MaskedLines lines={["From drawing", "to delivery."]} />
           </h2>
           <div className="mt-10 grid border-t border-steel-200 sm:grid-cols-2 lg:grid-cols-4">
             {orderSteps.map((s) => (
@@ -170,7 +145,7 @@ export default function ServicesPage() {
             <div className="md:col-span-4">
               <Eyebrow>What we need</Eyebrow>
               <h2 className="mt-6 font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                Send enough to quote.
+                <MaskedLines lines={["Send enough", "to quote."]} />
               </h2>
             </div>
             <div className="md:col-span-8">

@@ -4,6 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
+const routeNames: Record<string, string> = {
+  "/": "Home",
+  "/services": "Services",
+  "/products": "Products",
+  "/about": "About",
+  "/contact": "Contact",
+};
+
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [show, setShow] = useState(false);
@@ -33,10 +41,10 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   return (
     <>
       {show && (
-        <div className="fixed inset-0 z-[190] pointer-events-none">
+        <div className="pointer-events-none fixed inset-0 z-[190]">
           <div className={`absolute inset-0 bg-ink transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] ${phase === "out" ? "translate-y-0" : "translate-y-full"}`} />
           <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${phase === "out" ? "opacity-100" : "opacity-0"}`}>
-            <span className="font-display text-4xl">Vijay Enterprises</span>
+            <span className="font-display text-[clamp(2rem,6vw,4rem)] tracking-[-0.03em]">{routeNames[pathname] ?? "Vijay Enterprises"}</span>
           </div>
         </div>
       )}

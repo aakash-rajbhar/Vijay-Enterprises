@@ -1,13 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+
+const textSelector = "p, h1, h2, h3, h4, h5, h6, li, label, input, textarea, select, option";
 
 export function CustomCursor() {
   const dot = useRef<HTMLDivElement>(null);
   const ring = useRef<HTMLDivElement>(null);
   const [hover, setHover] = useState<string | null>(null);
+  const [visible, setVisible] = useState(true);
   const reduced = usePrefersReducedMotion();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (reduced) return;
@@ -27,15 +32,22 @@ export function CustomCursor() {
     };
     window.addEventListener("mousemove", move);
 
+    const over = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      setVisible(!target?.closest(textSelector));
+    };
+    window.addEventListener("mouseover", over);
+
+    let raf = 0;
     const loop = () => {
       rx += (x - rx) * 0.18;
       ry += (y - ry) * 0.18;
       if (ring.current) {
         ring.current.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
       }
-      requestAnimationFrame(loop);
+      raf = requestAnimationFrame(loop);
     };
-    requestAnimationFrame(loop);
+    raf = requestAnimationFrame(loop);
 
     const add = () => setHover("view");
     const remove = () => setHover(null);
@@ -59,7 +71,9 @@ export function CustomCursor() {
     });
 
     return () => {
+      cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseover", over);
       imgs.forEach((el) => {
         el.removeEventListener("mouseenter", add);
         el.removeEventListener("mouseleave", remove);
@@ -73,18 +87,25 @@ export function CustomCursor() {
         el.removeEventListener("mouseleave", remove);
       });
     };
-  }, [reduced]);
+  }, [reduced, pathname]);
 
   if (reduced) return null;
 
   return (
-    <div aria-hidden="true" className="hidden md:block">
-      <div ref={dot} className="fixed top-0 left-0 w-[6px] h-[6px] rounded-full bg-white mix-blend-difference pointer-events-none z-[120]" />
+    <div aria-hidden="true" className="pointer-events-none hidden md:block">
+      <div
+        ref={dot}
+        className="pointer-events-none fixed left-0 top-0 z-[120] h-[10px] w-[10px] rounded-full bg-white mix-blend-difference transition-opacity duration-200"
+        style={{ opacity: visible ? 1 : 0 }}
+      />
       <div
         ref={ring}
-        className={`fixed top-0 left-0 rounded-full border border-white/70 mix-blend-difference pointer-events-none z-[119] transition-[width,height] duration-200 flex items-center justify-center ${hover ? "w-[72px] h-[72px]" : "w-[36px] h-[36px]"}`}
+        className={`pointer-events-none fixed left-0 top-0 z-[119] flex items-center justify-center rounded-full border border-white/70 mix-blend-difference transition-[width,height,opacity] duration-200 ${
+          hover ? "h-[72px] w-[72px]" : "h-[36px] w-[36px]"
+        }`}
+        style={{ opacity: visible ? 1 : 0 }}
       >
-        {hover && <span className="text-[9px] uppercase tracking-[0.2em] font-mono text-white">{hover}</span>}
+        {hover && <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white">{hover}</span>}
       </div>
     </div>
   );

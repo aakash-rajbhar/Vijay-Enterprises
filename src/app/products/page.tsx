@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { Section, Container } from "@/components/Section";
 import { Eyebrow } from "@/components/Eyebrow";
+import { MaskedLines } from "@/components/MaskedLines";
 import { ProductGrid } from "@/components/ProductGrid";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { processChain } from "@/lib/services";
@@ -31,7 +32,7 @@ export default function ProductsPage() {
             <div>
               <Eyebrow>Categories</Eyebrow>
               <h2 className="mt-6 max-w-[16ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                What we make.
+                <MaskedLines lines={["What we make."]} />
               </h2>
             </div>
             <p className="max-w-[38ch] text-sm text-steel-500">
@@ -53,7 +54,7 @@ export default function ProductsPage() {
             <div className="md:col-span-5">
               <Eyebrow>Made with</Eyebrow>
               <h2 className="mt-6 font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                One part, several processes.
+                <MaskedLines lines={["One part,", "several processes."]} />
               </h2>
               <p className="mt-5 max-w-[42ch] text-steel-300">
                 A single bracket can be cut, sheared, bent and welded before it leaves the building. That is what one roof means for a buyer.
@@ -98,7 +99,7 @@ export default function ProductsPage() {
             <div className="md:col-span-8">
               <Eyebrow>Custom work</Eyebrow>
               <h2 className="mt-6 max-w-[16ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                Not listed? Send the drawing.
+                <MaskedLines lines={["Not listed?", "Send the drawing."]} />
               </h2>
               <p className="mt-5 max-w-[52ch] text-steel-500">
                 One-off parts and production runs are both welcome. If the part is not in the list, the drawing is still the starting point.

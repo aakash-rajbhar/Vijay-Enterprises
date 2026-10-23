@@ -53,13 +53,13 @@ export function ProductGrid() {
             aria-haspopup="dialog"
             data-cursor-row
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-card)] border border-black/5 bg-steel-900">
+            <div data-image-reveal className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-card)] border border-black/5 bg-steel-900">
               <Image
                 src={images[cat.slug]}
                 alt={`Placeholder process image for ${cat.name}`}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover grayscale contrast-110 transition-transform duration-700 group-hover:scale-[1.04]"
+                className="image-drift object-cover grayscale contrast-110" data-cursor="view"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
               <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-ink/20 text-white backdrop-blur-sm transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
@@ -104,6 +104,7 @@ export function ProductGrid() {
             </div>
             <Link
               href={`/contact?product=${active.slug}`}
+              data-cursor-enquire
               className="mt-8 inline-flex items-center gap-3 rounded-pill bg-spark px-5 py-3 text-sm text-white transition-colors hover:bg-spark-deep"
             >
               Enquire about this

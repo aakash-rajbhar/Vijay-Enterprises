@@ -8,6 +8,7 @@ import { Preloader } from "@/components/Preloader";
 import { CustomCursor } from "@/components/CustomCursor";
 import { PageTransition } from "@/components/PageTransition";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { ImageReveal } from "@/components/ImageReveal";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -56,13 +57,13 @@ export default function RootLayout({
         <SmoothScrollProvider>
           <Preloader />
           <ScrollProgress />
+          <ImageReveal />
           <CustomCursor />
           <Nav />
           <PageTransition>
             <main id="main">{children}</main>
           </PageTransition>
           <Footer />
-          <div className="grain-overlay" aria-hidden="true" />
         </SmoothScrollProvider>
       </body>
     </html>

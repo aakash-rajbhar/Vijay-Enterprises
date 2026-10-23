@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { links } from "@/lib/links";
 import { site } from "@/lib/site";
+import { Grain } from "@/components/Grain";
 
 export function Footer() {
   return (
-    <footer className="bg-ink">
-      <div className="mx-auto max-w-[1360px] px-4 py-16 md:px-8">
+    <footer className="relative overflow-hidden bg-ink">
+      <Grain />
+      <div className="relative z-10 mx-auto max-w-[1360px] px-4 py-16 md:px-8">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-6">
             <div className="flex items-center gap-2">
@@ -51,7 +53,7 @@ export function Footer() {
           </button>
         </div>
         <div className="mt-10 overflow-hidden">
-          <p className="font-display text-[clamp(6rem,18vw,22rem)] leading-[0.8] text-white/5">Vijay Enterprises</p>
+          <p aria-hidden="true" className="-mb-[0.18em] whitespace-nowrap font-display text-[clamp(7rem,22vw,30rem)] leading-[0.72] text-white/5">Vijay Enterprises</p>
         </div>
       </div>
     </footer>
