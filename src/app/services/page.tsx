@@ -43,10 +43,10 @@ export default function ServicesPage() {
     <>
       <PageHeader
         eyebrow="Services"
-        lines={["Five processes.", "One roof."]}
+        lines={["Five processes."]}
         lead="One accountable supplier for cutting, shearing, bending, welding and fabrication. Confirmed machine limits, quoted from your drawing."
         image="/images/placeholder/placeholder-hero.jpg"
-        imageAlt="Placeholder dark industrial process imagery"
+        imageAlt="Sheet metal cutting and fabrication at Vijay Enterprises"
       />
 
       <Section theme="light" className="py-[clamp(80px,10vw,150px)]">

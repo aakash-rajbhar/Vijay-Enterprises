@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
-    description: "One roof for precision sheet metal fabrication in Delhi NCR.",
+                description: "Precision sheet metal fabrication in Delhi NCR.",
     url: "/",
   },
 };
@@ -111,7 +111,7 @@ export default function HomePage() {
                 {
                   value: 25,
                   suffix: " mm",
-                  label: "Laser cutting thickness",
+                  label: "Laser cutting capacity",
                   caption: "TL Series TL4020",
                 },
                 {
@@ -121,8 +121,9 @@ export default function HomePage() {
                 },
                 {
                   value: 5,
-                  label: "Processes under one roof",
-                  caption: "Cut, shear, bend, weld, fabricate",
+                  suffix: " processes",
+                  label: "Machines and capacity",
+                  caption: "Cut · Shear · Bend · Weld · Fabricate",
                 },
               ]}
             />
@@ -166,8 +167,8 @@ export default function HomePage() {
           <div className="flex items-end justify-between gap-6">
             <div>
               <Eyebrow>Machines</Eyebrow>
-              <h2 className="mt-6 max-w-[14ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                <MaskedLines lines={["Confirmed capacity."]} />
+              <h2 className="mt-6 max-w-[16ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+                <MaskedLines lines={["Machines and capacity."]} />
               </h2>
             </div>
             <Link
@@ -186,7 +187,7 @@ export default function HomePage() {
                 >
                   <Image
                     src={m.image}
-                    alt={`Placeholder machine image for ${m.name}`}
+                    alt={`${m.name} - sheet metal fabrication machine at Vijay Enterprises`}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="image-drift object-cover grayscale contrast-110"
@@ -241,7 +242,7 @@ export default function HomePage() {
                 >
                   <Image
                     src={cat.image}
-                    alt={`Placeholder product image for ${cat.name}`}
+                    alt={`${cat.name} - sheet metal products`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="image-drift object-cover grayscale contrast-110"
@@ -288,15 +289,12 @@ export default function HomePage() {
               >
                 <Image
                   src="/images/placeholder/placeholder-founder.jpg"
-                  alt="Placeholder portrait slot for Vijay Rajbhar"
+                  alt="Portrait of Vijay Rajbhar, founder of Vijay Enterprises"
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
                   className="image-drift object-cover grayscale contrast-110"
                   data-cursor="view"
                 />
-                <span className="absolute bottom-4 left-4 rounded-pill bg-ink/60 px-3 py-1 text-[10px] uppercase tracking-[0.12em] text-white backdrop-blur-md">
-                  Placeholder portrait
-                </span>
               </div>
             </div>
             <div className="md:col-span-7">
@@ -309,9 +307,9 @@ export default function HomePage() {
               </p>
               <p className="mt-6 max-w-[54ch] text-lg text-steel-500">
                 Vijay Enterprises is a founder-led workshop in Tughlakabad
-                Village, New Delhi. The work is organised around one roof, so a
-                drawing can stay with one supplier from the first cut to the
-                finished part.
+                Village, New Delhi. Cutting, shearing, bending, welding and
+                fabrication stay with one team, so a drawing stays with one
+                supplier from first cut to finished part.
               </p>
               <Link
                 href="/about"

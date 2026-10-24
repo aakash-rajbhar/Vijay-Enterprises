@@ -189,18 +189,14 @@ export function Nav() {
                 data-cursor-enquire
                 onMouseMove={onQuoteMove}
                 onMouseLeave={onQuoteLeave}
-                className={`group hidden items-center gap-2.5 rounded-xl px-5 py-2 text-sm font-medium transition-all duration-300 ease-out will-change-transform md:inline-flex ${
+                className={`group hidden items-center gap-2.5 rounded-pill px-5 py-2 text-sm font-medium transition-all duration-300 ease-out will-change-transform md:inline-flex ${
                   light
-                    ? "bg-spark text-ink hover:bg-spark-deep hover:text-white shadow-[0_10px_40px_-18px_rgba(255,74,28,0.9)] hover:shadow-[0_12px_50px_-16px_rgba(255,74,28,0.95)]"
-                    : "bg-white text-ink! hover:bg-spark hover:text-ink shadow-[0_12px_50px_-18px_rgba(255,255,255,0.7)] hover:shadow-[0_14px_60px_-14px_rgba(255,74,28,0.8)]"
+                    ? "bg-spark text-ink shadow-[0_10px_50px_-18px_rgba(255,74,28,0.9)] hover:bg-[#ff5f30] hover:-translate-y-0.5"
+                    : "bg-white text-ink! hover:bg-spark hover:-translate-y-0.5 shadow-[0_12px_50px_-18px_rgba(255,255,255,0.7)] hover:shadow-[0_14px_60px_-14px_rgba(255,74,28,0.85)]"
                 }`}
               >
                 Request a quote
-                <span
-                  className={`flex h-6 w-6 items-center justify-center rounded-full transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:rotate-45 ${
-                    light ? "bg-black/10 group-hover:bg-white/20" : "bg-ink/10"
-                  }`}
-                >
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink/10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                   <svg
                     width="9"
                     height="9"
@@ -219,7 +215,7 @@ export function Nav() {
               <button
                 ref={triggerRef}
                 onClick={() => setOpen(true)}
-                className={`group relative flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-300 md:hidden ${
+                className={`group relative flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-300 md:hidden ${
                   light
                     ? "border-ink/15 hover:border-ink/40"
                     : "border-white/30 hover:border-white/60"
@@ -230,12 +226,12 @@ export function Nav() {
               >
                 <span className="flex flex-col items-center justify-center gap-1">
                   <span
-                    className={`block h-[1.5px] w-4 transition-all duration-300 ${
+                    className={`block h-[1.5px] shrink-0 w-4 transition-all duration-300 ${
                       light ? "bg-ink" : "bg-white"
                     }`}
                   />
                   <span
-                    className={`block h-[1.5px] w-4 transition-all duration-300 ${
+                    className={`block h-[1.5px] shrink-0 w-4 transition-all duration-300 ${
                       light ? "bg-ink" : "bg-white"
                     }`}
                   />
@@ -262,7 +258,7 @@ export function Nav() {
         >
           <div className="flex h-full flex-col">
             <div className="mt-4 px-3 md:px-4">
-              <div className="mx-auto flex h-14 w-full max-w-[1360px] items-center justify-between px-4 md:px-6">
+              <div className="mx-auto flex h-14 w-full max-w-[1360px] items-center justify-between px-2 pl-4 md:px-6">
                 <Link
                   href="/"
                   onClick={() => closeMenu()}
@@ -285,7 +281,7 @@ export function Nav() {
                 <button
                   ref={closeRef}
                   onClick={() => closeMenu(true)}
-                  className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/30 transition-colors duration-300 hover:border-white/60"
+                  className="group flex h-10 w-10 items-center justify-center rounded-full  transition-colors duration-300"
                   aria-label="Close menu"
                 >
                   <span className="relative flex h-4 w-4 items-center justify-center">

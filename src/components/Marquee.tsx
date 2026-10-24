@@ -43,9 +43,17 @@ export function Marquee() {
 
   return (
     <div className="overflow-hidden border-y border-steel-900 bg-ink py-4">
-      <div ref={ref} className="flex whitespace-nowrap font-mono text-xs text-steel-500" aria-hidden="true">
-        <span>{items.repeat(8)}</span>
+      <div
+        ref={ref}
+        className="flex whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.18em] text-steel-500"
+        aria-hidden="true"
+      >
+        <span>{items.repeat(12)}</span>
       </div>
+      <span className="sr-only">
+        Laser cutting, shearing, bending, welding, fabrication, machine parts,
+        Delhi NCR
+      </span>
     </div>
   );
 }

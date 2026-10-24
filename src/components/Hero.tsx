@@ -50,7 +50,7 @@ export function Hero() {
         <div ref={img} className="absolute inset-0 will-change-transform">
           <Image
             src="/images/placeholder/placeholder-hero.jpg"
-            alt="Placeholder dark industrial process imagery"
+            alt="Sheet metal fabrication at Vijay Enterprises"
             fill
             priority
             sizes="100vw"

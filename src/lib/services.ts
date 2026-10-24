@@ -30,7 +30,7 @@ export const servicesList = [
     number: "04",
     title: "Welding",
     description: "MIG/TIG welding for assemblies and frames.",
-    spec: "In-house",
+    spec: "MIG · TIG",
     detail:
       "MIG and TIG welding for assemblies and frames. Tell us the material and finish so the joint is set up correctly. Welding is quoted from the drawing with the rest of the part.",
     image: "/images/placeholder/placeholder-weld.jpg",
@@ -38,17 +38,17 @@ export const servicesList = [
   {
     number: "05",
     title: "Fabrication",
-    description: "One-off parts and production runs under one roof.",
-    spec: "One roof",
+    description: "Parts and assemblies built to drawing.",
+    spec: "Cut · Shear · Bend · Weld",
     detail:
-      "One-off parts and production runs assembled under one roof. Cutting, shearing, bending, and welding stay with one team, so one supplier answers for the finished part.",
+      "Parts and assemblies built to drawing in Tughlakabad, New Delhi. Cutting, shearing, bending, and welding stay with one team, so one supplier answers for the finished part.",
     image: "/images/placeholder/placeholder-fabricate.jpg",
   },
   {
     number: "06",
     title: "Manufacturing machine parts",
-    description: "Custom machine parts to your drawing.",
-    spec: "To drawing",
+    description: "Custom machine parts to drawing.",
+    spec: "As per drawing",
     detail:
       "Custom machine parts made from your drawing. Material, thickness, quantity, and tolerance decide the process. Send the file and tell us what the part has to do.",
     image: "/images/placeholder/placeholder-machine-parts.jpg",
@@ -57,7 +57,7 @@ export const servicesList = [
     number: "07",
     title: "Product design",
     description: "Design support for manufacturability.",
-    spec: "On request",
+    spec: "As requested",
     detail:
       "Design support for manufacturability. Bring a sketch or a requirement and we review how it can be made, what material suits it, and which process fits the quantity.",
     image: "/images/placeholder/placeholder-frames.jpg",
@@ -67,9 +67,9 @@ export const servicesList = [
 export const capacityTable = [
   { process: "Laser cutting", machine: "TL Series TL4020", capacity: "Up to 25 mm" },
   { process: "Shearing", machine: "NC \"Genius\" series", capacity: "12 mm thick · 3 m wide" },
-  { process: "Bending", machine: "CNC Press Brake Hawk 150-31", capacity: "To drawing" },
-  { process: "Welding", machine: "In-house", capacity: "To drawing" },
-  { process: "Fabrication", machine: "In-house", capacity: "To drawing" },
+  { process: "Bending", machine: "CNC Press Brake Hawk 150-31", capacity: "As per drawing" },
+  { process: "Welding", machine: "MIG · TIG", capacity: "As per drawing" },
+  { process: "Fabrication", machine: "In-house", capacity: "As per drawing" },
 ] as const;
 
 export const processChain = [

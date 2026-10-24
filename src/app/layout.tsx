@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { Preloader } from "@/components/Preloader";
 import { CustomCursor } from "@/components/CustomCursor";
-import { PageTransition } from "@/components/PageTransition";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ImageReveal } from "@/components/ImageReveal";
 import { JsonLd } from "@/components/JsonLd";
+import { MobileQuoteFab } from "@/components/MobileQuoteFab";
 import { site } from "@/lib/site";
 
 const inter = Inter({
@@ -18,17 +17,17 @@ const inter = Inter({
   display: "swap",
 });
 
-const interTight = Inter_Tight({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
-  variable: "--font-inter-tight",
+  variable: "--font-display",
   display: "swap",
 });
 
-const jetbrains = JetBrains_Mono({
+const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
-  variable: "--font-jetbrains",
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -53,16 +52,26 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
     description:
-      "One roof for precision sheet metal fabrication. Laser up to 25 mm, shear 12 mm × 3 m. Email your drawing for a quote.",
+      "Precision sheet metal fabrication in Delhi NCR. Laser cutting, shearing, bending, welding and fabrication.",
     type: "website",
     locale: "en_IN",
     siteName: site.name,
     url: site.url,
+        images: [
+          {
+            url: "/og.svg",
+            width: 1200,
+            height: 630,
+            alt: "Vijay Enterprises - Sheet Metal Fabrication",
+          },
+        ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
-    description: "Laser cutting, shearing, bending, welding and fabrication under one roof in Delhi NCR.",
+    description:
+      "Precision sheet metal fabrication in Delhi NCR. Laser cutting, shearing, bending, welding and fabrication.",
+    images: ["/og.svg"],
   },
 };
 
@@ -72,22 +81,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN" className={`${inter.variable} ${interTight.variable} ${jetbrains.variable}`}>
+    <html
+      lang="en-IN"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable}`}
+    >
       <body>
         <JsonLd />
         <a className="skip-link" href="#main">
           Skip to content
         </a>
         <SmoothScrollProvider>
-          <Preloader />
           <ScrollProgress />
           <ImageReveal />
           <CustomCursor />
           <Nav />
-          <PageTransition>
-            <main id="main">{children}</main>
-          </PageTransition>
+          <main id="main">{children}</main>
           <Footer />
+          <MobileQuoteFab />
         </SmoothScrollProvider>
       </body>
     </html>

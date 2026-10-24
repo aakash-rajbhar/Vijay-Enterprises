@@ -44,10 +44,10 @@ export function MachineStack() {
             <div data-image-reveal className="relative aspect-[16/10] overflow-hidden rounded-[20px] bg-steel-900">
               <Image
                 src={m.image}
-                alt={`Placeholder machine image for ${m.name}`}
+                alt={`${m.name} - sheet metal fabrication machine`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="image-drift object-cover grayscale contrast-110" data-cursor="view"
+                className="h-full w-full object-cover grayscale contrast-110"
               />
             </div>
             <div>
@@ -57,7 +57,7 @@ export function MachineStack() {
               <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">{m.role}</p>
               <h3 className="mt-2 font-display text-[clamp(1.75rem,3.5vw,3rem)] leading-none tracking-[-0.02em]">{m.name}</h3>
               <p className="mt-3 max-w-[38ch] text-steel-300">{m.desc}</p>
-              <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">Placeholder image</p>
+              <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">Shop floor</p>
             </div>
           </div>
         </article>

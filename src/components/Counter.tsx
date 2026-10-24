@@ -15,18 +15,20 @@ export function Counter({ value, suffix = "", className = "" }: { value: number;
       ([entry]) => {
         if (entry.isIntersecting) {
           let start: number | null = null;
-          const dur = 1400;
+          const from = Math.max(0, Math.floor(value * 0.55));
+          const dur = 1100;
           const step = (ts: number) => {
             if (!start) start = ts;
             const p = Math.min((ts - start) / dur, 1);
-            setN(Math.floor(p * value));
+            const eased = 1 - Math.pow(1 - p, 3);
+            setN(Math.floor(from + (value - from) * eased));
             if (p < 1) requestAnimationFrame(step);
           };
           requestAnimationFrame(step);
           io.disconnect();
         }
       },
-      { threshold: 0.6 }
+      { threshold: 0.5 }
     );
     io.observe(el);
     return () => io.disconnect();

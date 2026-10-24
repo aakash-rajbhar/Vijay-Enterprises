@@ -29,7 +29,7 @@ export default function ProductsPage() {
         lines={["Parts and structures,", "made to order."]}
         lead="Machine parts, covers, hoppers, ladders, tables, gates, jali and frames. Every item starts with a drawing, material and quantity."
         image="/images/placeholder/placeholder-covers-panels.jpg"
-        imageAlt="Placeholder dark sheet metal process imagery"
+        imageAlt="Sheet metal products and structures"
       />
 
       <Section theme="light" className="py-[clamp(80px,10vw,150px)]">

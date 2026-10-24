@@ -9,7 +9,7 @@ export function ClosingCTA() {
     <section data-nav-theme="dark" className="relative overflow-hidden">
       <Image
         src="/images/placeholder/placeholder-cta.jpg"
-        alt="Placeholder dark process imagery for closing section"
+        alt="Sheet metal parts and fabrication"
         fill
         sizes="100vw"
         className="object-cover grayscale contrast-110"

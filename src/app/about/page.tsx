@@ -55,9 +55,9 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         lines={["Thirty years of", "working with metal."]}
-        lead="A founder-led fabrication workshop in Tughlakabad Village, New Delhi. One roof, one team, and a drawing-led way of working."
+        lead="A founder-led fabrication workshop in Tughlakabad Village, New Delhi. Cutting, shearing, bending, welding and fabrication under one team, drawing-led from first cut to finished part."
         image="/images/placeholder/placeholder-hero.jpg"
-        imageAlt="Placeholder dark industrial process imagery"
+        imageAlt="Sheet metal fabrication process at Vijay Enterprises"
       />
 
       <Section theme="light" className="py-[clamp(80px,10vw,150px)]">
@@ -67,14 +67,11 @@ export default function AboutPage() {
               <div data-image-reveal className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-window)] border border-black/5 bg-steel-900">
                 <Image
                   src="/images/placeholder/placeholder-founder.jpg"
-                  alt="Placeholder portrait slot for Vijay Rajbhar"
+                  alt="Portrait of Vijay Rajbhar, founder of Vijay Enterprises"
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
-                  className="image-drift object-cover grayscale contrast-110" data-cursor="view"
+                  className="image-drift object-cover grayscale contrast-110"
                 />
-                <span className="absolute bottom-4 left-4 rounded-pill bg-ink/60 px-3 py-1 text-[10px] uppercase tracking-[0.12em] text-white backdrop-blur-md">
-                  Placeholder portrait
-                </span>
               </div>
             </div>
             <div className="md:col-span-7">

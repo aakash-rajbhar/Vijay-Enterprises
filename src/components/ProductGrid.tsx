@@ -73,7 +73,7 @@ export function ProductGrid() {
             <div data-image-reveal className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-card)] border border-black/5 bg-steel-900">
               <Image
                 src={cat.image}
-                alt={`Placeholder process image for ${cat.name}`}
+                alt={`${cat.name} - sheet metal products`}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="image-drift object-cover grayscale contrast-110" data-cursor="view"
