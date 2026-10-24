@@ -16,7 +16,6 @@ import { servicesList } from "@/lib/services";
 import { machines } from "@/lib/machines";
 import { productCategories } from "@/lib/products";
 
-
 export const metadata: Metadata = {
   title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
   description:
@@ -28,8 +27,6 @@ export const metadata: Metadata = {
     url: "/",
   },
 };
-
-
 
 export default function HomePage() {
   return (
@@ -47,11 +44,24 @@ export default function HomePage() {
             We cut, bend, shear and weld under one roof,
           </ScrollWords>
           <div className="mt-10 flex flex-wrap items-center gap-6">
-            <Link href="/about" className="group inline-flex items-center gap-3 text-sm">
+            <Link
+              href="/about"
+              className="group inline-flex items-center gap-3 text-sm"
+            >
               About the workshop
               <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink/20 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-                  <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M1 9L9 1M9 1H1M9 1V9"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                  />
                 </svg>
               </span>
             </Link>
@@ -59,17 +69,32 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section theme="light" className="pb-[clamp(80px,12vw,180px)]">
+      <Section theme="dark" className="pb-0 pt-[clamp(80px,12vw,180px)]">
         <Container>
-          <div className="flex items-end justify-between gap-6">
-            <Eyebrow>The process</Eyebrow>
-            <Link href="/services" className="hidden text-sm text-steel-500 hover:text-ink md:inline">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <Eyebrow>The process</Eyebrow>
+              <h2 className="mt-6 max-w-[18ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+                <MaskedLines lines={["From sheet to part."]} />
+              </h2>
+              <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-steel-300">
+                Seven steps under one roof in Tughlakabad, New Delhi. Follow the
+                sheet from layout to finished part.
+              </p>
+            </div>
+            <Link
+              href="/services"
+              className="hidden text-sm text-steel-300 transition-colors hover:text-white md:inline"
+            >
               View all services
             </Link>
           </div>
-          <ProcessStrip />
         </Container>
+        <div className="mt-12 lg:mt-0">
+          <ProcessStrip />
+        </div>
       </Section>
+
 
       <Section theme="light" className="pb-[clamp(80px,12vw,180px)]">
         <Container>
@@ -77,10 +102,28 @@ export default function HomePage() {
           <div className="mt-8">
             <StatRow
               stats={[
-                { value: 30, suffix: "+", label: "Years in the metal industry", caption: "Founder-led experience" },
-                { value: 25, suffix: " mm", label: "Laser cutting thickness", caption: "TL Series TL4020" },
-                { display: "12 mm × 3 m", label: "Shearing capacity", caption: "NC “Genius” series" },
-                { value: 5, label: "Processes under one roof", caption: "Cut, shear, bend, weld, fabricate" },
+                {
+                  value: 30,
+                  suffix: "+",
+                  label: "Years in the metal industry",
+                  caption: "Founder-led experience",
+                },
+                {
+                  value: 25,
+                  suffix: " mm",
+                  label: "Laser cutting thickness",
+                  caption: "TL Series TL4020",
+                },
+                {
+                  display: "12 mm × 3 m",
+                  label: "Shearing capacity",
+                  caption: "NC “Genius” series",
+                },
+                {
+                  value: 5,
+                  label: "Processes under one roof",
+                  caption: "Cut, shear, bend, weld, fabricate",
+                },
               ]}
             />
           </div>
@@ -96,13 +139,23 @@ export default function HomePage() {
                 <MaskedLines lines={["The work, in order."]} />
               </h2>
             </div>
-            <Link href="/services" className="hidden text-sm text-steel-300 hover:text-white md:inline">
+            <Link
+              href="/services"
+              className="hidden text-sm text-steel-300 hover:text-white md:inline"
+            >
               All services
             </Link>
           </div>
           <div className="mt-10 border-t border-white/10">
             {servicesList.map((s) => (
-              <NumberedRow key={s.number} number={s.number} title={s.title} description={s.description} spec={s.spec} href="/services" />
+              <NumberedRow
+                key={s.number}
+                number={s.number}
+                title={s.title}
+                description={s.description}
+                spec={s.spec}
+                href="/services"
+              />
             ))}
           </div>
         </Container>
@@ -117,27 +170,40 @@ export default function HomePage() {
                 <MaskedLines lines={["Confirmed capacity."]} />
               </h2>
             </div>
-            <Link href="/services#machines" className="hidden text-sm text-steel-500 hover:text-ink md:inline">
+            <Link
+              href="/services#machines"
+              className="hidden text-sm text-steel-500 hover:text-ink md:inline"
+            >
               Machine details
             </Link>
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {machines.map((m, i) => (
               <GlassCard key={m.name}>
-                <div data-image-reveal className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-steel-900">
+                <div
+                  data-image-reveal
+                  className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-steel-900"
+                >
                   <Image
                     src={m.image}
                     alt={`Placeholder machine image for ${m.name}`}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="image-drift object-cover grayscale contrast-110" data-cursor="view"
+                    className="image-drift object-cover grayscale contrast-110"
+                    data-cursor="view"
                   />
                 </div>
-                <div className={`mt-6 flex h-9 w-9 items-center justify-center rounded-full ${i === 0 ? "bg-spark text-ink" : "bg-ink/5 text-ink"}`}>
+                <div
+                  className={`mt-6 flex h-9 w-9 items-center justify-center rounded-full ${i === 0 ? "bg-spark text-ink" : "bg-ink/5 text-ink"}`}
+                >
                   <span className="font-mono text-[10px]">0{i + 1}</span>
                 </div>
-                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">{m.role}</p>
-                <h3 className="mt-2 font-display text-2xl leading-tight">{m.name}</h3>
+                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">
+                  {m.role}
+                </p>
+                <h3 className="mt-2 font-display text-2xl leading-tight">
+                  {m.name}
+                </h3>
                 <p className="mt-2 text-sm text-steel-500">{m.desc}</p>
               </GlassCard>
             ))}
@@ -154,30 +220,56 @@ export default function HomePage() {
                 <MaskedLines lines={["Parts and structures."]} />
               </h2>
             </div>
-            <Link href="/products" className="hidden text-sm text-steel-500 hover:text-ink md:inline">
+            <Link
+              href="/products"
+              className="hidden text-sm text-steel-500 hover:text-ink md:inline"
+            >
               All products
             </Link>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {productCategories.slice(0, 6).map((cat) => (
-              <Link key={cat.slug} href="/products" className="group" data-cursor-row>
-                <div data-image-reveal className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-card)] border border-black/5 bg-steel-900">
+              <Link
+                key={cat.slug}
+                href="/products"
+                className="group"
+                data-cursor-row
+              >
+                <div
+                  data-image-reveal
+                  className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-card)] border border-black/5 bg-steel-900"
+                >
                   <Image
                     src={cat.image}
                     alt={`Placeholder product image for ${cat.name}`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="image-drift object-cover grayscale contrast-110" data-cursor="view"
+                    className="image-drift object-cover grayscale contrast-110"
+                    data-cursor="view"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
                   <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-ink/20 text-white backdrop-blur-sm transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                    <svg width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-                      <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
+                    <svg
+                      width="11"
+                      height="11"
+                      viewBox="0 0 10 10"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M1 9L9 1M9 1H1M9 1V9"
+                        stroke="currentColor"
+                        strokeWidth="1.2"
+                      />
                     </svg>
                   </span>
                   <div className="absolute inset-x-0 bottom-0 p-5">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/60">Products</p>
-                    <p className="mt-1 font-display text-2xl text-white">{cat.name}</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/60">
+                      Products
+                    </p>
+                    <p className="mt-1 font-display text-2xl text-white">
+                      {cat.name}
+                    </p>
                   </div>
                 </div>
               </Link>
@@ -190,13 +282,17 @@ export default function HomePage() {
         <Container>
           <div className="grid gap-10 md:grid-cols-12 md:items-center md:gap-16">
             <div className="md:col-span-5">
-              <div data-image-reveal className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-window)] border border-black/5 bg-steel-900">
+              <div
+                data-image-reveal
+                className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-window)] border border-black/5 bg-steel-900"
+              >
                 <Image
                   src="/images/placeholder/placeholder-founder.jpg"
                   alt="Placeholder portrait slot for Vijay Rajbhar"
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
-                  className="image-drift object-cover grayscale contrast-110" data-cursor="view"
+                  className="image-drift object-cover grayscale contrast-110"
+                  data-cursor="view"
                 />
                 <span className="absolute bottom-4 left-4 rounded-pill bg-ink/60 px-3 py-1 text-[10px] uppercase tracking-[0.12em] text-white backdrop-blur-md">
                   Placeholder portrait
@@ -208,15 +304,33 @@ export default function HomePage() {
               <h2 className="mt-6 font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
                 <MaskedLines lines={["Vijay Rajbhar"]} />
               </h2>
-              <p className="mt-3 font-mono text-xs text-steel-500">30+ years in the metal industry</p>
-              <p className="mt-6 max-w-[54ch] text-lg text-steel-500">
-                Vijay Enterprises is a founder-led workshop in Tughlakabad Village, New Delhi. The work is organised around one roof, so a drawing can stay with one supplier from the first cut to the finished part.
+              <p className="mt-3 font-mono text-xs text-steel-500">
+                30+ years in the metal industry
               </p>
-              <Link href="/about" className="group mt-8 inline-flex items-center gap-3 text-sm">
+              <p className="mt-6 max-w-[54ch] text-lg text-steel-500">
+                Vijay Enterprises is a founder-led workshop in Tughlakabad
+                Village, New Delhi. The work is organised around one roof, so a
+                drawing can stay with one supplier from the first cut to the
+                finished part.
+              </p>
+              <Link
+                href="/about"
+                className="group mt-8 inline-flex items-center gap-3 text-sm"
+              >
                 Read about the workshop
                 <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink/20 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-                    <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 9L9 1M9 1H1M9 1V9"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                    />
                   </svg>
                 </span>
               </Link>

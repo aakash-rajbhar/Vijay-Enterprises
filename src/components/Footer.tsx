@@ -17,14 +17,19 @@ export function Footer() {
               <span className="font-display text-lg">Vijay Enterprises</span>
             </div>
             <p className="mt-4 max-w-[40ch] text-steel-300">
-              Sheet metal fabrication under one roof in Tughlakabad, New Delhi. Delhi NCR only.
+              Sheet metal fabrication under one roof in Tughlakabad, New Delhi.
+              Delhi NCR only.
             </p>
           </div>
           <div className="md:col-span-3">
             <p className="text-sm text-steel-500">Pages</p>
             <nav className="mt-3 flex flex-col gap-2">
               {links.map((l) => (
-                <Link key={l.href} href={l.href} className="text-steel-300 hover:text-white">
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-steel-300 hover:text-white"
+                >
                   {l.label}
                 </Link>
               ))}
@@ -41,19 +46,36 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 flex flex-col gap-4 border-t border-steel-900 pt-6 md:flex-row md:items-center md:justify-between">
-          <p className="text-sm text-steel-500">© Vijay Enterprises. All rights reserved.</p>
+          <p className="text-sm text-steel-500">
+            © Vijay Enterprises. All rights reserved.
+          </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30"
             aria-label="Back to top"
           >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M6 10V2M6 2L2 6M6 2L10 6" stroke="currentColor" strokeWidth="1.2" />
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 10V2M6 2L2 6M6 2L10 6"
+                stroke="currentColor"
+                strokeWidth="1.2"
+              />
             </svg>
           </button>
         </div>
-        <div className="mt-10 overflow-hidden">
-          <p aria-hidden="true" className="-mb-[0.18em] whitespace-nowrap font-display text-[clamp(7rem,22vw,30rem)] leading-[0.72] text-white/5">Vijay Enterprises</p>
+        <div className="overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="mt-10 bg-[linear-gradient(180deg,#303030_0%,transparent_100%)] bg-clip-text text-center font-display text-[clamp(90px,21vw,300px)] font-bold leading-[0.8] tracking-[-0.06em] text-transparent select-none whitespace-nowrap"
+          >
+            Vijay Enterprises
+          </div>
         </div>
       </div>
     </footer>

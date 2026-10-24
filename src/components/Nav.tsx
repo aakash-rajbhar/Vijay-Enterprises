@@ -30,7 +30,9 @@ export function Nav() {
       lastY = y;
 
       const probe = 48;
-      const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-nav-theme]"));
+      const sections = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-nav-theme]"),
+      );
       const active = sections.find((el) => {
         const r = el.getBoundingClientRect();
         return r.top <= probe && r.bottom > probe;
@@ -58,10 +60,10 @@ export function Nav() {
           setOpen(false);
           if (restoreFocus) triggerRef.current?.focus();
         },
-        reduced ? 0 : 480
+        reduced ? 0 : 480,
       );
     },
-    [reduced]
+    [reduced],
   );
 
   useEffect(() => {
@@ -76,8 +78,8 @@ export function Nav() {
       if (e.key !== "Tab" || !menuRef.current) return;
       const focusables = Array.from(
         menuRef.current.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
-        )
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
       ).filter((el) => el.offsetParent !== null);
       if (focusables.length === 0) return;
       const first = focusables[0];
@@ -113,7 +115,8 @@ export function Nav() {
   };
 
   const onQuoteLeave = () => {
-    if (quoteRef.current) quoteRef.current.style.transform = "translate(0px, 0px)";
+    if (quoteRef.current)
+      quoteRef.current.style.transform = "translate(0px, 0px)";
   };
 
   const light = theme === "light";
@@ -125,7 +128,7 @@ export function Nav() {
       >
         <div className="nav-drop">
           <nav
-            className={`rounded-pill mx-auto flex max-w-[1360px] items-center justify-between border px-4 py-2 backdrop-blur-xl transition-all duration-500 md:px-6 ${
+            className={`rounded-2xl mx-auto flex max-w-[1360px] items-center justify-between border px-2 pl-4 py-2 backdrop-blur-xl transition-all duration-500 ${
               light
                 ? "text-ink border-black/10 bg-white/80 shadow-[0_10px_60px_-20px_rgba(10,10,11,0.6)]"
                 : "border-white/20 bg-gradient-to-r from-white/10 via-white/5 to-white/10 text-white shadow-[0_10px_60px_-30px_rgba(255,74,28,0.4)]"
@@ -137,13 +140,18 @@ export function Nav() {
               aria-label="Vijay Enterprises home"
             >
               <span className="relative h-2 w-2">
-                <span className="bg-spark absolute inset-0" aria-hidden="true" />
+                <span
+                  className="bg-spark absolute inset-0"
+                  aria-hidden="true"
+                />
                 <span
                   className="bg-spark/30 absolute -inset-1 rounded-full blur-[2px]"
                   aria-hidden="true"
                 />
               </span>
-              <span className="font-display tracking-[-0.02em]">Vijay Enterprises</span>
+              <span className="font-display tracking-[-0.02em]">
+                Vijay Enterprises
+              </span>
             </Link>
             <div
               className={`hidden items-center gap-0.5 rounded-pill p-1 transition-colors duration-500 md:flex ${
@@ -151,7 +159,8 @@ export function Nav() {
               }`}
             >
               {links.map((l) => {
-                const active = pathname === l.href || pathname.startsWith(`${l.href}/`);
+                const active =
+                  pathname === l.href || pathname.startsWith(`${l.href}/`);
                 return (
                   <Link
                     key={l.href}
@@ -180,10 +189,10 @@ export function Nav() {
                 data-cursor-enquire
                 onMouseMove={onQuoteMove}
                 onMouseLeave={onQuoteLeave}
-                className={`group hidden items-center gap-2.5 rounded-pill px-5 py-2 text-sm font-medium transition-all duration-300 ease-out will-change-transform md:inline-flex ${
+                className={`group hidden items-center gap-2.5 rounded-xl px-5 py-2 text-sm font-medium transition-all duration-300 ease-out will-change-transform md:inline-flex ${
                   light
                     ? "bg-spark text-ink hover:bg-spark-deep hover:text-white shadow-[0_10px_40px_-18px_rgba(255,74,28,0.9)] hover:shadow-[0_12px_50px_-16px_rgba(255,74,28,0.95)]"
-                    : "bg-white text-ink hover:bg-spark hover:text-ink shadow-[0_12px_50px_-18px_rgba(255,255,255,0.7)] hover:shadow-[0_14px_60px_-14px_rgba(255,74,28,0.8)]"
+                    : "bg-white text-ink! hover:bg-spark hover:text-ink shadow-[0_12px_50px_-18px_rgba(255,255,255,0.7)] hover:shadow-[0_14px_60px_-14px_rgba(255,74,28,0.8)]"
                 }`}
               >
                 Request a quote
@@ -192,8 +201,18 @@ export function Nav() {
                     light ? "bg-black/10 group-hover:bg-white/20" : "bg-ink/10"
                   }`}
                 >
-                  <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-                    <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
+                  <svg
+                    width="9"
+                    height="9"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 9L9 1M9 1H1M9 1V9"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                    />
                   </svg>
                 </span>
               </Link>
@@ -250,13 +269,18 @@ export function Nav() {
                   className="flex items-center gap-2.5 text-sm"
                 >
                   <span className="relative h-2 w-2">
-                    <span className="bg-spark absolute inset-0" aria-hidden="true" />
+                    <span
+                      className="bg-spark absolute inset-0"
+                      aria-hidden="true"
+                    />
                     <span
                       className="bg-spark/30 absolute -inset-1 rounded-full blur-[2px]"
                       aria-hidden="true"
                     />
                   </span>
-                  <span className="font-display tracking-[-0.02em]">Vijay Enterprises</span>
+                  <span className="font-display tracking-[-0.02em]">
+                    Vijay Enterprises
+                  </span>
                 </Link>
                 <button
                   ref={closeRef}
@@ -296,7 +320,11 @@ export function Nav() {
                         className={`menu-link font-display block text-[clamp(2.5rem,11vw,8rem)] leading-[0.95] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                           entered ? "translate-y-0" : "translate-y-full"
                         }`}
-                        style={{ transitionDelay: entered ? `${120 + i * 65}ms` : "0ms" }}
+                        style={{
+                          transitionDelay: entered
+                            ? `${120 + i * 65}ms`
+                            : "0ms",
+                        }}
                       >
                         {l.label}
                       </span>
@@ -306,7 +334,10 @@ export function Nav() {
               </nav>
             </div>
             <div className="mx-auto flex w-full max-w-[1360px] items-center justify-between px-4 py-6 md:px-8">
-              <a href={`mailto:${site.email}`} className="text-steel-300 text-sm">
+              <a
+                href={`mailto:${site.email}`}
+                className="text-steel-300 text-sm"
+              >
                 {site.email}
               </a>
               <span className="text-steel-500 text-sm">Delhi NCR</span>
