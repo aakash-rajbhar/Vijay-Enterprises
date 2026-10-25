@@ -16,6 +16,7 @@ const processChips: Record<string, string[]> = {
   gates: ["Shearing", "Welding"],
   "jali-designs": ["Laser cutting"],
   "metal-frames": ["Laser cutting", "Welding"],
+  trolleys: ["Shearing", "Bending", "Welding"],
 };
 
 export function ProductGrid() {

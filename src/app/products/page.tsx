@@ -12,11 +12,11 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Products | Vijay Enterprises",
   description:
-    "Machine parts, covers and panels, hoppers, ladders, tables, gates, jali designs and metal frames made to order in Delhi NCR.",
+    "Machine parts, covers and panels, hoppers, ladders, tables, gates, jali designs, metal frames and trolleys made to order in Delhi NCR.",
   alternates: { canonical: "/products" },
   openGraph: {
     title: "Products | Vijay Enterprises",
-    description: "Custom machine parts, covers, hoppers, ladders, gates, jali and metal frames made to order.",
+    description: "Custom machine parts, covers, hoppers, ladders, gates, jali, frames and trolleys made to order.",
     url: "/products",
   },
 };
@@ -27,8 +27,8 @@ export default function ProductsPage() {
       <PageHeader
         eyebrow="Products"
         lines={["Parts and structures,", "made to order."]}
-        lead="Machine parts, covers, hoppers, ladders, tables, gates, jali and frames. Every item starts with a drawing, material and quantity."
-        image="/images/placeholder/placeholder-covers-panels.jpg"
+        lead="Machine parts, covers, hoppers, ladders, tables, gates, jali, frames and trolleys. Every item starts with a drawing, material and quantity."
+        image="/images/products/coversandpanels.webp"
         imageAlt="Sheet metal products and structures"
       />
 
@@ -48,9 +48,6 @@ export default function ProductsPage() {
           <div className="mt-10">
             <ProductGrid />
           </div>
-          <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">
-            All images are placeholders, not photographs of Vijay Enterprises work.
-          </p>
         </Container>
       </Section>
 

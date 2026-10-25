@@ -9,6 +9,7 @@ import { SpecTable } from "@/components/SpecTable";
 import { MachineStack } from "@/components/MachineStack";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { servicesList, capacityTable, processChain } from "@/lib/services";
+import { machines } from "@/lib/machines";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -121,7 +122,9 @@ export default function ServicesPage() {
                 <MaskedLines lines={["What does the work."]} />
               </h2>
             </div>
-            <span className="hidden font-mono text-xs text-steel-500 md:block">03 MACHINES</span>
+            <span className="hidden font-mono text-xs text-steel-500 md:block">
+              {String(machines.length).padStart(2, "0")} MACHINES
+            </span>
           </div>
           <MachineStack />
         </Container>

@@ -10,11 +10,12 @@ import { MaskedLines } from "@/components/MaskedLines";
 import { StatRow } from "@/components/StatRow";
 import { NumberedRow } from "@/components/NumberedRow";
 import { GlassCard } from "@/components/GlassCard";
-import { ProcessStrip } from "@/components/ProcessStrip";
+import { ProcessScroll } from "@/components/ProcessScroll";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { servicesList } from "@/lib/services";
 import { machines } from "@/lib/machines";
 import { productCategories } from "@/lib/products";
+import { processStages } from "@/lib/process";
 
 export const metadata: Metadata = {
   title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
-                description: "Precision sheet metal fabrication in Delhi NCR.",
+    description: "Precision sheet metal fabrication in Delhi NCR.",
     url: "/",
   },
 };
@@ -91,10 +92,9 @@ export default function HomePage() {
           </div>
         </Container>
         <div className="mt-12 lg:mt-0">
-          <ProcessStrip />
+          <ProcessScroll stages={processStages} />
         </div>
       </Section>
-
 
       <Section theme="light" className="pb-[clamp(80px,12vw,180px)]">
         <Container>
@@ -178,7 +178,7 @@ export default function HomePage() {
               Machine details
             </Link>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {machines.map((m, i) => (
               <GlassCard key={m.name}>
                 <div
@@ -189,8 +189,8 @@ export default function HomePage() {
                     src={m.image}
                     alt={`${m.name} - sheet metal fabrication machine at Vijay Enterprises`}
                     fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="image-drift object-cover grayscale contrast-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="image-drift object-cover contrast-110"
                     data-cursor="view"
                   />
                 </div>

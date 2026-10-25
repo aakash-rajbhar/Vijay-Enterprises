@@ -154,9 +154,7 @@ export function Nav() {
               </span>
             </Link>
             <div
-              className={`hidden items-center gap-0.5 rounded-pill p-1 transition-colors duration-500 md:flex ${
-                light ? "bg-black/[0.04]" : "bg-white/[0.08]"
-              }`}
+              className={`hidden items-center gap-0.5  transition-colors duration-500 md:flex`}
             >
               {links.map((l) => {
                 const active =

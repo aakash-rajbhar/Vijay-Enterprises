@@ -6,7 +6,7 @@ export const servicesList = [
     spec: "Up to 25 mm · TL Series TL4020",
     detail:
       "Sheet metal is cut on the TL Series TL4020. Send a DXF, DWG, PDF or STEP file with material and thickness; we confirm the cut against the 25 mm limit before quoting.",
-    image: "/images/placeholder/placeholder-cut.jpg",
+    image: "/images/machines/laser-cutting-machine.webp",
   },
   {
     number: "02",
@@ -15,7 +15,7 @@ export const servicesList = [
     spec: "12 mm thick · 3 m wide · NC \"Genius\" series",
     detail:
       "Straight cuts for blanks and panels on the NC “Genius” series. The confirmed limit is up to 12 mm thick and 3 m wide. Include the finished size and quantity on the drawing.",
-    image: "/images/placeholder/placeholder-shear.jpg",
+    image: "/images/machines/shearing-machine.webp",
   },
   {
     number: "03",
@@ -24,7 +24,7 @@ export const servicesList = [
     spec: "CNC Press Brake Hawk 150-31",
     detail:
       "Forming and folding on the CNC Press Brake Hawk 150-31. Include bend lines, angles, and tolerances on the drawing so the part is set up correctly the first time.",
-    image: "/images/placeholder/placeholder-bend.jpg",
+    image: "/images/machines/bending-machine.webp",
   },
   {
     number: "04",
@@ -33,7 +33,7 @@ export const servicesList = [
     spec: "MIG · TIG",
     detail:
       "MIG and TIG welding for assemblies and frames. Tell us the material and finish so the joint is set up correctly. Welding is quoted from the drawing with the rest of the part.",
-    image: "/images/placeholder/placeholder-weld.jpg",
+    image: "/images/machines/laser-welding-machine.webp",
   },
   {
     number: "05",
@@ -42,7 +42,7 @@ export const servicesList = [
     spec: "Cut · Shear · Bend · Weld",
     detail:
       "Parts and assemblies built to drawing in Tughlakabad, New Delhi. Cutting, shearing, bending, and welding stay with one team, so one supplier answers for the finished part.",
-    image: "/images/placeholder/placeholder-fabricate.jpg",
+    image: "/images/products/coversandpanels.webp",
   },
   {
     number: "06",
@@ -51,7 +51,7 @@ export const servicesList = [
     spec: "As per drawing",
     detail:
       "Custom machine parts made from your drawing. Material, thickness, quantity, and tolerance decide the process. Send the file and tell us what the part has to do.",
-    image: "/images/placeholder/placeholder-machine-parts.jpg",
+    image: "/images/products/machine-parts.webp",
   },
   {
     number: "07",
@@ -60,7 +60,7 @@ export const servicesList = [
     spec: "As requested",
     detail:
       "Design support for manufacturability. Bring a sketch or a requirement and we review how it can be made, what material suits it, and which process fits the quantity.",
-    image: "/images/placeholder/placeholder-frames.jpg",
+    image: "/images/products/frames.webp",
   },
 ] as const;
 
