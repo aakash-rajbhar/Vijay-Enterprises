@@ -15,32 +15,42 @@ export function ImageReveal() {
   useEffect(() => {
     if (reduced) return;
     const ctx = gsap.context(() => {
-      const els = Array.from(document.querySelectorAll<HTMLElement>("[data-image-reveal]"));
-      els.forEach((el) => {
-        const img = el.querySelector("img");
-        gsap.fromTo(
-          el,
-          { clipPath: "inset(10% 10% 10% 10% round 24px)" },
-          {
-            clipPath: "inset(0% 0% 0% 0% round 24px)",
-            duration: 1.05,
-            ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 90%" },
-          }
-        );
-        if (img) {
+      ScrollTrigger.batch("[data-image-reveal]", {
+        start: "top 92%",
+        once: true,
+        onEnter: (batch) => {
           gsap.fromTo(
-            img,
-            { scale: 1.2 },
+            batch,
             {
-              scale: 1,
-              duration: 1.35,
-              ease: "power3.out",
-              scrollTrigger: { trigger: el, start: "top 90%" },
-              onComplete: () => gsap.set(img, { clearProps: "transform" }),
+              opacity: 0,
+              y: 24,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.95,
+              stagger: 0.08,
+              ease: "power2.out",
+              clearProps: "transform,opacity",
             }
           );
-        }
+
+          batch.forEach((el) => {
+            const img = el.querySelector("img");
+            if (img) {
+              gsap.fromTo(
+                img,
+                { scale: 1.06 },
+                {
+                  scale: 1,
+                  duration: 1.25,
+                  ease: "power2.out",
+                  clearProps: "transform",
+                }
+              );
+            }
+          });
+        },
       });
     });
     return () => {
