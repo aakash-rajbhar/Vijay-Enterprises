@@ -136,9 +136,9 @@ export default function ServicesPage() {
           <h2 className="mt-6 max-w-[20ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
             <MaskedLines lines={["From drawing", "to delivery."]} />
           </h2>
-          <div className="mt-10 grid border-t border-steel-200 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-px border-y border-steel-200 bg-steel-200 sm:grid-cols-2 lg:grid-cols-4">
             {orderSteps.map((s) => (
-              <div key={s.number} className="border-b border-steel-200 py-6 sm:border-r sm:pr-6 sm:last:border-r-0 lg:py-8">
+              <div key={s.number} className="bg-white py-6 sm:px-6 sm:py-7 lg:px-8 lg:py-8">
                 <span className="font-mono text-xs text-spark-ink">{s.number}</span>
                 <h3 className="mt-3 font-display text-2xl leading-none">{s.title}</h3>
                 <p className="mt-3 max-w-[32ch] text-sm text-steel-500">{s.desc}</p>

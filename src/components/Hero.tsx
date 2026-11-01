@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -15,8 +14,23 @@ gsap.registerPlugin(ScrollTrigger);
 export function Hero() {
   const frame = useRef<HTMLDivElement>(null);
   const img = useRef<HTMLDivElement>(null);
+  const video = useRef<HTMLVideoElement>(null);
   const headline = useRef<HTMLHeadingElement>(null);
   const reduced = usePrefersReducedMotion();
+
+  useEffect(() => {
+    const el = video.current;
+    if (!el) return;
+    const mql = window.matchMedia(
+      "(max-width: 1023px) and (orientation: portrait)",
+    );
+    const onChange = () => {
+      el.load();
+      if (!reduced) void el.play().catch(() => {});
+    };
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, [reduced]);
 
   useEffect(() => {
     if (reduced || !frame.current) return;
@@ -24,42 +38,66 @@ export function Hero() {
       gsap.fromTo(
         img.current,
         { scale: 1.15 },
-        { scale: 1, duration: 1.8, ease: "power3.out" }
+        { scale: 1, duration: 1.8, ease: "power3.out" },
       );
       gsap.to(img.current, {
         y: 60,
         ease: "none",
-        scrollTrigger: { trigger: frame.current, start: "top top", end: "bottom top", scrub: true },
+        scrollTrigger: {
+          trigger: frame.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
       });
       gsap.to(headline.current, {
         y: -48,
         opacity: 0,
         ease: "none",
-        scrollTrigger: { trigger: frame.current, start: "top top", end: "bottom top", scrub: true },
+        scrollTrigger: {
+          trigger: frame.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
       });
     }, frame);
     return () => ctx.revert();
   }, [reduced]);
 
   return (
-    <section data-nav-theme="dark" className="p-3 md:p-4">
+    <section data-nav-theme="dark" className="p-0 md:p-4">
       <div
         ref={frame}
-        className="relative flex min-h-[calc(100svh-24px)] flex-col overflow-hidden rounded-[28px] border border-white/10 md:min-h-[calc(100vh-32px)] md:rounded-[40px]"
+        className="relative flex h-[100svh] flex-col overflow-hidden border-0 border-white/10 md:h-[calc(100svh-32px)] md:rounded-[40px] md:border"
       >
         <div ref={img} className="absolute inset-0 will-change-transform">
-          <Image
-            src="/images/placeholder/placeholder-hero.jpg"
-            alt="Sheet metal fabrication at Vijay Enterprises"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover grayscale contrast-110"
-          />
+          <video
+            ref={video}
+            className="h-full w-full object-cover object-center grayscale contrast-110"
+            poster="/images/placeholder/placeholder-hero.jpg"
+            autoPlay={!reduced}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+          >
+            <source
+              media="(max-width: 1023px) and (orientation: portrait)"
+              src="/background-mobile.webm"
+              type="video/webm"
+            />
+            <source src="/background.webm" type="video/webm" />
+          </video>
         </div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(10,10,11,0.55)_70%,rgba(10,10,11,0.9)_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/10" />
         <Grain />
-        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div
+          className="pointer-events-none absolute inset-0"
+          aria-hidden="true"
+        >
           <span className="absolute left-[22%] top-0 h-full w-px bg-white/10" />
           <span className="absolute right-[18%] top-0 h-full w-px bg-white/10" />
           <span className="absolute left-0 top-[42%] h-px w-full bg-white/10" />
@@ -80,11 +118,19 @@ export function Hero() {
             </div>
 
             <div className="md:max-w-[62%] md:text-right">
-              <h1 ref={headline} className="font-display text-[clamp(3.25rem,9vw,9rem)] leading-[0.9] tracking-[-0.04em] text-white">
-                <MaskedLines lines={["Precision metal work,", "cut to your drawing."]} delay={0.15} scroll={false} />
+              <h1
+                ref={headline}
+                className="font-display text-[clamp(3.25rem,9vw,9rem)] leading-[0.9] tracking-[-0.04em] text-white"
+              >
+                <MaskedLines
+                  lines={["Precision metal work,", "cut to your drawing."]}
+                  delay={0.15}
+                  scroll={false}
+                />
               </h1>
               <p className="mt-5 text-base text-steel-300 md:ml-auto md:max-w-[46ch]">
-                Laser cutting, shearing, bending, welding and fabrication under one roof.
+                Laser cutting, shearing, bending, welding and fabrication under
+                one roof.
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-3 md:justify-end">
                 <MagneticButton href="/contact">Request a quote</MagneticButton>
@@ -93,8 +139,18 @@ export function Hero() {
                   className="inline-flex items-center gap-3 rounded-pill border border-white/30 px-5 py-3 text-sm text-white transition-colors hover:border-white/60"
                 >
                   See services
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-                    <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 9L9 1M9 1H1M9 1V9"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                    />
                   </svg>
                 </Link>
               </div>
