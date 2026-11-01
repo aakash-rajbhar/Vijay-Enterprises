@@ -7,28 +7,24 @@
  * Left-to-right on desktop (content on left, 3D on right),
  * Single-column on mobile (3D on top, content below).
  */
-
 import {
+  type CSSProperties,
+  type ElementRef,
+  type MutableRefObject,
   useEffect,
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
-  type ElementRef,
-  type MutableRefObject,
 } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  ContactShadows,
-  Environment,
-  Lightformer,
-  Line,
-  Sparkles,
-} from "@react-three/drei";
-import * as THREE from "three";
+
 import type { ProcessStage } from "@/lib/process";
-import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { ContactShadows, Environment, Lightformer, Line, Sparkles } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
+
 import { StageSnapshot } from "@/components/process/StageSnapshot";
+
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 /* ────────────────────────── part dimensions ────────────────────────── */
 
@@ -78,8 +74,7 @@ const SLOTS = [
 
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 const ease = (t: number) => t * t * (3 - 2 * t);
-const phase = (t: number, i: number, a: number, b: number) =>
-  clamp01((t - i - a) / (b - a));
+const phase = (t: number, i: number, a: number, b: number) => clamp01((t - i - a) / (b - a));
 
 const v = (x: number, z: number) => new THREE.Vector3(x, 0, z);
 
@@ -129,7 +124,7 @@ const slotLaserPts = (s: (typeof SLOTS)[number]) => {
   const pts2d = p.getPoints(24);
   return densify(
     pts2d.map((pt) => v(pt.x, -pt.y)),
-    0.03,
+    0.03
   );
 };
 
@@ -218,7 +213,7 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
         metalness: 0.95,
         roughness: 0.38,
       }),
-    [],
+    []
   );
 
   const tool = useMemo(
@@ -228,7 +223,7 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
         metalness: 0.85,
         roughness: 0.35,
       }),
-    [],
+    []
   );
 
   const geo = useMemo(() => {
@@ -243,13 +238,7 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
       return g;
     };
 
-    const rect = (
-      x0: number,
-      x1: number,
-      z0: number,
-      z1: number,
-      path: THREE.Path,
-    ) => {
+    const rect = (x0: number, x1: number, z0: number, z1: number, path: THREE.Path) => {
       path.moveTo(x0, -z0);
       path.lineTo(x1, -z0);
       path.lineTo(x1, -z1);
@@ -259,23 +248,11 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
     };
 
     // Scrap frame around the initial blank
-    const frameShape = rect(
-      -FRAME_X,
-      FRAME_X,
-      -FRAME_Z,
-      FRAME_Z,
-      new THREE.Shape(),
-    ) as THREE.Shape;
+    const frameShape = rect(-FRAME_X, FRAME_X, -FRAME_Z, FRAME_Z, new THREE.Shape()) as THREE.Shape;
     frameShape.holes.push(rect(X0, X1, -HZ, HZ, new THREE.Path()));
 
     // Body with industrial cutouts
-    const bodyShape = rect(
-      X0,
-      HINGE,
-      -HZ,
-      HZ,
-      new THREE.Shape(),
-    ) as THREE.Shape;
+    const bodyShape = rect(X0, HINGE, -HZ, HZ, new THREE.Shape()) as THREE.Shape;
 
     // Add circular holes
     const allCircles = [...MOUNT_HOLES, CENTER_HOLE, ...SATELLITE_HOLES];
@@ -295,9 +272,7 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
 
     // 1. Mount holes slugs
     MOUNT_HOLES.forEach((h) => {
-      slugGeos.push(
-        new THREE.CylinderGeometry(h.r - 0.003, h.r - 0.003, T, 24),
-      );
+      slugGeos.push(new THREE.CylinderGeometry(h.r - 0.003, h.r - 0.003, T, 24));
     });
 
     // 2. Slot slugs (centered so they sit perfectly at their position)
@@ -307,20 +282,11 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
     });
 
     // 3. Center hole slug
-    slugGeos.push(
-      new THREE.CylinderGeometry(
-        CENTER_HOLE.r - 0.003,
-        CENTER_HOLE.r - 0.003,
-        T,
-        32,
-      ),
-    );
+    slugGeos.push(new THREE.CylinderGeometry(CENTER_HOLE.r - 0.003, CENTER_HOLE.r - 0.003, T, 32));
 
     // 4. Satellite slugs
     SATELLITE_HOLES.forEach((h) => {
-      slugGeos.push(
-        new THREE.CylinderGeometry(h.r - 0.003, h.r - 0.003, T, 16),
-      );
+      slugGeos.push(new THREE.CylinderGeometry(h.r - 0.003, h.r - 0.003, T, 16));
     });
 
     const gBase = 0.28;
@@ -361,8 +327,7 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
 
     // Smooth turntable rotation
     root.current.rotation.y =
-      -0.35 * (1 - ease(phase(t, 0, 0.3, 1))) +
-      ease(phase(t, 6, 0, 1)) * (Math.PI * 2 - 0.4);
+      -0.35 * (1 - ease(phase(t, 0, 0.3, 1))) + ease(phase(t, 6, 0, 1)) * (Math.PI * 2 - 0.4);
 
     /* 02 · Design — outline + bend / shear guides */
     const d = ease(phase(t, 1, 0.05, 0.85));
@@ -480,13 +445,9 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
     state.camera.position.set(
       m(ca[0], cb[0], f) * zoom,
       m(ca[1], cb[1], f) * zoom,
-      m(ca[2], cb[2], f) * zoom,
+      m(ca[2], cb[2], f) * zoom
     );
-    state.camera.lookAt(
-      m(la[0], lb[0], f),
-      m(la[1], lb[1], f),
-      m(la[2], lb[2], f),
-    );
+    state.camera.lookAt(m(la[0], lb[0], f), m(la[1], lb[1], f), m(la[2], lb[2], f));
   });
 
   // Calculate slug positions
@@ -529,20 +490,11 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
 
         {/* Bending Flange */}
         <group ref={hinge} position={[HINGE, 0, 0]}>
-          <mesh
-            geometry={geo.flange}
-            material={metal}
-            position={[(EDGE - HINGE) / 2, 0, 0]}
-          />
+          <mesh geometry={geo.flange} material={metal} position={[(EDGE - HINGE) / 2, 0, 0]} />
         </group>
 
         {/* Sheared Offcut Strip */}
-        <mesh
-          ref={strip}
-          geometry={geo.strip}
-          material={metal}
-          position={[STRIP_CX, 0, 0]}
-        />
+        <mesh ref={strip} geometry={geo.strip} material={metal} position={[STRIP_CX, 0, 0]} />
 
         {/* Welded Corner Gusset (structural joint) */}
         <group ref={gusset} position={[HINGE, Y, 0]} visible={false}>
@@ -622,11 +574,7 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
 
         {/* Laser Head Tool */}
         <group ref={laser} visible={false}>
-          <mesh
-            position={[0, 0.18, 0]}
-            rotation={[Math.PI, 0, 0]}
-            material={tool}
-          >
+          <mesh position={[0, 0.18, 0]} rotation={[Math.PI, 0, 0]} material={tool}>
             <coneGeometry args={[0.08, 0.38, 24]} />
           </mesh>
           <mesh>
@@ -645,32 +593,18 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
         </group>
 
         {/* Shearing Blade */}
-        <mesh
-          ref={blade}
-          material={tool}
-          position={[EDGE + 0.035, HI, 0]}
-          visible={false}
-        >
+        <mesh ref={blade} material={tool} position={[EDGE + 0.035, HI, 0]} visible={false}>
           <boxGeometry args={[0.07, 0.65, D + 0.4]} />
         </mesh>
 
         {/* Press Brake Punch */}
-        <mesh
-          ref={punch}
-          material={tool}
-          position={[HINGE - 0.18, HI, 0]}
-          visible={false}
-        >
+        <mesh ref={punch} material={tool} position={[HINGE - 0.18, HI, 0]} visible={false}>
           <boxGeometry args={[0.26, 0.45, D + 0.2]} />
         </mesh>
 
         {/* Welding Torch Tool */}
         <group ref={torch} visible={false}>
-          <mesh
-            position={[-0.12, 0.16, 0]}
-            rotation={[0, 0, Math.PI + 0.65]}
-            material={tool}
-          >
+          <mesh position={[-0.12, 0.16, 0]} rotation={[0, 0, Math.PI + 0.65]} material={tool}>
             <coneGeometry args={[0.065, 0.4, 16]} />
           </mesh>
           <mesh>
@@ -698,7 +632,7 @@ function StaticProcess({ stages }: { stages: ProcessStage[] }) {
   return (
     <div className="mx-auto max-w-[1360px] px-5 py-16 md:px-8 md:py-24">
       <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center">
-        <div className="relative aspect-[16/10] overflow-hidden border border-line bg-graphite">
+        <div className="border-line bg-graphite relative aspect-[16/10] overflow-hidden border">
           <StageSnapshot stage={6} />
         </div>
         <ol className="border-t border-white/10">
@@ -707,18 +641,12 @@ function StaticProcess({ stages }: { stages: ProcessStage[] }) {
               key={stage.id}
               className="grid gap-2 border-b border-white/10 py-5 sm:grid-cols-[4rem_1fr] sm:items-start"
             >
-              <span className="font-mono text-sm text-steel-500">
-                {stage.number}
-              </span>
+              <span className="text-steel-500 font-mono text-sm">{stage.number}</span>
               <div>
-                <p className="font-display text-xl leading-tight text-white">
-                  {stage.label}
-                </p>
-                <p className="mt-1 text-sm leading-relaxed text-steel-300">
-                  {stage.description}
-                </p>
+                <p className="font-display text-xl leading-tight text-white">{stage.label}</p>
+                <p className="text-steel-300 mt-1 text-sm leading-relaxed">{stage.description}</p>
                 {stage.fact ? (
-                  <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-steel-500">
+                  <p className="text-steel-500 mt-2 font-mono text-[11px] tracking-[0.14em] uppercase">
                     {stage.fact}
                   </p>
                 ) : null}
@@ -749,8 +677,7 @@ export function ProcessScroll({ stages }: { stages: ProcessStage[] }) {
         const el = section.current;
         if (!el) return;
         const total = el.offsetHeight - window.innerHeight;
-        const p =
-          total > 0 ? clamp01(-el.getBoundingClientRect().top / total) : 0;
+        const p = total > 0 ? clamp01(-el.getBoundingClientRect().top / total) : 0;
         progress.current = p;
         setActive(Math.min(N - 1, Math.floor(p * N)));
       });
@@ -804,9 +731,7 @@ export function ProcessScroll({ stages }: { stages: ProcessStage[] }) {
           <div className="ps-content-panel">
             <div className="ps-meta">
               <span className="ps-num">{stage.number}</span>
-              <span className="ps-count">
-                / {String(stages.length).padStart(2, "0")}
-              </span>
+              <span className="ps-count">/ {String(stages.length).padStart(2, "0")}</span>
               <span className="ps-bullet">·</span>
               <span className="ps-stage-pill">{stage.label}</span>
             </div>
@@ -828,7 +753,7 @@ export function ProcessScroll({ stages }: { stages: ProcessStage[] }) {
                   <button
                     key={s.id}
                     className={`ps-dot-btn ${i === active ? "is-on" : ""}${
-                      i < active ? " is-done" : ""
+                      i < active ? "is-done" : ""
                     }`}
                     onClick={() => jumpTo(i)}
                     aria-label={`${s.number} ${s.label}`}

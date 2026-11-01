@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHeader } from "@/components/PageHeader";
-import { Section, Container } from "@/components/Section";
-import { Eyebrow } from "@/components/Eyebrow";
-import { MaskedLines } from "@/components/MaskedLines";
-import { ProductGrid } from "@/components/ProductGrid";
-import { ClosingCTA } from "@/components/ClosingCTA";
+
 import { processChain } from "@/lib/services";
 import { site } from "@/lib/site";
+import type { Metadata } from "next";
+
+import { ClosingCTA } from "@/components/ClosingCTA";
+import { Eyebrow } from "@/components/Eyebrow";
+import { MaskedLines } from "@/components/MaskedLines";
+import { PageHeader } from "@/components/PageHeader";
+import { ProductGrid } from "@/components/ProductGrid";
+import { Container, Section } from "@/components/Section";
 
 export const metadata: Metadata = {
   title: "Products | Vijay Enterprises",
@@ -16,7 +18,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/products" },
   openGraph: {
     title: "Products | Vijay Enterprises",
-    description: "Custom machine parts, covers, hoppers, ladders, gates, jali, frames and trolleys made to order.",
+    description:
+      "Custom machine parts, covers, hoppers, ladders, gates, jali, frames and trolleys made to order.",
     url: "/products",
   },
 };
@@ -34,15 +37,19 @@ export default function ProductsPage() {
 
       <Section theme="light" className="py-[clamp(80px,10vw,150px)]">
         <Container>
-          <div id="categories" className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div
+            id="categories"
+            className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+          >
             <div>
               <Eyebrow>Categories</Eyebrow>
-              <h2 className="mt-6 max-w-[16ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+              <h2 className="font-display mt-6 max-w-[16ch] text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
                 <MaskedLines lines={["What we make."]} />
               </h2>
             </div>
-            <p className="max-w-[38ch] text-sm text-steel-500">
-              These are part families, not a catalogue. Open a category to see what it covers and how it is made.
+            <p className="text-steel-500 max-w-[38ch] text-sm">
+              These are part families, not a catalogue. Open a category to see what it covers and
+              how it is made.
             </p>
           </div>
           <div className="mt-10">
@@ -56,11 +63,12 @@ export default function ProductsPage() {
           <div className="grid gap-10 md:grid-cols-12 md:items-center md:gap-16">
             <div className="md:col-span-5">
               <Eyebrow>Made with</Eyebrow>
-              <h2 className="mt-6 font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+              <h2 className="font-display mt-6 text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
                 <MaskedLines lines={["One part,", "several processes."]} />
               </h2>
-              <p className="mt-5 max-w-[42ch] text-steel-300">
-                A single bracket can be cut, sheared, bent and welded before it leaves the building. That is what one roof means for a buyer.
+              <p className="text-steel-300 mt-5 max-w-[42ch]">
+                A single bracket can be cut, sheared, bent and welded before it leaves the building.
+                That is what one roof means for a buyer.
               </p>
               <Link href="/services" className="group mt-8 inline-flex items-center gap-3 text-sm">
                 See the process list
@@ -79,12 +87,18 @@ export default function ProductsPage() {
                     href="/services"
                     className="group flex items-center gap-5 border-b border-white/10 py-5"
                   >
-                    <span className="w-8 font-mono text-xs text-spark">{p.number}</span>
-                    <span className="flex-1 font-display text-[clamp(1.75rem,3.5vw,3rem)] leading-none transition-transform duration-300 group-hover:translate-x-2">
+                    <span className="text-spark w-8 font-mono text-xs">{p.number}</span>
+                    <span className="font-display flex-1 text-[clamp(1.75rem,3.5vw,3rem)] leading-none transition-transform duration-300 group-hover:translate-x-2">
                       {p.label}
                     </span>
-                    <span className="flex h-8 w-8 items-center justify-center border border-white/20 transition-colors group-hover:border-spark group-hover:bg-spark group-hover:text-ink">
-                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                    <span className="group-hover:border-spark group-hover:bg-spark group-hover:text-ink flex h-8 w-8 items-center justify-center border border-white/20 transition-colors">
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 10 10"
+                        fill="none"
+                        aria-hidden="true"
+                      >
                         <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
                       </svg>
                     </span>
@@ -101,17 +115,18 @@ export default function ProductsPage() {
           <div className="grid gap-8 md:grid-cols-12 md:items-end md:gap-16">
             <div className="md:col-span-8">
               <Eyebrow>Custom work</Eyebrow>
-              <h2 className="mt-6 max-w-[16ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+              <h2 className="font-display mt-6 max-w-[16ch] text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
                 <MaskedLines lines={["Not listed?", "Send the drawing."]} />
               </h2>
-              <p className="mt-5 max-w-[52ch] text-steel-500">
-                One-off parts and production runs are both welcome. If the part is not in the list, the drawing is still the starting point.
+              <p className="text-steel-500 mt-5 max-w-[52ch]">
+                One-off parts and production runs are both welcome. If the part is not in the list,
+                the drawing is still the starting point.
               </p>
             </div>
             <div className="md:col-span-4 md:text-right">
               <Link
                 href="/contact"
-                className="inline-flex h-[46px] items-center gap-3 bg-spark-deep px-6 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-spark hover:text-ink"
+                className="bg-spark-deep hover:bg-spark hover:text-ink inline-flex h-[46px] items-center gap-3 px-6 font-mono text-[11px] font-medium tracking-[0.14em] text-white uppercase transition-colors"
               >
                 Request a quote
                 <span className="flex h-6 w-6 items-center justify-center border border-current/30">
@@ -120,9 +135,12 @@ export default function ProductsPage() {
                   </svg>
                 </span>
               </Link>
-              <p className="mt-4 text-xs text-steel-500">
+              <p className="text-steel-500 mt-4 text-xs">
                 Or email{" "}
-                <a href={`mailto:${site.email}`} className="underline underline-offset-4 hover:text-ink">
+                <a
+                  href={`mailto:${site.email}`}
+                  className="hover:text-ink underline underline-offset-4"
+                >
                   {site.email}
                 </a>
               </p>

@@ -60,9 +60,7 @@ function ProcessIllustration3DBase({
   const cutGlowOpacity = activeStage === 2 ? Math.sin(s2 * Math.PI) * 0.9 : 0;
   const cutProgress = activeStage >= 2 ? s2 : 0;
   const partFillOpacity =
-    activeStage >= 2
-      ? Math.min(0.9, s2 * 0.5 + (activeStage >= 3 ? 0.4 : 0))
-      : 0;
+    activeStage >= 2 ? Math.min(0.9, s2 * 0.5 + (activeStage >= 3 ? 0.4 : 0)) : 0;
 
   // Shear - offcut slides away
   const offcutX = activeStage >= 3 ? s3 * 80 : 0;
@@ -75,8 +73,7 @@ function ProcessIllustration3DBase({
   const flangeSideOpacity = activeStage >= 4 ? s4 : 0;
 
   // Weld — bracket appears + seam glow
-  const weldOpacity =
-    activeStage === 5 ? s5 * 0.9 : activeStage >= 6 ? 0.45 : 0;
+  const weldOpacity = activeStage === 5 ? s5 * 0.9 : activeStage >= 6 ? 0.45 : 0;
   const weldGlowActive = activeStage === 5;
   const bracketOpacity = activeStage >= 5 ? Math.min(1, s5 * 2.5) : 0;
   const sparkCount = 8;
@@ -137,46 +134,18 @@ function ProcessIllustration3DBase({
 
         {/* Top face for isometric depth */}
         <linearGradient id={ids.topGrad} x1="0" y1="0" x2="0" y2="1">
-          <stop
-            offset="0"
-            stopColor="var(--color-steel-700)"
-            stopOpacity="0.8"
-          />
-          <stop
-            offset="1"
-            stopColor="var(--color-steel-900)"
-            stopOpacity="0.3"
-          />
+          <stop offset="0" stopColor="var(--color-steel-700)" stopOpacity="0.8" />
+          <stop offset="1" stopColor="var(--color-steel-900)" stopOpacity="0.3" />
         </linearGradient>
 
         {/* Grid pattern */}
-        <pattern
-          id={ids.grid}
-          width="44"
-          height="44"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M44 0H0V44"
-            fill="none"
-            stroke="var(--color-steel-700)"
-            strokeWidth="1"
-          />
+        <pattern id={ids.grid} width="44" height="44" patternUnits="userSpaceOnUse">
+          <path d="M44 0H0V44" fill="none" stroke="var(--color-steel-700)" strokeWidth="1" />
         </pattern>
 
         {/* Brush texture */}
-        <pattern
-          id={ids.brush}
-          width="7"
-          height="7"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M0 0V7"
-            stroke="var(--color-white)"
-            strokeOpacity="0.028"
-            strokeWidth="1"
-          />
+        <pattern id={ids.brush} width="7" height="7" patternUnits="userSpaceOnUse">
+          <path d="M0 0V7" stroke="var(--color-white)" strokeOpacity="0.028" strokeWidth="1" />
         </pattern>
 
         {/* Glow filter */}
@@ -196,11 +165,7 @@ function ProcessIllustration3DBase({
         {/* Spotlight radial gradient */}
         <radialGradient id={ids.spotlight} cx="50%" cy="46%" r="55%">
           <stop offset="0" stopColor="var(--color-white)" stopOpacity="0.14" />
-          <stop
-            offset="0.55"
-            stopColor="var(--color-spark)"
-            stopOpacity="0.05"
-          />
+          <stop offset="0.55" stopColor="var(--color-spark)" stopOpacity="0.05" />
           <stop offset="1" stopColor="var(--color-ink)" stopOpacity="0" />
         </radialGradient>
 
@@ -262,39 +227,15 @@ function ProcessIllustration3DBase({
             fill={`url(#${ids.sheetGrad})`}
           />
           {/* Brush texture */}
-          <rect
-            x="230"
-            y="200"
-            width="450"
-            height="250"
-            fill={`url(#${ids.brush})`}
-          />
+          <rect x="230" y="200" width="450" height="250" fill={`url(#${ids.brush})`} />
           {/* Top highlight edge */}
-          <path
-            d="M242 200H680"
-            stroke="var(--color-white)"
-            strokeOpacity="0.12"
-            strokeWidth="1"
-          />
-          <path
-            d="M230 212V438"
-            stroke="var(--color-white)"
-            strokeOpacity="0.05"
-            strokeWidth="1"
-          />
+          <path d="M242 200H680" stroke="var(--color-white)" strokeOpacity="0.12" strokeWidth="1" />
+          <path d="M230 212V438" stroke="var(--color-white)" strokeOpacity="0.05" strokeWidth="1" />
 
           {/* Top face — isometric thickness (8px) */}
-          <path
-            d="M230 200L242 192H692L680 200Z"
-            fill={`url(#${ids.topGrad})`}
-            opacity="0.5"
-          />
+          <path d="M230 200L242 192H692L680 200Z" fill={`url(#${ids.topGrad})`} opacity="0.5" />
           {/* Right face — isometric side */}
-          <path
-            d="M680 200L692 192V442L680 450Z"
-            fill="var(--color-steel-900)"
-            opacity="0.4"
-          />
+          <path d="M680 200L692 192V442L680 450Z" fill="var(--color-steel-900)" opacity="0.4" />
         </g>
 
         {/* ═══ Offcut strip — slides away on shear ═══ */}
@@ -315,19 +256,8 @@ function ProcessIllustration3DBase({
             d="M679 200H738Q750 200 750 212V438Q750 450 738 450H679Z"
             fill={`url(#${ids.sheetGrad})`}
           />
-          <rect
-            x="679"
-            y="200"
-            width="71"
-            height="250"
-            fill={`url(#${ids.brush})`}
-          />
-          <path
-            d="M679 200H738"
-            stroke="var(--color-white)"
-            strokeOpacity="0.12"
-            strokeWidth="1"
-          />
+          <rect x="679" y="200" width="71" height="250" fill={`url(#${ids.brush})`} />
+          <path d="M679 200H738" stroke="var(--color-white)" strokeOpacity="0.12" strokeWidth="1" />
         </g>
 
         {/* Shear edge line */}
@@ -549,9 +479,7 @@ function ProcessIllustration3DBase({
             d="M565 248V418"
             fill="none"
             stroke="var(--color-steel-300)"
-            strokeOpacity={
-              activeStage >= 1 && activeStage < 4 ? 0.55 * outlineOpacity : 0
-            }
+            strokeOpacity={activeStage >= 1 && activeStage < 4 ? 0.55 * outlineOpacity : 0}
             strokeWidth="1"
             strokeDasharray="7 7"
           />
@@ -579,14 +507,7 @@ function ProcessIllustration3DBase({
                 opacity="0.3"
               />
               {/* Tab front face (stands up from the base plate) */}
-              <rect
-                x="415"
-                y="230"
-                width="46"
-                height="22"
-                rx="2"
-                fill="var(--color-steel-700)"
-              />
+              <rect x="415" y="230" width="46" height="22" rx="2" fill="var(--color-steel-700)" />
               {/* Tab top face (isometric) */}
               <path
                 d="M415 230L419 226H465L461 230Z"
@@ -594,11 +515,7 @@ function ProcessIllustration3DBase({
                 opacity="0.65"
               />
               {/* Tab right face */}
-              <path
-                d="M461 230L465 226V248L461 252Z"
-                fill="var(--color-steel-900)"
-                opacity="0.5"
-              />
+              <path d="M461 230L465 226V248L461 252Z" fill="var(--color-steel-900)" opacity="0.5" />
               {/* Tab edge highlight */}
               <path
                 d="M415 230H461"
@@ -623,9 +540,7 @@ function ProcessIllustration3DBase({
             <path
               d="M417 252H459"
               fill="none"
-              stroke={
-                weldGlowActive ? "var(--color-white)" : "var(--color-steel-500)"
-              }
+              stroke={weldGlowActive ? "var(--color-white)" : "var(--color-steel-500)"}
               strokeWidth="1.2"
               strokeLinecap="round"
               strokeOpacity="0.9"
@@ -661,19 +576,14 @@ function ProcessIllustration3DBase({
               const angle = (i / sparkCount) * Math.PI * 2 + 0.4;
               const t = s5;
               const dist = (18 + (i % 3) * 8) * t;
-              const sparkOpacity =
-                t > 0.2 && t < 0.85
-                  ? Math.sin(((t - 0.2) / 0.65) * Math.PI)
-                  : 0;
+              const sparkOpacity = t > 0.2 && t < 0.85 ? Math.sin(((t - 0.2) / 0.65) * Math.PI) : 0;
               return (
                 <circle
                   key={i}
                   cx={438 + Math.cos(angle) * dist}
                   cy={252 + Math.sin(angle) * dist - 7 * t}
                   r={i % 2 === 0 ? 2.2 : 1.6}
-                  fill={
-                    i % 3 === 0 ? "var(--color-white)" : "var(--color-spark)"
-                  }
+                  fill={i % 3 === 0 ? "var(--color-white)" : "var(--color-spark)"}
                   opacity={sparkOpacity}
                 />
               );
@@ -715,14 +625,7 @@ function ProcessIllustration3DBase({
               strokeLinecap="round"
               filter={`url(#${ids.glow})`}
             />
-            <rect
-              x="674"
-              y="180"
-              width="12"
-              height="5"
-              rx="2.5"
-              fill="var(--color-spark)"
-            />
+            <rect x="674" y="180" width="12" height="5" rx="2.5" fill="var(--color-spark)" />
           </g>
         )}
       </g>

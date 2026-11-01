@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import Image from "next/image";
-import { PageHeader } from "@/components/PageHeader";
-import { Section, Container } from "@/components/Section";
-import { Eyebrow } from "@/components/Eyebrow";
-import { Proof } from "@/components/Proof";
-import { MaskedLines } from "@/components/MaskedLines";
-import { ClosingCTA } from "@/components/ClosingCTA";
+
 import { site } from "@/lib/site";
+import type { Metadata } from "next";
+
+import { ClosingCTA } from "@/components/ClosingCTA";
+import { Eyebrow } from "@/components/Eyebrow";
+import { MaskedLines } from "@/components/MaskedLines";
+import { PageHeader } from "@/components/PageHeader";
+import { Proof } from "@/components/Proof";
+import { Container, Section } from "@/components/Section";
 
 export const metadata: Metadata = {
   title: "About | Vijay Enterprises",
@@ -15,7 +17,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About | Vijay Enterprises",
-    description: "A founder-led metal fabrication workshop in New Delhi, with 30+ years of experience.",
+    description:
+      "A founder-led metal fabrication workshop in New Delhi, with 30+ years of experience.",
     url: "/about",
   },
 };
@@ -64,24 +67,31 @@ export default function AboutPage() {
         <Container>
           <div className="grid gap-10 md:grid-cols-12 md:items-center md:gap-16">
             <div className="md:col-span-5">
-              <div data-image-reveal className="relative aspect-[4/5] overflow-hidden border border-line bg-steel-900">
+              <div
+                data-image-reveal
+                className="border-line bg-steel-900 relative aspect-[4/5] overflow-hidden border"
+              >
                 <Image
                   src="/images/placeholder/placeholder-founder.jpg"
                   alt="Portrait of Vijay Rajbhar, founder of Vijay Enterprises"
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
-                  className="image-drift object-cover grayscale contrast-110"
+                  className="image-drift object-cover contrast-110 grayscale"
                 />
               </div>
             </div>
             <div className="md:col-span-7">
               <Eyebrow>Founder</Eyebrow>
-              <h2 className="mt-6 font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+              <h2 className="font-display mt-6 text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
                 <MaskedLines lines={["Vijay Rajbhar"]} />
               </h2>
-              <p className="mt-3 font-mono text-xs text-steel-500">30+ years in the metal industry</p>
-              <p className="mt-6 max-w-[54ch] text-lg text-steel-500">
-                Vijay Rajbhar leads Vijay Enterprises. He has spent more than 30 years in the metal industry, and the workshop is organised around the way he works: one roof, one team, and a drawing that stays with the people making the part.
+              <p className="text-steel-500 mt-3 font-mono text-xs">
+                30+ years in the metal industry
+              </p>
+              <p className="text-steel-500 mt-6 max-w-[54ch] text-lg">
+                Vijay Rajbhar leads Vijay Enterprises. He has spent more than 30 years in the metal
+                industry, and the workshop is organised around the way he works: one roof, one team,
+                and a drawing that stays with the people making the part.
               </p>
             </div>
           </div>
@@ -93,12 +103,13 @@ export default function AboutPage() {
           <div className="grid gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-5">
               <Eyebrow>The workshop</Eyebrow>
-              <h2 className="mt-6 font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+              <h2 className="font-display mt-6 text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
                 <MaskedLines lines={["Okhla Phase 1."]} />
               </h2>
-              <p className="mt-5 max-w-[42ch] text-steel-300">{site.address}</p>
-              <p className="mt-4 max-w-[42ch] text-sm text-steel-500">
-                Quotes and delivery are within Delhi NCR only. Email before visiting so someone is available to review the drawing.
+              <p className="text-steel-300 mt-5 max-w-[42ch]">{site.address}</p>
+              <p className="text-steel-500 mt-4 max-w-[42ch] text-sm">
+                Quotes and delivery are within Delhi NCR only. Email before visiting so someone is
+                available to review the drawing.
               </p>
             </div>
             <div className="md:col-span-7">
@@ -108,7 +119,7 @@ export default function AboutPage() {
               <ul className="mt-7 border-t border-white/10">
                 {oneRoof.map((item, i) => (
                   <li key={item} className="flex gap-5 border-b border-white/10 py-5">
-                    <span className="font-mono text-xs text-spark">0{i + 1}</span>
+                    <span className="text-spark font-mono text-xs">0{i + 1}</span>
                     <span className="text-steel-300">{item}</span>
                   </li>
                 ))}
@@ -121,15 +132,18 @@ export default function AboutPage() {
       <Section theme="light" className="py-[clamp(80px,10vw,150px)]">
         <Container>
           <Eyebrow>Principles</Eyebrow>
-          <h2 className="mt-6 max-w-[18ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+          <h2 className="font-display mt-6 max-w-[18ch] text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
             <MaskedLines lines={["How the work", "is judged."]} />
           </h2>
-          <div className="mt-10 border-t border-steel-200">
+          <div className="border-steel-200 mt-10 border-t">
             {principles.map((p) => (
-              <div key={p.number} className="grid gap-3 border-b border-steel-200 py-6 md:grid-cols-12 md:gap-8 md:py-8">
-                <span className="font-mono text-xs text-spark-ink md:col-span-1">{p.number}</span>
+              <div
+                key={p.number}
+                className="border-steel-200 grid gap-3 border-b py-6 md:grid-cols-12 md:gap-8 md:py-8"
+              >
+                <span className="text-spark-ink font-mono text-xs md:col-span-1">{p.number}</span>
                 <h3 className="font-display text-2xl leading-none md:col-span-4">{p.title}</h3>
-                <p className="max-w-[52ch] text-sm text-steel-500 md:col-span-7">{p.desc}</p>
+                <p className="text-steel-500 max-w-[52ch] text-sm md:col-span-7">{p.desc}</p>
               </div>
             ))}
           </div>

@@ -8,7 +8,8 @@ type Props = {
 };
 
 export function PillButton({ href, children, variant = "primary", className = "" }: Props) {
-  const base = "inline-flex h-[46px] items-center gap-3 px-6 font-mono text-[11px] font-medium uppercase tracking-[0.14em] transition-all";
+  const base =
+    "inline-flex h-[46px] items-center gap-3 px-6 font-mono text-[11px] font-medium uppercase tracking-[0.14em] transition-all";
   const styles =
     variant === "primary"
       ? "bg-spark-deep text-white hover:bg-spark-deep-hover group"

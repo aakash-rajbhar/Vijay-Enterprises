@@ -71,20 +71,10 @@ function ProcessIllustrationBase() {
           <stop offset="1" stopColor="var(--color-ink)" stopOpacity="0" />
         </radialGradient>
         <pattern id={ids.grid} width="44" height="44" patternUnits="userSpaceOnUse">
-          <path
-            d="M44 0H0V44"
-            fill="none"
-            stroke="var(--color-steel-700)"
-            strokeWidth="1"
-          />
+          <path d="M44 0H0V44" fill="none" stroke="var(--color-steel-700)" strokeWidth="1" />
         </pattern>
         <pattern id={ids.brush} width="7" height="7" patternUnits="userSpaceOnUse">
-          <path
-            d="M0 0V7"
-            stroke="var(--color-white)"
-            strokeOpacity="0.028"
-            strokeWidth="1"
-          />
+          <path d="M0 0V7" stroke="var(--color-white)" strokeOpacity="0.028" strokeWidth="1" />
         </pattern>
         <filter id={ids.glow} x="-80%" y="-80%" width="260%" height="260%">
           <feGaussianBlur stdDeviation="5" result="blur" />
@@ -127,7 +117,12 @@ function ProcessIllustrationBase() {
           <g clipPath={`url(#${ids.clipStrip})`}>
             <rect x="689.5" y="170" width="70.5" height="300" fill={`url(#${ids.brush})`} />
           </g>
-          <path d="M689.5 170H748" stroke="var(--color-white)" strokeOpacity="0.12" strokeWidth="1" />
+          <path
+            d="M689.5 170H748"
+            stroke="var(--color-white)"
+            strokeOpacity="0.12"
+            strokeWidth="1"
+          />
         </g>
 
         <path
@@ -190,7 +185,13 @@ function ProcessIllustrationBase() {
             strokeWidth="1.6"
             opacity="0"
           />
-          <g data-hole-outline opacity="0" fill="none" stroke="var(--color-steel-300)" strokeWidth="1.3">
+          <g
+            data-hole-outline
+            opacity="0"
+            fill="none"
+            stroke="var(--color-steel-300)"
+            strokeWidth="1.3"
+          >
             <circle cx="595" cy="275" r="8" />
             <circle cx="595" cy="385" r="8" />
           </g>

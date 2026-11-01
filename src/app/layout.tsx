@@ -1,15 +1,18 @@
-import type { Metadata } from "next";
 import { IBM_Plex_Mono, Inter, Space_Grotesk } from "next/font/google";
-import "./globals.css";
-import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
+
+import { site } from "@/lib/site";
+import type { Metadata } from "next";
+
 import { CustomCursor } from "@/components/CustomCursor";
-import { ScrollProgress } from "@/components/ScrollProgress";
+import { Footer } from "@/components/Footer";
 import { ImageReveal } from "@/components/ImageReveal";
 import { JsonLd } from "@/components/JsonLd";
 import { MobileQuoteFab } from "@/components/MobileQuoteFab";
-import { site } from "@/lib/site";
+import { Nav } from "@/components/Nav";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
+
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -57,14 +60,14 @@ export const metadata: Metadata = {
     locale: "en_IN",
     siteName: site.name,
     url: site.url,
-        images: [
-          {
-            url: "/og.svg",
-            width: 1200,
-            height: 630,
-            alt: "Vijay Enterprises - Sheet Metal Fabrication",
-          },
-        ],
+    images: [
+      {
+        url: "/og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Vijay Enterprises - Sheet Metal Fabrication",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

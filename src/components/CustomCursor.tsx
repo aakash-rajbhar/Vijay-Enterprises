@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+
 import { useFinePointer } from "@/hooks/useFinePointer";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
@@ -134,10 +135,7 @@ export function CustomCursor() {
   if (!enabled) return null;
 
   return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[9999]"
-    >
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[9999]">
       <canvas ref={canvas} className="h-full w-full" />
     </div>
   );

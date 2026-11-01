@@ -1,22 +1,22 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import { productCategories, type ProductCategory } from "@/lib/products";
-import { ProductCard } from "@/components/ProductCard";
+
+import { type ProductCategory, productCategories } from "@/lib/products";
 import { site } from "@/lib/site";
+import { createPortal } from "react-dom";
+
+import { ProductCard } from "@/components/ProductCard";
 
 export function ProductGrid({ limit }: { limit?: number } = {}) {
   const [active, setActive] = useState<ProductCategory | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
-  const items =
-    typeof limit === "number"
-      ? productCategories.slice(0, limit)
-      : productCategories;
+  const items = typeof limit === "number" ? productCategories.slice(0, limit) : productCategories;
 
   useEffect(() => {
     if (!active) return;
@@ -32,8 +32,8 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
       if (e.key !== "Tab" || !dialogRef.current) return;
       const focusables = Array.from(
         dialogRef.current.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
-        ),
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
       ).filter((el) => el.offsetParent !== null);
       if (focusables.length === 0) return;
       const first = focusables[0];
@@ -59,7 +59,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
   return (
     <>
       {/* ── 3-Column Engineering Grid with Strict Containment ── */}
-      <div className="grid w-full gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+      <div className="border-line bg-line grid w-full gap-px border sm:grid-cols-2 lg:grid-cols-3">
         {items.map((cat, i) => (
           <ProductCard
             key={cat.slug}
@@ -84,7 +84,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
             {/* Backdrop */}
             <button
               type="button"
-              className="modal-backdrop-animate absolute inset-0 bg-ink/85 backdrop-blur-md"
+              className="modal-backdrop-animate bg-ink/85 absolute inset-0 backdrop-blur-md"
               onClick={() => setActive(null)}
               aria-label="Close specifications panel"
             />
@@ -93,22 +93,20 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
             <div
               ref={dialogRef}
               data-lenis-prevent
-              className="modal-dialog-animate relative w-full max-w-3xl overflow-hidden border border-line-strong bg-graphite [isolation:isolate]"
+              className="modal-dialog-animate border-line-strong bg-graphite relative [isolation:isolate] w-full max-w-3xl overflow-hidden border"
             >
               <div className="max-h-[92vh] overflow-y-auto overscroll-contain p-6 sm:p-8 md:p-10">
                 {/* Header */}
                 <div className="flex items-start justify-between gap-6 border-b border-white/10 pb-5">
                   <div>
-                    <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-spark">
+                    <div className="text-spark flex items-center gap-2 font-mono text-[11px] tracking-wider uppercase">
                       <span>{active.code}</span>
                       <span className="text-white/20">/</span>
-                      <span className="text-steel-500">
-                        {active.categoryTag}
-                      </span>
+                      <span className="text-steel-500">{active.categoryTag}</span>
                     </div>
                     <h2
                       id="product-panel-title"
-                      className="mt-2 font-display text-[clamp(2rem,4vw,3.25rem)] font-medium leading-none tracking-tight text-white"
+                      className="font-display mt-2 text-[clamp(2rem,4vw,3.25rem)] leading-none font-medium tracking-tight text-white"
                     >
                       {active.name}
                     </h2>
@@ -119,13 +117,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
                     className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/20 text-white transition-colors hover:border-white/50 hover:bg-white/10"
                     aria-label="Close dialog"
                   >
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      aria-hidden="true"
-                    >
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                       <path
                         d="M2 2L10 10M10 2L2 10"
                         stroke="currentColor"
@@ -140,66 +132,61 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
                 <div className="mt-6 grid gap-6 sm:grid-cols-12 sm:items-start">
                   {/* Image Preview */}
                   <div className="sm:col-span-5">
-                    <div className="group relative aspect-[4/3] w-full overflow-hidden border border-white/10 bg-steel-900 [isolation:isolate] [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
+                    <div className="group bg-steel-900 relative [isolation:isolate] aspect-[4/3] w-full overflow-hidden border border-white/10 [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
                       <Image
                         src={active.image}
                         alt={`${active.name} - Vijay Enterprises`}
                         fill
                         sizes="(max-width: 640px) 100vw, 320px"
-                        className="object-cover grayscale contrast-110 transition-[filter] duration-700 group-hover:grayscale-0"
+                        className="object-cover contrast-110 grayscale transition-[filter] duration-700 group-hover:grayscale-0"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 to-transparent" />
+                      <div className="from-graphite/70 absolute inset-0 bg-gradient-to-t to-transparent" />
                     </div>
 
-                    <div className="mt-4 border border-white/10 bg-steel-950/60 p-3">
-                      <p className="font-mono text-[10px] uppercase tracking-wider text-steel-500">
+                    <div className="bg-steel-950/60 mt-4 border border-white/10 p-3">
+                      <p className="text-steel-500 font-mono text-[10px] tracking-wider uppercase">
                         Workshop Routing
                       </p>
-                      <p className="mt-1 text-xs text-steel-300">
+                      <p className="text-steel-300 mt-1 text-xs">
                         All operations completed under one roof.
                       </p>
                     </div>
                   </div>
 
                   {/* Technical Specifications Details */}
-                  <div className="sm:col-span-7 flex flex-col justify-between">
+                  <div className="flex flex-col justify-between sm:col-span-7">
                     <div>
-                      <p className="text-sm leading-relaxed text-steel-300 sm:text-base">
-                        {active.desc} Parts are quoted and manufactured to order
-                        based on drawing files (DXF, DWG, PDF, STEP) or physical
-                        samples.
+                      <p className="text-steel-300 text-sm leading-relaxed sm:text-base">
+                        {active.desc} Parts are quoted and manufactured to order based on drawing
+                        files (DXF, DWG, PDF, STEP) or physical samples.
                       </p>
 
                       {/* Highlights Grid */}
-                      <div className="mt-5 grid grid-cols-1 gap-3 border border-white/10 bg-steel-900/40 p-4">
+                      <div className="bg-steel-900/40 mt-5 grid grid-cols-1 gap-3 border border-white/10 p-4">
                         <div>
-                          <p className="font-mono text-[10px] uppercase tracking-wider text-steel-500">
+                          <p className="text-steel-500 font-mono text-[10px] tracking-wider uppercase">
                             Specification & Tolerances
                           </p>
-                          <p className="mt-1 font-mono text-xs text-white">
-                            {active.spec}
-                          </p>
+                          <p className="mt-1 font-mono text-xs text-white">{active.spec}</p>
                         </div>
                         <div>
-                          <p className="font-mono text-[10px] uppercase tracking-wider text-steel-500">
+                          <p className="text-steel-500 font-mono text-[10px] tracking-wider uppercase">
                             Production Machine
                           </p>
-                          <p className="mt-1 text-xs text-steel-300">
-                            {active.capacityHighlight}
-                          </p>
+                          <p className="text-steel-300 mt-1 text-xs">{active.capacityHighlight}</p>
                         </div>
                       </div>
 
                       {/* Processes Chips */}
                       <div className="mt-5">
-                        <p className="font-mono text-[10px] uppercase tracking-wider text-steel-500">
+                        <p className="text-steel-500 font-mono text-[10px] tracking-wider uppercase">
                           Manufacturing Processes
                         </p>
                         <div className="mt-2 flex flex-wrap gap-1.5">
                           {active.processes.map((proc) => (
                             <span
                               key={proc}
-                              className="border border-white/15 bg-steel-900 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-steel-300"
+                              className="bg-steel-900 text-steel-300 border border-white/15 px-3 py-1 font-mono text-[10px] tracking-[0.1em] uppercase"
                             >
                               {proc}
                             </span>
@@ -209,14 +196,14 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
 
                       {/* Materials */}
                       <div className="mt-4">
-                        <p className="font-mono text-[10px] uppercase tracking-wider text-steel-500">
+                        <p className="text-steel-500 font-mono text-[10px] tracking-wider uppercase">
                           Standard Materials
                         </p>
                         <div className="mt-2 flex flex-wrap gap-1.5">
                           {active.materials.map((mat) => (
                             <span
                               key={mat}
-                              className="border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-steel-300"
+                              className="text-steel-300 border border-white/10 bg-white/5 px-2.5 py-1 text-xs"
                             >
                               {mat}
                             </span>
@@ -230,7 +217,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
                       <Link
                         href={`/contact?product=${active.slug}`}
                         data-cursor-enquire
-                        className="group inline-flex h-[46px] items-center gap-3 bg-spark px-6 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white! transition-all duration-200 hover:bg-white hover:text-ink!"
+                        className="group bg-spark hover:text-ink! inline-flex h-[46px] items-center gap-3 px-6 font-mono text-[11px] font-medium tracking-[0.14em] text-white! uppercase transition-all duration-200 hover:bg-white"
                       >
                         <span>Request quote for this part</span>
                         <svg
@@ -253,7 +240,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
 
                       <a
                         href={`mailto:${site.email}?subject=Enquiry:%20${encodeURIComponent(active.name)}`}
-                        className="font-mono text-xs text-steel-500 underline underline-offset-4 hover:text-white"
+                        className="text-steel-500 font-mono text-xs underline underline-offset-4 hover:text-white"
                       >
                         Email drawings to {site.email}
                       </a>
@@ -263,7 +250,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
               </div>
             </div>
           </div>,
-          document.body,
+          document.body
         )}
     </>
   );

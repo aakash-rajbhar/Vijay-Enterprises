@@ -1,13 +1,23 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function ScrollWords({ children, faded, className = "" }: { children: string; faded?: string; className?: string }) {
+export function ScrollWords({
+  children,
+  faded,
+  className = "",
+}: {
+  children: string;
+  faded?: string;
+  className?: string;
+}) {
   const ref = useRef<HTMLParagraphElement>(null);
   const reduced = usePrefersReducedMotion();
 

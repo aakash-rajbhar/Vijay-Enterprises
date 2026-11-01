@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 export function ScrollProgress() {
@@ -24,7 +25,7 @@ export function ScrollProgress() {
   return (
     <div
       aria-hidden="true"
-      className="fixed top-0 left-0 h-[2px] bg-spark z-[90]"
+      className="bg-spark fixed top-0 left-0 z-[90] h-[2px]"
       style={{ width: `${width}%` }}
     />
   );

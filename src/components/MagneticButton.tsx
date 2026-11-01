@@ -1,14 +1,22 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
+
+import Link from "next/link";
+
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 type Props = React.ComponentProps<typeof Link> & {
   children: React.ReactNode;
 };
 
-export function MagneticButton({ children, className = "", onMouseMove, onMouseLeave, ...props }: Props) {
+export function MagneticButton({
+  children,
+  className = "",
+  onMouseMove,
+  onMouseLeave,
+  ...props
+}: Props) {
   const ref = useRef<HTMLAnchorElement>(null);
   const reduced = usePrefersReducedMotion();
 
@@ -33,7 +41,7 @@ export function MagneticButton({ children, className = "", onMouseMove, onMouseL
       data-cursor-enquire
       onMouseMove={move}
       onMouseLeave={leave}
-      className={`group inline-flex h-[46px] items-center gap-3 border border-transparent bg-spark-deep px-6 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-[transform,background-color] duration-300 ease-out will-change-transform hover:border-spark hover:bg-transparent hover:text-spark ${className}`}
+      className={`group bg-spark-deep hover:border-spark hover:text-spark inline-flex h-[46px] items-center gap-3 border border-transparent px-6 font-mono text-[11px] font-medium tracking-[0.14em] text-white uppercase transition-[transform,background-color] duration-300 ease-out will-change-transform hover:bg-transparent ${className}`}
       {...props}
     >
       <span>{children}</span>

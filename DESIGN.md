@@ -12,16 +12,16 @@ The site should feel like a premium industrial product launch, not a drafting ta
 
 Three words: **dark, precise, confident.**
 
-**Quality bar: Awwwards-level.** The site should feel like an award-nominated studio build, not a template: considered typography, theatrical but controlled motion, smooth scrolling, tactile micro-interactions and obsessive spacing. Premium means *restraint plus craft*: fewer elements, executed perfectly, with every transition intentional. If a section looks like a stock Tailwind template, redo it.
+**Quality bar: Awwwards-level.** The site should feel like an award-nominated studio build, not a template: considered typography, theatrical but controlled motion, smooth scrolling, tactile micro-interactions and obsessive spacing. Premium means _restraint plus craft_: fewer elements, executed perfectly, with every transition intentional. If a section looks like a stock Tailwind template, redo it.
 
 ### Reference map (what to take from each)
 
-| Reference | Take | Leave |
-|---|---|---|
-| **Ferox** (dark machinery hero) | Full-bleed grayscale macro photography, floating pill nav with blur, headline anchored lower-right over the image, circular outline "next" button, hairline overlay lines crossing the hero, sparse chrome | The cart. Vijay has no e-commerce. Never show a cart |
-| **KRVX** (serif + orange) | Warm-gray light surface alternating with pure black sections, one orange-red accent for buttons and small dots, pill-shaped image window with soft border, glassy rounded feature cards with a tiny icon chip, oversized fading headline on dark | The serif display face (see Typography). The robotics tone |
-| **Stodio** (agency grid) | Huge tight grotesk headlines, small red square before eyebrow labels, "By the numbers" row with dashed underlines, big statement paragraph where the second half fades to gray, rounded image strip, dark "Services" block, pill buttons in white and red | Client-logo marquee (no client names supplied). Blurred-face photography |
-| **q-industrial.com** | Stacked two-line oversized hero title, numbered fullscreen menu (00 Home, 01 ..., 02 ...), numbered benefits 1-5, category cards with image + small label ("Industries"), diagonal-arrow CTAs, "Scroll Down" cue, full-bleed photo before the footer, huge CTA band in footer, back-to-top | Coatings content, cookie banner styling, video modal (no video yet) |
+| Reference                       | Take                                                                                                                                                                                                                                                                                       | Leave                                                                    |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| **Ferox** (dark machinery hero) | Full-bleed grayscale macro photography, floating pill nav with blur, headline anchored lower-right over the image, circular outline "next" button, hairline overlay lines crossing the hero, sparse chrome                                                                                 | The cart. Vijay has no e-commerce. Never show a cart                     |
+| **KRVX** (serif + orange)       | Warm-gray light surface alternating with pure black sections, one orange-red accent for buttons and small dots, pill-shaped image window with soft border, glassy rounded feature cards with a tiny icon chip, oversized fading headline on dark                                           | The serif display face (see Typography). The robotics tone               |
+| **Stodio** (agency grid)        | Huge tight grotesk headlines, small red square before eyebrow labels, "By the numbers" row with dashed underlines, big statement paragraph where the second half fades to gray, rounded image strip, dark "Services" block, pill buttons in white and red                                  | Client-logo marquee (no client names supplied). Blurred-face photography |
+| **q-industrial.com**            | Stacked two-line oversized hero title, numbered fullscreen menu (00 Home, 01 ..., 02 ...), numbered benefits 1-5, category cards with image + small label ("Industries"), diagonal-arrow CTAs, "Scroll Down" cue, full-bleed photo before the footer, huge CTA band in footer, back-to-top | Coatings content, cookie banner styling, video modal (no video yet)      |
 
 ## 2. Explicit Anti-Patterns (do not ship any of these)
 
@@ -44,19 +44,19 @@ The previous build failed on these. Remove them.
 
 Cool, neutral, slightly steel. **Nothing warm except the accent.** Define as CSS variables and expose through Tailwind.
 
-| Token | Hex | Use |
-|---|---|---|
-| `ink` | `#0A0A0B` | Primary dark section background, primary text on light |
-| `graphite` | `#141416` | Raised surfaces on dark (cards, nav pill base) |
-| `steel-900` | `#1E1F22` | Borders on dark, hover surfaces |
-| `steel-700` | `#3A3C41` | Dividers on dark, disabled |
-| `steel-500` | `#74777E` | Secondary text on light, faded statement words |
-| `steel-300` | `#B6B8BD` | Secondary text on dark |
-| `steel-200` | `#D9DADD` | Borders on light |
-| `mist` | `#ECECEA` | Light section background (neutral warm-gray like KRVX, never cream) |
-| `white` | `#FFFFFF` | Light section alternate, cards on mist, text on dark |
-| `spark` | `#FF4A1C` | **The only accent.** Primary CTA fill, eyebrow squares, number accents, focus ring |
-| `spark-deep` | `#D93A12` | Hover/pressed for `spark` |
+| Token        | Hex       | Use                                                                                |
+| ------------ | --------- | ---------------------------------------------------------------------------------- |
+| `ink`        | `#0A0A0B` | Primary dark section background, primary text on light                             |
+| `graphite`   | `#141416` | Raised surfaces on dark (cards, nav pill base)                                     |
+| `steel-900`  | `#1E1F22` | Borders on dark, hover surfaces                                                    |
+| `steel-700`  | `#3A3C41` | Dividers on dark, disabled                                                         |
+| `steel-500`  | `#74777E` | Secondary text on light, faded statement words                                     |
+| `steel-300`  | `#B6B8BD` | Secondary text on dark                                                             |
+| `steel-200`  | `#D9DADD` | Borders on light                                                                   |
+| `mist`       | `#ECECEA` | Light section background (neutral warm-gray like KRVX, never cream)                |
+| `white`      | `#FFFFFF` | Light section alternate, cards on mist, text on dark                               |
+| `spark`      | `#FF4A1C` | **The only accent.** Primary CTA fill, eyebrow squares, number accents, focus ring |
+| `spark-deep` | `#D93A12` | Hover/pressed for `spark`                                                          |
 
 Rules:
 
@@ -69,16 +69,16 @@ Rules:
 
 ```css
 @theme {
-  --color-ink: #0A0A0B;
+  --color-ink: #0a0a0b;
   --color-graphite: #141416;
-  --color-steel-900: #1E1F22;
-  --color-steel-700: #3A3C41;
-  --color-steel-500: #74777E;
-  --color-steel-300: #B6B8BD;
-  --color-steel-200: #D9DADD;
-  --color-mist: #ECECEA;
-  --color-spark: #FF4A1C;
-  --color-spark-deep: #D93A12;
+  --color-steel-900: #1e1f22;
+  --color-steel-700: #3a3c41;
+  --color-steel-500: #74777e;
+  --color-steel-300: #b6b8bd;
+  --color-steel-200: #d9dadd;
+  --color-mist: #ececea;
+  --color-spark: #ff4a1c;
+  --color-spark-deep: #d93a12;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, sans-serif;
@@ -94,22 +94,22 @@ Rules:
 
 One family does the heavy lifting. Confidence comes from **size and tight tracking**, not from decorative fonts.
 
-| Role | Font | Notes |
-|---|---|---|
-| Display | **Inter Tight** (`next/font/google`) | Weight 500, tracking `-0.04em`, line-height `0.95` to `1.0` |
-| Body / UI | **Inter** | Weight 400/500, line-height 1.5 |
-| Spec / label | **JetBrains Mono** | Used sparingly: machine names, capacity figures, section numbers. Never for nav or headings. Tracking normal, not wide |
+| Role         | Font                                 | Notes                                                                                                                  |
+| ------------ | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Display      | **Inter Tight** (`next/font/google`) | Weight 500, tracking `-0.04em`, line-height `0.95` to `1.0`                                                            |
+| Body / UI    | **Inter**                            | Weight 400/500, line-height 1.5                                                                                        |
+| Spec / label | **JetBrains Mono**                   | Used sparingly: machine names, capacity figures, section numbers. Never for nav or headings. Tracking normal, not wide |
 
 Scale (use `clamp`, mobile first):
 
-| Token | Size | Use |
-|---|---|---|
-| `display-xl` | `clamp(3.25rem, 9vw, 9rem)` | Hero headline, footer CTA |
-| `display-l` | `clamp(2.5rem, 6vw, 5.5rem)` | Section statement |
-| `display-m` | `clamp(1.75rem, 3.2vw, 3rem)` | Card titles, numbers |
-| `body-l` | `1.25rem` | Lead paragraphs |
-| `body` | `1rem` | Default |
-| `label` | `0.8125rem` | Eyebrows, captions (sentence case, not all-caps tracking) |
+| Token        | Size                          | Use                                                       |
+| ------------ | ----------------------------- | --------------------------------------------------------- |
+| `display-xl` | `clamp(3.25rem, 9vw, 9rem)`   | Hero headline, footer CTA                                 |
+| `display-l`  | `clamp(2.5rem, 6vw, 5.5rem)`  | Section statement                                         |
+| `display-m`  | `clamp(1.75rem, 3.2vw, 3rem)` | Card titles, numbers                                      |
+| `body-l`     | `1.25rem`                     | Lead paragraphs                                           |
+| `body`       | `1rem`                        | Default                                                   |
+| `label`      | `0.8125rem`                   | Eyebrows, captions (sentence case, not all-caps tracking) |
 
 Patterns to reuse:
 
@@ -129,6 +129,7 @@ Patterns to reuse:
 ## 6. Components
 
 ### Floating nav (Ferox + Stodio)
+
 - Fixed, inset from top 16px, centred pill, `backdrop-blur-xl`, `bg-white/10` on dark / `bg-white/70` on light, 1px `white/15` border.
 - Left: Vijay Enterprises wordmark (simple geometric mark + "Vijay Enterprises" in Inter Tight 500).
 - Centre links, exactly these four: Services (`/services`), Products (`/products`), About (`/about`), Contact (`/contact`). Sentence case, 14px. Define them in one `links` array and reuse it in the nav, mobile menu and footer.
@@ -136,27 +137,34 @@ Patterns to reuse:
 - Mobile: the pill collapses to wordmark + Menu button, opening a **fullscreen numbered menu** (Q-Industrial): `00 Home`, `01 Services`, `02 Products`, `03 About`, `04 Contact`, large display type, email shown at the bottom (no phone).
 
 ### Buttons
+
 - Primary: `spark` fill, white text, pill, 48px tall, trailing diagonal arrow in a small `ink/20` circle. Hover: `spark-deep`, arrow nudges 3px up-right.
 - Secondary: white fill, `ink` text (on dark) or `ink` outline (on light).
 - Circular outline icon button (Ferox "next"): 44px, 1px `white/60` border, chevron.
 - Focus: 2px `spark` ring with 2px offset. Always visible.
 
 ### Rounded image window (KRVX pill + Ferox)
+
 - Large `--radius-window` container, 1px soft border, inner grayscale photo, subtle inner vignette. One per hero and one mid-page.
 - Optional hairline overlay lines (1px `white/10`) crossing the hero for the engineered feel. Keep it to two or three lines, not a grid.
 
 ### Image strip (Stodio portrait row)
+
 - Horizontally scrolling or 4-up row of tall rounded cards (`--radius-card`, aspect 3/4) showing the five processes: cut, shear, bend, weld, fabricate. Each has a small caption chip at the bottom. Partially cropped at the viewport edge to hint at scroll.
 
 ### By the numbers (Stodio)
+
 Four columns, big `display-m` figure, **dashed underline** in `steel-200`, label below in `body` and a one-line caption in `steel-500`. Use **only confirmed facts**:
+
 - `30+` Years in the metal industry
 - `25 mm` Laser cutting thickness
 - `12 mm × 3 m` Shearing capacity
 - `5` Processes under one roof
 
 ### Services list (Stodio dark block + Q-Industrial numbering)
+
 Dark section. Each row: number (`01`) in `spark`, process name in `display-m`, one-line capability on the right in `steel-300`, hairline divider. On hover the row lifts: name shifts 8px right, a rounded image preview fades in at the cursor (desktop only).
+
 - 01 Laser cutting: up to 25 mm, TL Series TL4020
 - 02 Shearing: 12 mm thick, 3 m wide, NC "Genius" series
 - 03 Bending: CNC Press Brake Hawk 150-31
@@ -164,15 +172,19 @@ Dark section. Each row: number (`01`) in `spark`, process name in `display-m`, o
 - 05 Fabrication: one-off and production, one roof
 
 ### Feature cards (KRVX "Core Systems")
+
 Three glass cards, `--radius-card`, `bg-white/70` on mist (or `graphite` with `white/10` border on dark), small circular icon chip top-left (the first one filled `spark`, others neutral), title in `display-m`, two-line description. Use for "Machines": TL4020 laser, Hawk 150-31 press brake, Genius NC shear.
 
 ### Product / category cards (Q-Industrial)
+
 Image on top (grayscale, rounded), small gray category label ("Products"), name below, diagonal arrow top-right. Cover: machine parts, covers and panels, hoppers, ladders, tables, gates, jali designs, metal frames.
 
 ### Marquee
+
 Slow horizontal text marquee between hero and next section: `Laser cutting · Shearing · Bending · Welding · Fabrication · Machine parts · Delhi NCR`. Mono label size, `steel-500`. This stands in for Stodio's client logos until real ones exist.
 
 ### Closing CTA + footer (Q-Industrial)
+
 - Full-bleed photo band (grayscale) with `display-xl` "Send the drawing. We return the part." centred or left-aligned, a `spark` primary button "Request a quote" and a secondary link to the email.
 - Footer on `ink`: sitemap columns, address (Tughlakabad Village, New Delhi 110020), **email only**, back-to-top circle button.
 
@@ -252,14 +264,14 @@ const links = [
 ];
 ```
 
-| Route | Page |
-|---|---|
-| `/` | Home |
-| `/services` | Services, including machines and capacity |
-| `/products` | Products |
-| `/about` | Workshop and founder |
-| `/contact` | Request a quote, address, map |
-| `not-found.tsx` | 404 page |
+| Route           | Page                                      |
+| --------------- | ----------------------------------------- |
+| `/`             | Home                                      |
+| `/services`     | Services, including machines and capacity |
+| `/products`     | Products                                  |
+| `/about`        | Workshop and founder                      |
+| `/contact`      | Request a quote, address, map             |
+| `not-found.tsx` | 404 page                                  |
 
 **Out of scope for now:** individual service pages, product category pages, a separate capacity page, privacy page, blog, news. Do not create these routes. Anything that would have lived there is handled by a section on the five pages above, using anchors (`#machines`, `#capacity`, `#categories`). Do not render dead links; if the footer would normally link to Privacy, leave it out.
 

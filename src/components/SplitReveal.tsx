@@ -1,13 +1,23 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function SplitReveal({ children, as: Tag = "h2", className = "" }: { children: string; as?: React.ElementType; className?: string }) {
+export function SplitReveal({
+  children,
+  as: Tag = "h2",
+  className = "",
+}: {
+  children: string;
+  as?: React.ElementType;
+  className?: string;
+}) {
   const ref = useRef<HTMLElement>(null);
   const reduced = usePrefersReducedMotion();
 

@@ -1,8 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { servicesList } from "@/lib/services";
+
 import { productCategories } from "@/lib/products";
+import { servicesList } from "@/lib/services";
 import { site } from "@/lib/site";
 
 type Errors = Partial<Record<"name" | "email" | "need" | "quantity", string>>;
@@ -32,17 +33,20 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
     return values.need;
   }, [values.need]);
 
-  const set = (key: keyof typeof values) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setValues((v) => ({ ...v, [key]: e.target.value }));
-    setErrors((prev) => ({ ...prev, [key]: undefined }));
-  };
+  const set =
+    (key: keyof typeof values) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+      setValues((v) => ({ ...v, [key]: e.target.value }));
+      setErrors((prev) => ({ ...prev, [key]: undefined }));
+    };
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const next: Errors = {};
     if (!values.name.trim()) next.name = "Enter your name.";
     if (!values.email.trim()) next.email = "Enter your email address.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) next.email = "Enter a valid email address.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email))
+      next.email = "Enter a valid email address.";
     if (!values.need) next.need = "Choose what you need.";
     if (!values.quantity.trim()) next.quantity = "Enter a quantity.";
 
@@ -87,15 +91,17 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
     const href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     return (
-      <div className="border border-line bg-white p-6 md:p-8" role="status" aria-live="polite">
-        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-spark-ink">Email ready</p>
-        <h2 className="mt-4 font-display text-3xl leading-tight">Your email app should open.</h2>
-        <p className="mt-4 max-w-[48ch] text-sm text-steel-500">
+      <div className="border-line border bg-white p-6 md:p-8" role="status" aria-live="polite">
+        <p className="text-spark-ink font-mono text-[10px] tracking-[0.14em] uppercase">
+          Email ready
+        </p>
+        <h2 className="font-display mt-4 text-3xl leading-tight">Your email app should open.</h2>
+        <p className="text-steel-500 mt-4 max-w-[48ch] text-sm">
           If it did not open, use the button below. Attach the drawing to the email before sending.
         </p>
         <a
           href={href}
-          className="mt-6 inline-flex h-[46px] items-center gap-3 bg-spark-deep px-5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-spark"
+          className="bg-spark-deep hover:bg-spark mt-6 inline-flex h-[46px] items-center gap-3 px-5 font-mono text-[11px] font-medium tracking-[0.14em] text-white uppercase transition-colors"
         >
           Open the email again
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
@@ -105,7 +111,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
         <button
           type="button"
           onClick={() => setSubmitted(false)}
-          className="mt-4 block text-sm text-steel-500 underline underline-offset-4 hover:text-ink"
+          className="text-steel-500 hover:text-ink mt-4 block text-sm underline underline-offset-4"
         >
           Edit the details
         </button>
@@ -118,7 +124,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
   const labelBase = "mb-2 block font-mono text-[10px] uppercase tracking-[0.12em] text-ink";
 
   return (
-    <form onSubmit={onSubmit} noValidate className="border border-line bg-white p-6 md:p-8">
+    <form onSubmit={onSubmit} noValidate className="border-line border bg-white p-6 md:p-8">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label className={labelBase} htmlFor="field-name">
@@ -134,7 +140,11 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
             placeholder="Your name"
             autoComplete="name"
           />
-          {errors.name && <p id="error-name" className="mt-2 text-xs text-spark-deep">{errors.name}</p>}
+          {errors.name && (
+            <p id="error-name" className="text-spark-deep mt-2 text-xs">
+              {errors.name}
+            </p>
+          )}
         </div>
         <div>
           <label className={labelBase} htmlFor="field-company">
@@ -164,7 +174,11 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
             placeholder="you@company.com"
             autoComplete="email"
           />
-          {errors.email && <p id="error-email" className="mt-2 text-xs text-spark-deep">{errors.email}</p>}
+          {errors.email && (
+            <p id="error-email" className="text-spark-deep mt-2 text-xs">
+              {errors.email}
+            </p>
+          )}
         </div>
         <div className="sm:col-span-2">
           <label className={labelBase} htmlFor="field-need">
@@ -195,13 +209,20 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
                 ))}
               </optgroup>
             </select>
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-steel-500" aria-hidden="true">
+            <span
+              className="text-steel-500 pointer-events-none absolute top-1/2 right-4 -translate-y-1/2"
+              aria-hidden="true"
+            >
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.2" />
               </svg>
             </span>
           </div>
-          {errors.need && <p id="error-need" className="mt-2 text-xs text-spark-deep">{errors.need}</p>}
+          {errors.need && (
+            <p id="error-need" className="text-spark-deep mt-2 text-xs">
+              {errors.need}
+            </p>
+          )}
         </div>
         <div>
           <label className={labelBase} htmlFor="field-material">
@@ -228,7 +249,11 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
             className={`${inputBase} ${errors.quantity ? "border-spark" : "border-line"}`}
             placeholder="e.g. 25 pieces"
           />
-          {errors.quantity && <p id="error-quantity" className="mt-2 text-xs text-spark-deep">{errors.quantity}</p>}
+          {errors.quantity && (
+            <p id="error-quantity" className="text-spark-deep mt-2 text-xs">
+              {errors.quantity}
+            </p>
+          )}
         </div>
         <div className="sm:col-span-2">
           <label className={labelBase} htmlFor="field-message">
@@ -239,19 +264,19 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
             value={values.message}
             onChange={set("message")}
             rows={4}
-            className="w-full border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition-shadow placeholder:text-steel-500 focus:ring-2 focus:ring-spark focus:ring-offset-2"
+            className="border-line text-ink placeholder:text-steel-500 focus:ring-spark w-full border bg-white px-4 py-3 text-sm transition-shadow outline-none focus:ring-2 focus:ring-offset-2"
             placeholder="What the part has to do, finish, deadline, delivery location in Delhi NCR"
           />
         </div>
       </div>
 
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-[34ch] text-xs text-steel-500">
+        <p className="text-steel-500 max-w-[34ch] text-xs">
           This opens your email app. Attach the drawing to the email before sending.
         </p>
         <button
           type="submit"
-          className="inline-flex h-12 items-center justify-center gap-3 bg-spark-deep px-6 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white! transition-colors hover:bg-spark hover:text-ink!"
+          className="bg-spark-deep hover:bg-spark hover:text-ink! inline-flex h-12 items-center justify-center gap-3 px-6 font-mono text-[11px] font-medium tracking-[0.14em] text-white! uppercase transition-colors"
         >
           Send enquiry
           <span className="flex h-6 w-6 items-center justify-center border border-current/30">

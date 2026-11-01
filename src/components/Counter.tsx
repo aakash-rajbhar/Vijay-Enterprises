@@ -1,9 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
-export function Counter({ value, suffix = "", className = "" }: { value: number; suffix?: string; className?: string }) {
+export function Counter({
+  value,
+  suffix = "",
+  className = "",
+}: {
+  value: number;
+  suffix?: string;
+  className?: string;
+}) {
   const [n, setN] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const reduced = usePrefersReducedMotion();

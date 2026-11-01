@@ -1,9 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef } from "react";
+
+import Image from "next/image";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -67,7 +70,7 @@ export function ImageWindow({
     <figure className={className}>
       <div
         ref={ref}
-        className="group relative overflow-hidden border border-white/10 bg-steel-900"
+        className="group bg-steel-900 relative overflow-hidden border border-white/10"
         style={{ aspectRatio: aspect, borderRadius: "var(--radius-window)" }}
       >
         <Image
@@ -76,12 +79,16 @@ export function ImageWindow({
           fill
           priority={priority}
           sizes={sizes}
-          className={`object-cover grayscale contrast-110 transition-transform duration-700 group-hover:scale-[1.03] ${imageClassName}`}
+          className={`object-cover contrast-110 grayscale transition-transform duration-700 group-hover:scale-[1.03] ${imageClassName}`}
         />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_35%,rgba(0,0,0,0.45)_100%)]" />
         {children}
       </div>
-      {caption && <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.12em] text-steel-500">{caption}</figcaption>}
+      {caption && (
+        <figcaption className="text-steel-500 mt-3 font-mono text-[10px] tracking-[0.12em] uppercase">
+          {caption}
+        </figcaption>
+      )}
     </figure>
   );
 }

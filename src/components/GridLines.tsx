@@ -44,37 +44,23 @@ export function GridLines({
   if (variant === "none") return null;
 
   const dark = theme === "dark";
-  const edge = onImage
-    ? "border-white/15"
-    : dark
-      ? "border-white/10"
-      : "border-ink/10";
-  const rule = onImage
-    ? "bg-white/15"
-    : dark
-      ? "bg-white/10"
-      : "bg-ink/10";
-  const crosshairColor = onImage
-    ? "text-white/30"
-    : dark
-      ? "text-white/20"
-      : "text-ink/20";
+  const edge = onImage ? "border-white/15" : dark ? "border-white/10" : "border-ink/10";
+  const rule = onImage ? "bg-white/15" : dark ? "bg-white/10" : "bg-ink/10";
+  const crosshairColor = onImage ? "text-white/30" : dark ? "text-white/20" : "text-ink/20";
 
   return (
     <div
       aria-hidden="true"
       className={`pointer-events-none absolute inset-0 z-[1] overflow-hidden ${className}`}
     >
-      <div
-        className={`relative mx-auto h-full w-full max-w-[1360px] border-x ${edge}`}
-      >
+      <div className={`relative mx-auto h-full w-full max-w-[1360px] border-x ${edge}`}>
         {/* Corner registration crosshairs for symmetrical CAD/architectural framing */}
         {showCrosshairs && (
           <>
-            <Crosshair className={`left-0 top-0 ${crosshairColor}`} />
-            <Crosshair className={`left-full top-0 ${crosshairColor}`} />
-            <Crosshair className={`left-0 top-full ${crosshairColor}`} />
-            <Crosshair className={`left-full top-full ${crosshairColor}`} />
+            <Crosshair className={`top-0 left-0 ${crosshairColor}`} />
+            <Crosshair className={`top-0 left-full ${crosshairColor}`} />
+            <Crosshair className={`top-full left-0 ${crosshairColor}`} />
+            <Crosshair className={`top-full left-full ${crosshairColor}`} />
           </>
         )}
 
@@ -82,15 +68,13 @@ export function GridLines({
         {variant === "split-5-7" && (
           <>
             <span
-              className={`absolute left-[41.6667%] top-0 hidden h-full w-px md:block ${rule}`}
+              className={`absolute top-0 left-[41.6667%] hidden h-full w-px md:block ${rule}`}
             />
             {showCrosshairs && (
               <>
+                <Crosshair className={`top-0 left-[41.6667%] hidden md:block ${crosshairColor}`} />
                 <Crosshair
-                  className={`left-[41.6667%] top-0 hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-[41.6667%] top-full hidden md:block ${crosshairColor}`}
+                  className={`top-full left-[41.6667%] hidden md:block ${crosshairColor}`}
                 />
               </>
             )}
@@ -100,15 +84,13 @@ export function GridLines({
         {variant === "split-4-8" && (
           <>
             <span
-              className={`absolute left-[33.3333%] top-0 hidden h-full w-px md:block ${rule}`}
+              className={`absolute top-0 left-[33.3333%] hidden h-full w-px md:block ${rule}`}
             />
             {showCrosshairs && (
               <>
+                <Crosshair className={`top-0 left-[33.3333%] hidden md:block ${crosshairColor}`} />
                 <Crosshair
-                  className={`left-[33.3333%] top-0 hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-[33.3333%] top-full hidden md:block ${crosshairColor}`}
+                  className={`top-full left-[33.3333%] hidden md:block ${crosshairColor}`}
                 />
               </>
             )}
@@ -118,15 +100,13 @@ export function GridLines({
         {variant === "split-7-5" && (
           <>
             <span
-              className={`absolute left-[58.3333%] top-0 hidden h-full w-px md:block ${rule}`}
+              className={`absolute top-0 left-[58.3333%] hidden h-full w-px md:block ${rule}`}
             />
             {showCrosshairs && (
               <>
+                <Crosshair className={`top-0 left-[58.3333%] hidden md:block ${crosshairColor}`} />
                 <Crosshair
-                  className={`left-[58.3333%] top-0 hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-[58.3333%] top-full hidden md:block ${crosshairColor}`}
+                  className={`top-full left-[58.3333%] hidden md:block ${crosshairColor}`}
                 />
               </>
             )}
@@ -135,17 +115,11 @@ export function GridLines({
 
         {variant === "split-half" && (
           <>
-            <span
-              className={`absolute left-1/2 top-0 hidden h-full w-px md:block ${rule}`}
-            />
+            <span className={`absolute top-0 left-1/2 hidden h-full w-px md:block ${rule}`} />
             {showCrosshairs && (
               <>
-                <Crosshair
-                  className={`left-1/2 top-0 hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-1/2 top-full hidden md:block ${crosshairColor}`}
-                />
+                <Crosshair className={`top-0 left-1/2 hidden md:block ${crosshairColor}`} />
+                <Crosshair className={`top-full left-1/2 hidden md:block ${crosshairColor}`} />
               </>
             )}
           </>
@@ -153,26 +127,14 @@ export function GridLines({
 
         {variant === "cols-3" && (
           <>
-            <span
-              className={`absolute left-1/3 top-0 hidden h-full w-px md:block ${rule}`}
-            />
-            <span
-              className={`absolute left-2/3 top-0 hidden h-full w-px md:block ${rule}`}
-            />
+            <span className={`absolute top-0 left-1/3 hidden h-full w-px md:block ${rule}`} />
+            <span className={`absolute top-0 left-2/3 hidden h-full w-px md:block ${rule}`} />
             {showCrosshairs && (
               <>
-                <Crosshair
-                  className={`left-1/3 top-0 hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-2/3 top-0 hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-1/3 top-full hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-2/3 top-full hidden md:block ${crosshairColor}`}
-                />
+                <Crosshair className={`top-0 left-1/3 hidden md:block ${crosshairColor}`} />
+                <Crosshair className={`top-0 left-2/3 hidden md:block ${crosshairColor}`} />
+                <Crosshair className={`top-full left-1/3 hidden md:block ${crosshairColor}`} />
+                <Crosshair className={`top-full left-2/3 hidden md:block ${crosshairColor}`} />
               </>
             )}
           </>
@@ -180,35 +142,17 @@ export function GridLines({
 
         {variant === "cols-4" && (
           <>
-            <span
-              className={`absolute left-1/4 top-0 hidden h-full w-px md:block ${rule}`}
-            />
-            <span
-              className={`absolute left-1/2 top-0 hidden h-full w-px md:block ${rule}`}
-            />
-            <span
-              className={`absolute left-3/4 top-0 hidden h-full w-px md:block ${rule}`}
-            />
+            <span className={`absolute top-0 left-1/4 hidden h-full w-px md:block ${rule}`} />
+            <span className={`absolute top-0 left-1/2 hidden h-full w-px md:block ${rule}`} />
+            <span className={`absolute top-0 left-3/4 hidden h-full w-px md:block ${rule}`} />
             {showCrosshairs && (
               <>
-                <Crosshair
-                  className={`left-1/4 top-0 hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-1/2 top-0 hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-3/4 top-0 hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-1/4 top-full hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-1/2 top-full hidden md:block ${crosshairColor}`}
-                />
-                <Crosshair
-                  className={`left-3/4 top-full hidden md:block ${crosshairColor}`}
-                />
+                <Crosshair className={`top-0 left-1/4 hidden md:block ${crosshairColor}`} />
+                <Crosshair className={`top-0 left-1/2 hidden md:block ${crosshairColor}`} />
+                <Crosshair className={`top-0 left-3/4 hidden md:block ${crosshairColor}`} />
+                <Crosshair className={`top-full left-1/4 hidden md:block ${crosshairColor}`} />
+                <Crosshair className={`top-full left-1/2 hidden md:block ${crosshairColor}`} />
+                <Crosshair className={`top-full left-3/4 hidden md:block ${crosshairColor}`} />
               </>
             )}
           </>
@@ -217,16 +161,14 @@ export function GridLines({
         {variant === "hero" && (
           <>
             {/* Top architectural datum line aligning with metadata bar */}
-            <div
-              className={`absolute inset-x-0 top-20 hidden h-px md:top-24 md:block ${rule}`}
-            />
+            <div className={`absolute inset-x-0 top-20 hidden h-px md:top-24 md:block ${rule}`} />
             {showCrosshairs && (
               <>
                 <Crosshair
-                  className={`left-0 top-20 hidden md:top-24 md:block ${crosshairColor}`}
+                  className={`top-20 left-0 hidden md:top-24 md:block ${crosshairColor}`}
                 />
                 <Crosshair
-                  className={`left-full top-20 hidden md:top-24 md:block ${crosshairColor}`}
+                  className={`top-20 left-full hidden md:top-24 md:block ${crosshairColor}`}
                 />
               </>
             )}
@@ -243,4 +185,3 @@ export function GridLines({
     </div>
   );
 }
-

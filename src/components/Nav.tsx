@@ -1,11 +1,15 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+
 import { links } from "@/lib/links";
 import { site } from "@/lib/site";
+
 import { GridLines } from "@/components/GridLines";
+
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const menuLinks = [{ href: "/", label: "Home" }, ...links];
@@ -31,9 +35,7 @@ export function Nav() {
       lastY = y;
 
       const probe = 48;
-      const sections = Array.from(
-        document.querySelectorAll<HTMLElement>("[data-nav-theme]"),
-      );
+      const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-nav-theme]"));
       const active = sections.find((el) => {
         const r = el.getBoundingClientRect();
         return r.top <= probe && r.bottom > probe;
@@ -61,10 +63,10 @@ export function Nav() {
           setOpen(false);
           if (restoreFocus) triggerRef.current?.focus();
         },
-        reduced ? 0 : 480,
+        reduced ? 0 : 480
       );
     },
-    [reduced],
+    [reduced]
   );
 
   useEffect(() => {
@@ -79,8 +81,8 @@ export function Nav() {
       if (e.key !== "Tab" || !menuRef.current) return;
       const focusables = Array.from(
         menuRef.current.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
-        ),
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
       ).filter((el) => el.offsetParent !== null);
       if (focusables.length === 0) return;
       const first = focusables[0];
@@ -116,8 +118,7 @@ export function Nav() {
   };
 
   const onQuoteLeave = () => {
-    if (quoteRef.current)
-      quoteRef.current.style.transform = "translate(0px, 0px)";
+    if (quoteRef.current) quoteRef.current.style.transform = "translate(0px, 0px)";
   };
 
   const light = theme === "light";
@@ -130,22 +131,17 @@ export function Nav() {
         <div className="nav-drop">
           <nav
             className={`border-b backdrop-blur-xl transition-colors duration-500 ${
-              light
-                ? "text-ink border-ink/10 bg-white/92"
-                : "border-white/12 bg-ink/88 text-white"
+              light ? "text-ink border-ink/10 bg-white/92" : "bg-ink/88 border-white/12 text-white"
             }`}
           >
-            <div className="mx-auto grid h-14 w-full max-w-[1360px] grid-cols-[1fr_auto] items-stretch border-x border-line md:h-16 md:grid-cols-[auto_1fr_auto]">
+            <div className="border-line mx-auto grid h-14 w-full max-w-[1360px] grid-cols-[1fr_auto] items-stretch border-x md:h-16 md:grid-cols-[auto_1fr_auto]">
               <Link
                 href="/"
-                className="flex items-center gap-2.5 border-r border-line px-4 md:px-5"
+                className="border-line flex items-center gap-2.5 border-r px-4 md:px-5"
                 aria-label="Vijay Enterprises home"
               >
                 <span className="relative flex h-2 w-2 items-center justify-center">
-                  <span
-                    className="bg-spark absolute inset-0"
-                    aria-hidden="true"
-                  />
+                  <span className="bg-spark absolute inset-0" aria-hidden="true" />
                   <span
                     className={`absolute -inset-[3px] border ${light ? "border-ink/25" : "border-white/35"}`}
                     aria-hidden="true"
@@ -157,19 +153,18 @@ export function Nav() {
               </Link>
               <div className="hidden items-stretch transition-colors duration-500 md:flex">
                 {links.map((l) => {
-                  const active =
-                    pathname === l.href || pathname.startsWith(`${l.href}/`);
+                  const active = pathname === l.href || pathname.startsWith(`${l.href}/`);
                   return (
                     <Link
                       key={l.href}
                       href={l.href}
                       data-active={active}
                       aria-current={active ? "page" : undefined}
-                      className={`flex h-full items-center border-r border-line px-4 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors duration-200 ${
+                      className={`border-line flex h-full items-center border-r px-4 font-mono text-[11px] tracking-[0.14em] uppercase transition-colors duration-200 ${
                         active
                           ? light
                             ? "bg-ink text-white!"
-                            : "bg-white text-ink!"
+                            : "text-ink! bg-white"
                           : light
                             ? "text-ink/65 hover:bg-ink/5 hover:text-ink"
                             : "text-white/65 hover:bg-white/5 hover:text-white"
@@ -187,36 +182,24 @@ export function Nav() {
                   data-cursor-enquire
                   onMouseMove={onQuoteMove}
                   onMouseLeave={onQuoteLeave}
-                  className={`group hidden h-full items-center gap-2.5 border-l border-line px-4 font-mono text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-200 will-change-transform md:inline-flex ${
+                  className={`group border-line hidden h-full items-center gap-2.5 border-l px-4 font-mono text-[11px] font-medium tracking-[0.14em] uppercase transition-colors duration-200 will-change-transform md:inline-flex ${
                     light
-                      ? "bg-ink text-white! hover:bg-spark hover:text-ink!"
-                      : "bg-spark text-ink! hover:bg-white hover:text-ink!"
+                      ? "bg-ink hover:bg-spark hover:text-ink! text-white!"
+                      : "bg-spark text-ink! hover:text-ink! hover:bg-white"
                   }`}
                 >
                   Request a quote
                   <span className="flex h-5 w-5 items-center justify-center border border-current/30 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    <svg
-                      width="8"
-                      height="8"
-                      viewBox="0 0 10 10"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M1 9L9 1M9 1H1M9 1V9"
-                        stroke="currentColor"
-                        strokeWidth="1.2"
-                      />
+                    <svg width="8" height="8" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                      <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
                     </svg>
                   </span>
                 </Link>
                 <button
                   ref={triggerRef}
                   onClick={() => setOpen(true)}
-                  className={`group flex h-full w-14 items-center justify-center border-l border-line transition-colors duration-300 md:hidden ${
-                    light
-                      ? "text-ink hover:bg-ink/5"
-                      : "text-white hover:bg-white/5"
+                  className={`group border-line flex h-full w-14 items-center justify-center border-l transition-colors duration-300 md:hidden ${
+                    light ? "text-ink hover:bg-ink/5" : "text-white hover:bg-white/5"
                   }`}
                   aria-expanded={open}
                   aria-controls="mobile-menu"
@@ -251,18 +234,15 @@ export function Nav() {
         >
           <GridLines theme="dark" variant="frame" showCrosshairs={false} />
           <div className="relative z-[2] flex h-full flex-col">
-            <div className="border-b border-line">
-              <div className="mx-auto flex h-14 w-full max-w-[1360px] items-stretch justify-between border-x border-line">
+            <div className="border-line border-b">
+              <div className="border-line mx-auto flex h-14 w-full max-w-[1360px] items-stretch justify-between border-x">
                 <Link
                   href="/"
                   onClick={() => closeMenu()}
                   className="flex items-center gap-2.5 px-4 text-sm md:px-5"
                 >
                   <span className="relative flex h-2 w-2 items-center justify-center">
-                    <span
-                      className="bg-spark absolute inset-0"
-                      aria-hidden="true"
-                    />
+                    <span className="bg-spark absolute inset-0" aria-hidden="true" />
                     <span
                       className="absolute -inset-[3px] border border-white/35"
                       aria-hidden="true"
@@ -275,7 +255,7 @@ export function Nav() {
                 <button
                   ref={closeRef}
                   onClick={() => closeMenu(true)}
-                  className="group flex h-full w-14 items-center justify-center border-l border-line transition-colors duration-300 hover:bg-white/5"
+                  className="group border-line flex h-full w-14 items-center justify-center border-l transition-colors duration-300 hover:bg-white/5"
                   aria-label="Close menu"
                 >
                   <span className="relative flex h-4 w-4 items-center justify-center">
@@ -293,14 +273,14 @@ export function Nav() {
                 </button>
               </div>
             </div>
-            <div className="mx-auto flex w-full max-w-[1360px] flex-1 flex-col justify-center border-x border-line">
+            <div className="border-line mx-auto flex w-full max-w-[1360px] flex-1 flex-col justify-center border-x">
               <nav className="flex flex-col">
                 {menuLinks.map((l, i) => (
                   <Link
                     key={l.href}
                     href={l.href}
                     onClick={() => closeMenu()}
-                    className="group flex items-baseline gap-5 border-b border-line px-4 py-2 transition-colors hover:bg-white/5 md:gap-7 md:px-6"
+                    className="group border-line flex items-baseline gap-5 border-b px-4 py-2 transition-colors hover:bg-white/5 md:gap-7 md:px-6"
                   >
                     <span className="text-steel-500 w-7 shrink-0 font-mono text-xs">
                       {i.toString().padStart(2, "0")}
@@ -311,9 +291,7 @@ export function Nav() {
                           entered ? "translate-y-0" : "translate-y-full"
                         }`}
                         style={{
-                          transitionDelay: entered
-                            ? `${120 + i * 65}ms`
-                            : "0ms",
+                          transitionDelay: entered ? `${120 + i * 65}ms` : "0ms",
                         }}
                       >
                         {l.label}
@@ -323,14 +301,11 @@ export function Nav() {
                 ))}
               </nav>
             </div>
-            <div className="mx-auto flex w-full max-w-[1360px] items-center justify-between border-x border-t border-line px-4 py-5 md:px-6">
-              <a
-                href={`mailto:${site.email}`}
-                className="text-steel-300 text-sm hover:text-white"
-              >
+            <div className="border-line mx-auto flex w-full max-w-[1360px] items-center justify-between border-x border-t px-4 py-5 md:px-6">
+              <a href={`mailto:${site.email}`} className="text-steel-300 text-sm hover:text-white">
                 {site.email}
               </a>
-              <span className="text-steel-500 font-mono text-[11px] uppercase tracking-[0.14em]">
+              <span className="text-steel-500 font-mono text-[11px] tracking-[0.14em] uppercase">
                 Delhi NCR
               </span>
             </div>

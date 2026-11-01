@@ -48,12 +48,7 @@ export function StageSnapshot({ stage }: { stage: number }) {
 
       <g opacity={is(6) ? 0.4 : 1}>
         <rect x="36" y="36" width="328" height="168" rx="10" fill={`url(#${sheetId})`} />
-        <path
-          d="M46 36H364"
-          stroke="var(--color-white)"
-          strokeOpacity="0.12"
-          strokeWidth="1"
-        />
+        <path d="M46 36H364" stroke="var(--color-white)" strokeOpacity="0.12" strokeWidth="1" />
         {is(3) && (
           <g>
             <rect x="336" y="36" width="28" height="168" rx="0" fill={`url(#${sheetId})`} />
@@ -76,14 +71,7 @@ export function StageSnapshot({ stage }: { stage: number }) {
       </g>
 
       {is(6) && (
-        <ellipse
-          cx="200"
-          cy="120"
-          rx="130"
-          ry="80"
-          fill="var(--color-white)"
-          opacity="0.08"
-        />
+        <ellipse cx="200" cy="120" rx="130" ry="80" fill="var(--color-white)" opacity="0.08" />
       )}
 
       <g transform={is(6) ? "translate(0 -6)" : undefined}>
@@ -106,16 +94,8 @@ export function StageSnapshot({ stage }: { stage: number }) {
             strokeWidth={is(2) ? 1.6 : 1.2}
             strokeDasharray={is(2) ? undefined : is(1) ? "5 5" : undefined}
           />
-          {is(4) && (
-            <path
-              d="M254 68H262V172H254Z"
-              fill="var(--color-ink)"
-              opacity="0.9"
-            />
-          )}
-          {is(5) && (
-            <circle cx="275" cy="120" r="2.4" fill="var(--color-spark)" />
-          )}
+          {is(4) && <path d="M254 68H262V172H254Z" fill="var(--color-ink)" opacity="0.9" />}
+          {is(5) && <circle cx="275" cy="120" r="2.4" fill="var(--color-spark)" />}
         </g>
 
         <path
@@ -139,17 +119,10 @@ export function StageSnapshot({ stage }: { stage: number }) {
           <circle cx="200" cy="148" r="5" />
         </g>
 
-        {is(2) && !is(4) && (
-          <circle cx="254" cy="68" r="2.2" fill="var(--color-spark)" />
-        )}
+        {is(2) && !is(4) && <circle cx="254" cy="68" r="2.2" fill="var(--color-spark)" />}
 
         {is(3) && (
-          <path
-            d="M254 68H290"
-            stroke="var(--color-spark)"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
+          <path d="M254 68H290" stroke="var(--color-spark)" strokeWidth="2" strokeLinecap="round" />
         )}
 
         {is(5) && (

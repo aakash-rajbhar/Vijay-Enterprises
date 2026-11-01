@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 export function Marquee() {
@@ -39,20 +40,20 @@ export function Marquee() {
     };
   }, [reduced]);
 
-  const items = "Laser cutting · Shearing · Bending · Welding · Fabrication · Machine parts · Delhi NCR · ";
+  const items =
+    "Laser cutting · Shearing · Bending · Welding · Fabrication · Machine parts · Delhi NCR · ";
 
   return (
-    <div className="relative overflow-hidden border-y border-line bg-ink py-4">
+    <div className="border-line bg-ink relative overflow-hidden border-y py-4">
       <div
         ref={ref}
-        className="flex whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.18em] text-steel-500"
+        className="text-steel-500 flex font-mono text-[11px] tracking-[0.18em] whitespace-nowrap uppercase"
         aria-hidden="true"
       >
         <span>{items.repeat(12)}</span>
       </div>
       <span className="sr-only">
-        Laser cutting, shearing, bending, welding, fabrication, machine parts,
-        Delhi NCR
+        Laser cutting, shearing, bending, welding, fabrication, machine parts, Delhi NCR
       </span>
     </div>
   );

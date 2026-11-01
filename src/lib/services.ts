@@ -12,7 +12,7 @@ export const servicesList = [
     number: "02",
     title: "Sheet shearing",
     description: "Straight cuts for blanks and panels.",
-    spec: "12 mm thick · 3 m wide · NC \"Genius\" series",
+    spec: '12 mm thick · 3 m wide · NC "Genius" series',
     detail:
       "Straight cuts for blanks and panels on the NC “Genius” series. The confirmed limit is up to 12 mm thick and 3 m wide. Include the finished size and quantity on the drawing.",
     image: "/images/machines/shearing-machine.webp",
@@ -66,7 +66,7 @@ export const servicesList = [
 
 export const capacityTable = [
   { process: "Laser cutting", machine: "TL Series TL4020", capacity: "Up to 25 mm" },
-  { process: "Shearing", machine: "NC \"Genius\" series", capacity: "12 mm thick · 3 m wide" },
+  { process: "Shearing", machine: 'NC "Genius" series', capacity: "12 mm thick · 3 m wide" },
   { process: "Bending", machine: "CNC Press Brake Hawk 150-31", capacity: "As per drawing" },
   { process: "Welding", machine: "MIG · TIG", capacity: "As per drawing" },
   { process: "Fabrication", machine: "In-house", capacity: "As per drawing" },

@@ -6,7 +6,7 @@ export const machines = [
     image: "/images/machines/laser-cutting-machine.webp",
   },
   {
-    name: "NC Shearing \"Genius\" series",
+    name: 'NC Shearing "Genius" series',
     role: "Shearing",
     desc: "Straight cuts up to 12 mm thick, 3 m wide.",
     image: "/images/machines/shearing-machine.webp",

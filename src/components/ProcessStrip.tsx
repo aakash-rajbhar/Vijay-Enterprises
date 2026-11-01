@@ -1,13 +1,17 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
+
 import Link from "next/link";
-import { useEffect, useRef, useState, useCallback } from "react";
+
+import { type ProcessStage, processStages } from "@/lib/process";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
-import { processStages, type ProcessStage } from "@/lib/process";
+
 import { ProcessIllustration3D } from "@/components/process/ProcessIllustration3D";
 import { StageSnapshot } from "@/components/process/StageSnapshot";
+
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,16 +35,13 @@ const STATIC_PARTICLES = [
 /* ── Floating particles layer ─────────────────────────── */
 function FloatingParticles({ progress }: { progress: number }) {
   return (
-    <div
-      className="pointer-events-none absolute inset-0 overflow-hidden"
-      aria-hidden="true"
-    >
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
       {STATIC_PARTICLES.map((p, i) => {
         const drift = ((progress * p.speed + p.delay) % 1) * 100;
         return (
           <div
             key={i}
-            className="absolute border bg-spark/20"
+            className="bg-spark/20 absolute border"
             style={{
               left: `${p.x}%`,
               top: `${p.y}%`,
@@ -82,8 +83,8 @@ function StepContent({
         pointerEvents: isActive ? "auto" : "none",
       }}
     >
-      <div className="flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-steel-500">
-        <span className="h-1.5 w-1.5 bg-spark" />
+      <div className="text-steel-500 flex items-center gap-2.5 font-mono text-[10px] tracking-[0.18em] uppercase">
+        <span className="bg-spark h-1.5 w-1.5" />
         <span>The process</span>
       </div>
 
@@ -91,14 +92,14 @@ function StepContent({
         {stage.number}
       </div>
 
-      <h3 className="mt-6 font-display text-[clamp(2rem,3.4vw,3.25rem)] leading-[0.95] tracking-[-0.04em] text-white">
+      <h3 className="font-display mt-6 text-[clamp(2rem,3.4vw,3.25rem)] leading-[0.95] tracking-[-0.04em] text-white">
         {stage.label}
       </h3>
-      <p className="mt-4 max-w-[36ch] text-base leading-relaxed text-steel-300">
+      <p className="text-steel-300 mt-4 max-w-[36ch] text-base leading-relaxed">
         {stage.description}
       </p>
       {stage.fact && (
-        <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.14em] text-steel-500">
+        <p className="text-steel-500 mt-3 font-mono text-[11px] tracking-[0.14em] uppercase">
           {stage.fact}
         </p>
       )}
@@ -107,27 +108,18 @@ function StepContent({
 }
 
 /* ── Horizontal scroll progress bar ─────────────────── */
-function ScrollProgressBar({
-  active,
-  progress,
-}: {
-  active: number;
-  progress: number;
-}) {
+function ScrollProgressBar({ active, progress }: { active: number; progress: number }) {
   return (
-    <div className="absolute bottom-8 left-8 right-8">
-      <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-steel-500">
+    <div className="absolute right-8 bottom-8 left-8">
+      <div className="text-steel-500 flex items-center justify-between font-mono text-[10px] tracking-[0.16em] uppercase">
         <span>Stage</span>
         <span>{stages[active].number} / 07</span>
       </div>
       <div className="mt-3 grid grid-cols-7 gap-1.5">
         {stages.map((s, i) => (
-          <div
-            key={s.number}
-            className="relative h-[2px] overflow-hidden bg-white/10"
-          >
+          <div key={s.number} className="relative h-[2px] overflow-hidden bg-white/10">
             <div
-              className="h-full origin-left bg-spark"
+              className="bg-spark h-full origin-left"
               style={{
                 transform: `scaleX(${i < active ? 1 : i === active ? Math.min(1, (progress - i / stages.length) / (1 / stages.length)) : 0})`,
                 transition: "transform 200ms cubic-bezier(0.22, 1, 0.36, 1)",
@@ -141,15 +133,9 @@ function ScrollProgressBar({
 }
 
 /* ── Stage transition indicator dots ────────────────── */
-function StageIndicatorDots({
-  active,
-  total,
-}: {
-  active: number;
-  total: number;
-}) {
+function StageIndicatorDots({ active, total }: { active: number; total: number }) {
   return (
-    <div className="absolute right-8 top-1/2 flex -translate-y-1/2 flex-col gap-3">
+    <div className="absolute top-1/2 right-8 flex -translate-y-1/2 flex-col gap-3">
       {Array.from({ length: total }).map((_, i) => (
         <button
           key={i}
@@ -158,7 +144,7 @@ function StageIndicatorDots({
           tabIndex={-1}
         >
           <span
-            className="absolute h-full w-full border border transition-all duration-500"
+            className="absolute h-full w-full border transition-all duration-500"
             style={{
               borderColor:
                 i === active
@@ -217,10 +203,8 @@ export function ProcessStrip() {
 
     mm.add(
       {
-        desktop:
-          "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
-        mobile:
-          "(max-width: 1023px) and (prefers-reduced-motion: no-preference)",
+        desktop: "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
+        mobile: "(max-width: 1023px) and (prefers-reduced-motion: no-preference)",
         reduced: "(prefers-reduced-motion: reduce)",
       },
       (context) => {
@@ -236,10 +220,7 @@ export function ProcessStrip() {
             onUpdate: (self) => {
               const p = self.progress;
               setProgress(p);
-              const nextActive = Math.min(
-                stages.length - 1,
-                Math.floor(p * stages.length),
-              );
+              const nextActive = Math.min(stages.length - 1, Math.floor(p * stages.length));
               handleActiveChange(nextActive);
             },
           });
@@ -248,10 +229,7 @@ export function ProcessStrip() {
         }
 
         if (context.conditions?.mobile && rootRef.current) {
-          const cards = gsap.utils.toArray<HTMLElement>(
-            "[data-stage-card]",
-            rootRef.current,
-          );
+          const cards = gsap.utils.toArray<HTMLElement>("[data-stage-card]", rootRef.current);
           gsap.set(cards, { opacity: 0, y: 26 });
           ScrollTrigger.batch(cards, {
             start: "top 88%",
@@ -268,7 +246,7 @@ export function ProcessStrip() {
             },
           });
         }
-      },
+      }
     );
 
     const onFonts = () => ScrollTrigger.refresh();
@@ -299,8 +277,7 @@ export function ProcessStrip() {
       </ol>
 
       <div className="sr-only" aria-live="polite" aria-atomic="true">
-        Stage {active + 1} of {stages.length}: {activeStage.label}.{" "}
-        {activeStage.description}
+        Stage {active + 1} of {stages.length}: {activeStage.label}. {activeStage.description}
         {activeStage.fact ? ` ${activeStage.fact}.` : "."}
       </div>
 
@@ -310,10 +287,7 @@ export function ProcessStrip() {
           {/* Tall scroll container — the scroll "track" */}
           <div style={{ height: "500vh" }}>
             {/* Sticky viewport — stays fixed while user scrolls */}
-            <div
-              ref={stickyRef}
-              className="sticky top-0 h-screen overflow-hidden"
-            >
+            <div ref={stickyRef} className="sticky top-0 h-screen overflow-hidden">
               {/* Background gradient that subtly shifts with progress */}
               <div
                 className="absolute inset-0"
@@ -337,9 +311,7 @@ export function ProcessStrip() {
                       key={s.id}
                       stage={s}
                       isActive={i === active}
-                      direction={
-                        i === active ? direction : i < active ? "up" : "down"
-                      }
+                      direction={i === active ? direction : i < active ? "up" : "down"}
                     />
                   ))}
                 </div>
@@ -356,24 +328,20 @@ export function ProcessStrip() {
                       boxShadow: `0 ${20 + progress * 10}px ${40 + progress * 20}px rgba(0,0,0,${0.3 + progress * 0.2}), inset 0 1px 0 rgba(255,255,255,0.05)`,
                     }}
                   >
-                    <ProcessIllustration3D
-                      progress={progress}
-                      activeStage={active}
-                    />
+                    <ProcessIllustration3D progress={progress} activeStage={active} />
 
                     {/* Top-left meta label */}
-                    <div className="pointer-events-none absolute left-5 top-5 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-steel-500">
+                    <div className="text-steel-500 pointer-events-none absolute top-5 left-5 flex items-center gap-2 font-mono text-[10px] tracking-[0.16em] uppercase">
                       <span>Flat pattern</span>
-                      <span className="h-1 w-1 border bg-steel-500" />
+                      <span className="bg-steel-500 h-1 w-1 border" />
                       <span>Finished part</span>
                     </div>
 
                     {/* Bottom-right scroll hint */}
                     <div
-                      className="absolute bottom-5 right-5 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-steel-500"
+                      className="text-steel-500 absolute right-5 bottom-5 flex items-center gap-2 font-mono text-[10px] tracking-[0.16em] uppercase"
                       style={{
-                        opacity:
-                          progress < 0.05 ? 1 : Math.max(0, 1 - progress * 5),
+                        opacity: progress < 0.05 ? 1 : Math.max(0, 1 - progress * 5),
                         transition: "opacity 0.3s ease",
                       }}
                     >
@@ -403,18 +371,8 @@ export function ProcessStrip() {
                 >
                   Request a quote
                   <span className="flex h-8 w-8 items-center justify-center border border-white/25 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                    <svg
-                      width="10"
-                      height="10"
-                      viewBox="0 0 10 10"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M1 9L9 1M9 1H1M9 1V9"
-                        stroke="currentColor"
-                        strokeWidth="1.2"
-                      />
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                      <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
                     </svg>
                   </span>
                 </Link>
@@ -434,23 +392,23 @@ export function ProcessStrip() {
                   className="grid gap-6 border-b border-white/10 py-9 sm:grid-cols-[1fr_1.15fr] sm:items-center"
                 >
                   <div>
-                    <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-steel-500">
-                      <span className="h-1.5 w-1.5 bg-spark" />
+                    <div className="text-steel-500 flex items-center gap-2 font-mono text-[10px] tracking-[0.16em] uppercase">
+                      <span className="bg-spark h-1.5 w-1.5" />
                       <span>{s.number} / 07</span>
                     </div>
-                    <h3 className="mt-4 font-display text-[clamp(2rem,6vw,3rem)] leading-[0.95] tracking-[-0.04em] text-white">
+                    <h3 className="font-display mt-4 text-[clamp(2rem,6vw,3rem)] leading-[0.95] tracking-[-0.04em] text-white">
                       {s.label}
                     </h3>
-                    <p className="mt-4 max-w-[36ch] text-base leading-relaxed text-steel-300">
+                    <p className="text-steel-300 mt-4 max-w-[36ch] text-base leading-relaxed">
                       {s.description}
                     </p>
                     {s.fact ? (
-                      <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.14em] text-steel-500">
+                      <p className="text-steel-500 mt-3 font-mono text-[11px] tracking-[0.14em] uppercase">
                         {s.fact}
                       </p>
                     ) : null}
                   </div>
-                  <div className="relative aspect-[16/10] overflow-hidden border border-white/10 bg-graphite">
+                  <div className="bg-graphite relative aspect-[16/10] overflow-hidden border border-white/10">
                     <div data-snapshot className="h-full w-full">
                       <StageSnapshot stage={i} />
                     </div>
@@ -466,18 +424,8 @@ export function ProcessStrip() {
               >
                 Request a quote
                 <span className="flex h-8 w-8 items-center justify-center border border-white/25 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M1 9L9 1M9 1H1M9 1V9"
-                      stroke="currentColor"
-                      strokeWidth="1.2"
-                    />
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                    <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
                   </svg>
                 </span>
               </Link>
@@ -490,20 +438,19 @@ export function ProcessStrip() {
       <div className="hidden motion-reduce:block">
         <div className="mx-auto max-w-[1360px] px-5 md:px-8">
           <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div className="relative aspect-[16/10] overflow-hidden border border-white/10 bg-graphite">
+            <div className="bg-graphite relative aspect-[16/10] overflow-hidden border border-white/10">
               <StageSnapshot stage={6} />
             </div>
             <div>
-              <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-steel-500">
-                <span className="h-1.5 w-1.5 bg-spark" />
+              <div className="text-steel-500 flex items-center gap-2 font-mono text-[10px] tracking-[0.16em] uppercase">
+                <span className="bg-spark h-1.5 w-1.5" />
                 <span>From sheet to part</span>
               </div>
-              <h3 className="mt-4 font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[0.95] tracking-[-0.04em] text-white">
+              <h3 className="font-display mt-4 text-[clamp(2.25rem,5vw,3.75rem)] leading-[0.95] tracking-[-0.04em] text-white">
                 Seven steps under one roof
               </h3>
-              <p className="mt-4 max-w-[44ch] text-base leading-relaxed text-steel-300">
-                From drawing to finished part, each step stays with one
-                supplier.
+              <p className="text-steel-300 mt-4 max-w-[44ch] text-base leading-relaxed">
+                From drawing to finished part, each step stays with one supplier.
               </p>
               <ol className="mt-8 grid gap-5">
                 {stages.map((s) => (
@@ -511,18 +458,12 @@ export function ProcessStrip() {
                     key={s.id}
                     className="grid gap-2 border-t border-white/10 pt-5 sm:grid-cols-[4rem_1fr] sm:items-start"
                   >
-                    <span className="font-mono text-sm text-steel-500">
-                      {s.number}
-                    </span>
+                    <span className="text-steel-500 font-mono text-sm">{s.number}</span>
                     <div>
-                      <p className="font-display text-xl leading-tight text-white">
-                        {s.label}
-                      </p>
-                      <p className="mt-1 text-sm leading-relaxed text-steel-300">
-                        {s.description}
-                      </p>
+                      <p className="font-display text-xl leading-tight text-white">{s.label}</p>
+                      <p className="text-steel-300 mt-1 text-sm leading-relaxed">{s.description}</p>
                       {s.fact ? (
-                        <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-steel-500">
+                        <p className="text-steel-500 mt-2 font-mono text-[11px] tracking-[0.14em] uppercase">
                           {s.fact}
                         </p>
                       ) : null}
@@ -538,18 +479,8 @@ export function ProcessStrip() {
                 >
                   Request a quote
                   <span className="flex h-8 w-8 items-center justify-center border border-white/25 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                    <svg
-                      width="10"
-                      height="10"
-                      viewBox="0 0 10 10"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M1 9L9 1M9 1H1M9 1V9"
-                        stroke="currentColor"
-                        strokeWidth="1.2"
-                      />
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                      <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
                     </svg>
                   </span>
                 </Link>

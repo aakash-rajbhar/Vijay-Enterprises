@@ -1,21 +1,23 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Hero } from "@/components/Hero";
-import { Marquee } from "@/components/Marquee";
-import { Section, Container } from "@/components/Section";
-import { Eyebrow } from "@/components/Eyebrow";
-import { ScrollWords } from "@/components/ScrollWords";
-import { MaskedLines } from "@/components/MaskedLines";
-import { StatRow } from "@/components/StatRow";
-import { NumberedRow } from "@/components/NumberedRow";
-import { GlassCard } from "@/components/GlassCard";
-import { ProcessScroll } from "@/components/ProcessScroll";
-import { ClosingCTA } from "@/components/ClosingCTA";
-import { servicesList } from "@/lib/services";
+
 import { machines } from "@/lib/machines";
 import { processStages } from "@/lib/process";
+import { servicesList } from "@/lib/services";
+import type { Metadata } from "next";
+
+import { ClosingCTA } from "@/components/ClosingCTA";
+import { Eyebrow } from "@/components/Eyebrow";
+import { GlassCard } from "@/components/GlassCard";
+import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
+import { MaskedLines } from "@/components/MaskedLines";
+import { NumberedRow } from "@/components/NumberedRow";
+import { ProcessScroll } from "@/components/ProcessScroll";
 import { ProductGrid } from "@/components/ProductGrid";
+import { ScrollWords } from "@/components/ScrollWords";
+import { Container, Section } from "@/components/Section";
+import { StatRow } from "@/components/StatRow";
 
 export const metadata: Metadata = {
   title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
@@ -39,30 +41,17 @@ export default function HomePage() {
         <Container>
           <Eyebrow>Who we are</Eyebrow>
           <ScrollWords
-            className="mt-8 max-w-[24ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.02] tracking-[-0.04em] text-balance"
+            className="font-display mt-8 max-w-[24ch] text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.02] tracking-[-0.04em] text-balance"
             faded="so one supplier answers for the part."
           >
             We cut, bend, shear and weld under one roof,
           </ScrollWords>
           <div className="mt-10 flex flex-wrap items-center gap-6">
-            <Link
-              href="/about"
-              className="group inline-flex items-center gap-3 text-sm"
-            >
+            <Link href="/about" className="group inline-flex items-center gap-3 text-sm">
               About the workshop
-              <span className="flex h-8 w-8 items-center justify-center border border-ink/20 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M1 9L9 1M9 1H1M9 1V9"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                  />
+              <span className="border-ink/20 flex h-8 w-8 items-center justify-center border transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
               </span>
             </Link>
@@ -70,22 +59,21 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section theme="dark" className="pb-0 pt-[clamp(80px,12vw,180px)]">
+      <Section theme="dark" className="pt-[clamp(80px,12vw,180px)] pb-0">
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <Eyebrow>The process</Eyebrow>
-              <h2 className="mt-6 max-w-[18ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+              <h2 className="font-display mt-6 max-w-[18ch] text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
                 <MaskedLines lines={["From sheet to part."]} />
               </h2>
-              <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-steel-300">
-                Seven steps under one roof. Follow the sheet from layout to
-                finished part.
+              <p className="text-steel-300 mt-5 max-w-[52ch] text-base leading-relaxed">
+                Seven steps under one roof. Follow the sheet from layout to finished part.
               </p>
             </div>
             <Link
               href="/services"
-              className="hidden text-sm text-steel-300 transition-colors hover:text-white md:inline"
+              className="text-steel-300 hidden text-sm transition-colors hover:text-white md:inline"
             >
               View all services
             </Link>
@@ -135,13 +123,13 @@ export default function HomePage() {
           <div className="flex items-end justify-between gap-6">
             <div>
               <Eyebrow>Services</Eyebrow>
-              <h2 className="mt-6 max-w-[16ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+              <h2 className="font-display mt-6 max-w-[16ch] text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
                 <MaskedLines lines={["The work, in order."]} />
               </h2>
             </div>
             <Link
               href="/services"
-              className="hidden text-sm text-steel-300 hover:text-white md:inline"
+              className="text-steel-300 hidden text-sm hover:text-white md:inline"
             >
               All services
             </Link>
@@ -166,23 +154,23 @@ export default function HomePage() {
           <div className="flex items-end justify-between gap-6">
             <div>
               <Eyebrow>Machines</Eyebrow>
-              <h2 className="mt-6 max-w-[16ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+              <h2 className="font-display mt-6 max-w-[16ch] text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
                 <MaskedLines lines={["Machines and capacity."]} />
               </h2>
             </div>
             <Link
               href="/services#machines"
-              className="hidden text-sm text-steel-500 hover:text-ink md:inline"
+              className="text-steel-500 hover:text-ink hidden text-sm md:inline"
             >
               Machine details
             </Link>
           </div>
-          <div className="mt-10 grid gap-px border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
+          <div className="border-line bg-line mt-10 grid gap-px border md:grid-cols-2 xl:grid-cols-4">
             {machines.map((m, i) => (
               <GlassCard key={m.name}>
                 <div
                   data-image-reveal
-                  className="relative aspect-[4/3] overflow-hidden bg-steel-900"
+                  className="bg-steel-900 relative aspect-[4/3] overflow-hidden"
                 >
                   <Image
                     src={m.image}
@@ -194,17 +182,15 @@ export default function HomePage() {
                   />
                 </div>
                 <div
-                  className={`mt-6 flex h-8 w-8 items-center justify-center ${i === 0 ? "bg-spark text-ink" : "border border-ink/15 text-ink"}`}
+                  className={`mt-6 flex h-8 w-8 items-center justify-center ${i === 0 ? "bg-spark text-ink" : "border-ink/15 text-ink border"}`}
                 >
                   <span className="font-mono text-[10px]">0{i + 1}</span>
                 </div>
-                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">
+                <p className="text-steel-500 mt-4 font-mono text-[10px] tracking-[0.14em] uppercase">
                   {m.role}
                 </p>
-                <h3 className="mt-2 font-display text-2xl leading-tight">
-                  {m.name}
-                </h3>
-                <p className="mt-2 text-sm text-steel-500">{m.desc}</p>
+                <h3 className="font-display mt-2 text-2xl leading-tight">{m.name}</h3>
+                <p className="text-steel-500 mt-2 text-sm">{m.desc}</p>
               </GlassCard>
             ))}
           </div>
@@ -216,13 +202,13 @@ export default function HomePage() {
           <div className="flex items-end justify-between gap-6">
             <div>
               <Eyebrow>Products</Eyebrow>
-              <h2 className="mt-6 max-w-[14ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+              <h2 className="font-display mt-6 max-w-[14ch] text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
                 <MaskedLines lines={["Parts and structures."]} />
               </h2>
             </div>
             <Link
               href="/products"
-              className="hidden text-sm text-steel-500 hover:text-ink md:inline"
+              className="text-steel-500 hover:text-ink hidden text-sm md:inline"
             >
               All products
             </Link>
@@ -233,60 +219,42 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section
-        theme="mist"
-        grid="split-5-7"
-        className="py-[clamp(80px,12vw,180px)]"
-      >
+      <Section theme="mist" grid="split-5-7" className="py-[clamp(80px,12vw,180px)]">
         <Container>
           <div className="grid gap-10 md:grid-cols-12 md:items-center md:gap-16">
             <div className="md:col-span-5">
               <div
                 data-image-reveal
-                className="relative aspect-[4/5] overflow-hidden border border-line bg-steel-900"
+                className="border-line bg-steel-900 relative aspect-[4/5] overflow-hidden border"
               >
                 <Image
                   src="/images/placeholder/placeholder-founder.jpg"
                   alt="Portrait of Vijay Rajbhar, founder of Vijay Enterprises"
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
-                  className="image-drift object-cover grayscale contrast-110"
+                  className="image-drift object-cover contrast-110 grayscale"
                   data-cursor="view"
                 />
               </div>
             </div>
             <div className="md:col-span-7">
               <Eyebrow>Founder</Eyebrow>
-              <h2 className="mt-6 font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
+              <h2 className="font-display mt-6 text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
                 <MaskedLines lines={["Vijay Rajbhar"]} />
               </h2>
-              <p className="mt-3 font-mono text-xs text-steel-500">
+              <p className="text-steel-500 mt-3 font-mono text-xs">
                 30+ years in the metal industry
               </p>
-              <p className="mt-6 max-w-[54ch] text-lg text-steel-500">
-                Vijay Enterprises is a founder-led workshop in New Delhi.
-                Cutting, shearing, bending, welding and fabrication stay with
-                one team, so a drawing stays with one supplier from first cut to
-                finished part.
+              <p className="text-steel-500 mt-6 max-w-[54ch] text-lg">
+                Vijay Enterprises is a founder-led workshop in New Delhi. Cutting, shearing,
+                bending, welding and fabrication stay with one team, so a drawing stays with one
+                supplier from first cut to finished part.
               </p>
-              <Link
-                href="/about"
-                className="group mt-8 inline-flex items-center gap-3 text-sm"
-              >
+              <Link href="/about" className="group mt-8 inline-flex items-center gap-3 text-sm">
                 Read about the workshop
-                <span className="flex h-8 w-8 items-center justify-center border border-ink/20 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M1 9L9 1M9 1H1M9 1V9"
-                      stroke="currentColor"
-                      strokeWidth="1.2"
-                    />
+                <span className="border-ink/20 flex h-8 w-8 items-center justify-center border transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                    <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
                   </svg>
                 </span>
               </Link>

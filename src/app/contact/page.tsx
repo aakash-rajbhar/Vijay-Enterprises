@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Container, Section } from "@/components/Section";
+
+import { site } from "@/lib/site";
+import type { Metadata } from "next";
+
 import { Eyebrow } from "@/components/Eyebrow";
+import { GridLines } from "@/components/GridLines";
 import { MaskedLines } from "@/components/MaskedLines";
 import { QuoteForm } from "@/components/QuoteForm";
-import { GridLines } from "@/components/GridLines";
-import { site } from "@/lib/site";
+import { Container, Section } from "@/components/Section";
 
 export const metadata: Metadata = {
   title: "Contact | Vijay Enterprises",
@@ -14,7 +16,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact | Vijay Enterprises",
-    description: "Send your drawing and requirements for a sheet metal fabrication quote in Delhi NCR.",
+    description:
+      "Send your drawing and requirements for a sheet metal fabrication quote in Delhi NCR.",
     url: "/contact",
   },
 };
@@ -28,8 +31,9 @@ function ContactSection({ product }: { product?: string }) {
             <h2 className="font-display text-[clamp(1.75rem,3.2vw,3rem)] leading-none tracking-[-0.03em]">
               <MaskedLines lines={["Quote request"]} />
             </h2>
-            <p className="mt-3 max-w-[52ch] text-sm text-steel-500">
-              Fields marked by validation are required. Your email app will open with the details filled in.
+            <p className="text-steel-500 mt-3 max-w-[52ch] text-sm">
+              Fields marked by validation are required. Your email app will open with the details
+              filled in.
             </p>
             <div className="mt-6">
               <QuoteForm defaultProduct={product} />
@@ -37,14 +41,20 @@ function ContactSection({ product }: { product?: string }) {
           </div>
 
           <div className="md:col-span-5">
-            <div data-nav-theme="dark" className="border border-line bg-ink p-6 text-white md:p-8">
-              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">Workshop</p>
-              <p className="mt-4 font-display text-2xl leading-tight">{site.address}</p>
-              <a href={`mailto:${site.email}`} className="mt-3 inline-block text-sm text-steel-300 underline underline-offset-4 hover:text-white">
+            <div data-nav-theme="dark" className="border-line bg-ink border p-6 text-white md:p-8">
+              <p className="text-steel-500 font-mono text-[10px] tracking-[0.14em] uppercase">
+                Workshop
+              </p>
+              <p className="font-display mt-4 text-2xl leading-tight">{site.address}</p>
+              <a
+                href={`mailto:${site.email}`}
+                className="text-steel-300 mt-3 inline-block text-sm underline underline-offset-4 hover:text-white"
+              >
                 {site.email}
               </a>
-              <p className="mt-5 max-w-[38ch] text-sm text-steel-300">
-                Email before visiting so someone is available to review the drawing. Quotes and delivery are within Delhi NCR only.
+              <p className="text-steel-300 mt-5 max-w-[38ch] text-sm">
+                Email before visiting so someone is available to review the drawing. Quotes and
+                delivery are within Delhi NCR only.
               </p>
 
               <div className="mt-6 overflow-hidden border border-white/15">
@@ -54,14 +64,14 @@ function ContactSection({ product }: { product?: string }) {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   allowFullScreen
-                  className="h-[300px] w-full grayscale contrast-110"
+                  className="h-[300px] w-full contrast-110 grayscale"
                 />
               </div>
               <a
                 href={site.mapLink}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 inline-flex items-center gap-2 text-sm text-steel-300 hover:text-white"
+                className="text-steel-300 mt-4 inline-flex items-center gap-2 text-sm hover:text-white"
               >
                 Open in Google Maps
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
@@ -70,10 +80,15 @@ function ContactSection({ product }: { product?: string }) {
               </a>
 
               <div className="mt-8 border-t border-white/10 pt-5">
-                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">Drawings</p>
-                <p className="mt-2 text-sm text-steel-300">
+                <p className="text-steel-500 font-mono text-[10px] tracking-[0.14em] uppercase">
+                  Drawings
+                </p>
+                <p className="text-steel-300 mt-2 text-sm">
                   Email drawings to{" "}
-                  <a href={`mailto:${site.email}`} className="underline underline-offset-4 hover:text-white">
+                  <a
+                    href={`mailto:${site.email}`}
+                    className="underline underline-offset-4 hover:text-white"
+                  >
                     {site.email}
                   </a>
                   . DXF, DWG, PDF, STEP, or a clear photo of a sketch.
@@ -92,19 +107,30 @@ async function ContactData({ searchParams }: { searchParams: Promise<{ product?:
   return <ContactSection product={product} />;
 }
 
-export default async function ContactPage({ searchParams }: { searchParams: Promise<{ product?: string }> }) {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ product?: string }>;
+}) {
   return (
     <>
-      <header data-nav-theme="dark" className="relative overflow-hidden border-b border-line bg-ink pb-12 pt-32 md:pb-16 md:pt-40">
-        <span className="pointer-events-none absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_70%_30%,rgba(255,74,28,0.08),transparent_60%)]" aria-hidden="true" />
+      <header
+        data-nav-theme="dark"
+        className="border-line bg-ink relative overflow-hidden border-b pt-32 pb-12 md:pt-40 md:pb-16"
+      >
+        <span
+          className="pointer-events-none absolute top-0 right-0 h-full w-1/2 bg-[radial-gradient(circle_at_70%_30%,rgba(255,74,28,0.08),transparent_60%)]"
+          aria-hidden="true"
+        />
         <GridLines theme="dark" onImage variant="hero" />
         <Container className="relative z-[2]">
           <Eyebrow>Contact</Eyebrow>
-          <h1 className="mt-6 max-w-[14ch] font-display text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.95] tracking-[-0.04em]">
+          <h1 className="font-display mt-6 max-w-[14ch] text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.95] tracking-[-0.04em]">
             Send the drawing. Get a quote.
           </h1>
-          <p className="mt-5 max-w-[56ch] text-lg text-steel-300">
-            No form backend, no cart. This form prepares an email to the workshop with the details you enter. Attach the drawing before you send it.
+          <p className="text-steel-300 mt-5 max-w-[56ch] text-lg">
+            No form backend, no cart. This form prepares an email to the workshop with the details
+            you enter. Attach the drawing before you send it.
           </p>
         </Container>
       </header>
@@ -113,7 +139,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
         fallback={
           <Section theme="light" className="py-[clamp(60px,8vw,120px)]">
             <Container>
-              <div className="h-[520px] animate-pulse border border-line bg-steel-200/50" />
+              <div className="border-line bg-steel-200/50 h-[520px] animate-pulse border" />
             </Container>
           </Section>
         }

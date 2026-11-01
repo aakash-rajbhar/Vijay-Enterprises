@@ -23,7 +23,7 @@ export function Section({
   return (
     <section
       data-nav-theme={theme === "dark" ? "dark" : "light"}
-      className={`relative border-b border-line ${bg} ${className}`}
+      className={`border-line relative border-b ${bg} ${className}`}
     >
       {theme === "dark" && <Grain />}
       <GridLines theme={theme} variant={grid} showCrosshairs={showCrosshairs} />
@@ -32,6 +32,14 @@ export function Section({
   );
 }
 
-export function Container({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <div className={`mx-auto w-full max-w-[1360px] px-5 md:px-8 ${className}`}>{children}</div>;
+export function Container({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`mx-auto w-full max-w-[1360px] px-5 md:px-8 ${className}`}>{children}</div>
+  );
 }

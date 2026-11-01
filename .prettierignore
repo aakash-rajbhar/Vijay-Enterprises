@@ -1,0 +1,27 @@
+# Dependencies & Build Outputs
+node_modules
+.next
+out
+build
+dist
+.turbo
+.agents
+.claude
+.gemini
+.agent
+.husky
+.opencode
+.impeccable
+.cursor
+.github
+.lint-staged
+.roo
+
+# Local configuration & Lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.env*.local
+
+# Static Assets
+public/

@@ -16,8 +16,7 @@
   --color-spark-deep: #d93a12;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display:
-    var(--font-display), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-display: var(--font-display), var(--font-inter), ui-sans-serif, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, monospace;
 
   --radius-pill: 0px;
@@ -111,8 +110,6 @@ a {
   outline: 2px solid var(--color-spark);
   outline-offset: 3px;
 }
-
-
 
 button {
   font: inherit;
@@ -322,7 +319,6 @@ video {
     left: 75%;
   }
 }
-
 
 @keyframes modal-backdrop-in {
   from {
