@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-import { site } from "@/lib/site";
-
 import { Grain } from "@/components/Grain";
 import { GridLines } from "@/components/GridLines";
 import { MagneticButton } from "@/components/MagneticButton";
 import { MaskedLines } from "@/components/MaskedLines";
+
+import { site } from "@/lib/site";
 
 export function ClosingCTA() {
   return (

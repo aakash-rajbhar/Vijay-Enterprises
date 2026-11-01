@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { site } from "@/lib/site";
 import type { Metadata } from "next";
 
 import { ClosingCTA } from "@/components/ClosingCTA";
@@ -9,6 +8,8 @@ import { MaskedLines } from "@/components/MaskedLines";
 import { PageHeader } from "@/components/PageHeader";
 import { Proof } from "@/components/Proof";
 import { Container, Section } from "@/components/Section";
+
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About | Vijay Enterprises",

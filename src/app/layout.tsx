@@ -1,6 +1,5 @@
 import { IBM_Plex_Mono, Inter, Space_Grotesk } from "next/font/google";
 
-import { site } from "@/lib/site";
 import type { Metadata } from "next";
 
 import { CustomCursor } from "@/components/CustomCursor";
@@ -11,6 +10,8 @@ import { MobileQuoteFab } from "@/components/MobileQuoteFab";
 import { Nav } from "@/components/Nav";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
+
+import { site } from "@/lib/site";
 
 import "./globals.css";
 

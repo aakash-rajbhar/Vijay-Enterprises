@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { machines } from "@/lib/machines";
-import { processStages } from "@/lib/process";
-import { servicesList } from "@/lib/services";
 import type { Metadata } from "next";
 
 import { ClosingCTA } from "@/components/ClosingCTA";
@@ -18,6 +15,10 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { ScrollWords } from "@/components/ScrollWords";
 import { Container, Section } from "@/components/Section";
 import { StatRow } from "@/components/StatRow";
+
+import { machines } from "@/lib/machines";
+import { processStages } from "@/lib/process";
+import { servicesList } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",

@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 
-import { site } from "@/lib/site";
 import type { Metadata } from "next";
 
 import { Eyebrow } from "@/components/Eyebrow";
@@ -8,6 +7,8 @@ import { GridLines } from "@/components/GridLines";
 import { MaskedLines } from "@/components/MaskedLines";
 import { QuoteForm } from "@/components/QuoteForm";
 import { Container, Section } from "@/components/Section";
+
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact | Vijay Enterprises",

@@ -4,11 +4,12 @@ import { useEffect, useRef } from "react";
 
 import Image from "next/image";
 
-import { machines } from "@/lib/machines";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+
+import { machines } from "@/lib/machines";
 
 gsap.registerPlugin(ScrollTrigger);
 

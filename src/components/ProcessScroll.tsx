@@ -17,7 +17,6 @@ import {
   useState,
 } from "react";
 
-import type { ProcessStage } from "@/lib/process";
 import { ContactShadows, Environment, Lightformer, Line, Sparkles } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
@@ -25,6 +24,8 @@ import * as THREE from "three";
 import { StageSnapshot } from "@/components/process/StageSnapshot";
 
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+
+import type { ProcessStage } from "@/lib/process";
 
 /* ────────────────────────── part dimensions ────────────────────────── */
 

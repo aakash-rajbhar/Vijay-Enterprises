@@ -5,12 +5,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { links } from "@/lib/links";
-import { site } from "@/lib/site";
-
 import { GridLines } from "@/components/GridLines";
 
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+
+import { links } from "@/lib/links";
+import { site } from "@/lib/site";
 
 const menuLinks = [{ href: "/", label: "Home" }, ...links];
 

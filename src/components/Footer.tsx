@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 
-import { links } from "@/lib/links";
-import { site } from "@/lib/site";
-
 import { Grain } from "@/components/Grain";
 import { GridLines } from "@/components/GridLines";
+
+import { links } from "@/lib/links";
+import { site } from "@/lib/site";
 
 export function Footer() {
   return (

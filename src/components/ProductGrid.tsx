@@ -5,11 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { type ProductCategory, productCategories } from "@/lib/products";
-import { site } from "@/lib/site";
 import { createPortal } from "react-dom";
 
 import { ProductCard } from "@/components/ProductCard";
+
+import { type ProductCategory, productCategories } from "@/lib/products";
+import { site } from "@/lib/site";
 
 export function ProductGrid({ limit }: { limit?: number } = {}) {
   const [active, setActive] = useState<ProductCategory | null>(null);

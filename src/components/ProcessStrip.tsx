@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
 
-import { type ProcessStage, processStages } from "@/lib/process";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -12,6 +11,8 @@ import { ProcessIllustration3D } from "@/components/process/ProcessIllustration3
 import { StageSnapshot } from "@/components/process/StageSnapshot";
 
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+
+import { type ProcessStage, processStages } from "@/lib/process";
 
 gsap.registerPlugin(ScrollTrigger);
 

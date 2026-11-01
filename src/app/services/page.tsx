@@ -1,8 +1,5 @@
 import Link from "next/link";
 
-import { machines } from "@/lib/machines";
-import { capacityTable, processChain, servicesList } from "@/lib/services";
-import { site } from "@/lib/site";
 import type { Metadata } from "next";
 
 import { ClosingCTA } from "@/components/ClosingCTA";
@@ -13,6 +10,10 @@ import { PageHeader } from "@/components/PageHeader";
 import { Container, Section } from "@/components/Section";
 import { ServiceAccordion } from "@/components/ServiceAccordion";
 import { SpecTable } from "@/components/SpecTable";
+
+import { machines } from "@/lib/machines";
+import { capacityTable, processChain, servicesList } from "@/lib/services";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Services | Vijay Enterprises",

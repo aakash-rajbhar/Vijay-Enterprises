@@ -1,7 +1,7 @@
-import { certifications, clients, testimonials } from "@/lib/proof";
-
 import { Eyebrow } from "@/components/Eyebrow";
 import { Container, Section } from "@/components/Section";
+
+import { certifications, clients, testimonials } from "@/lib/proof";
 
 export function Proof() {
   const hasProof = certifications.length > 0 || clients.length > 0 || testimonials.length > 0;

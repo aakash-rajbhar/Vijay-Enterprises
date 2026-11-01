@@ -1,7 +1,5 @@
 import Link from "next/link";
 
-import { processChain } from "@/lib/services";
-import { site } from "@/lib/site";
 import type { Metadata } from "next";
 
 import { ClosingCTA } from "@/components/ClosingCTA";
@@ -10,6 +8,9 @@ import { MaskedLines } from "@/components/MaskedLines";
 import { PageHeader } from "@/components/PageHeader";
 import { ProductGrid } from "@/components/ProductGrid";
 import { Container, Section } from "@/components/Section";
+
+import { processChain } from "@/lib/services";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Products | Vijay Enterprises",
