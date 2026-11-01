@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MaskedLines } from "@/components/MaskedLines";
 import { Grain } from "@/components/Grain";
+import { GridLines } from "@/components/GridLines";
 import { MagneticButton } from "@/components/MagneticButton";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
@@ -66,10 +67,10 @@ export function Hero() {
   }, [reduced]);
 
   return (
-    <section data-nav-theme="dark" className="p-0 md:p-4">
+    <section data-nav-theme="dark">
       <div
         ref={frame}
-        className="relative flex h-[100svh] flex-col overflow-hidden border-0 border-white/10 md:h-[calc(100svh-32px)] md:rounded-[40px] md:border"
+        className="relative flex h-[100svh] flex-col overflow-hidden"
       >
         <div ref={img} className="absolute inset-0 will-change-transform">
           <video
@@ -94,17 +95,11 @@ export function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(10,10,11,0.55)_70%,rgba(10,10,11,0.9)_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/10" />
         <Grain />
-        <div
-          className="pointer-events-none absolute inset-0"
-          aria-hidden="true"
-        >
-          <span className="absolute left-[22%] top-0 h-full w-px bg-white/10" />
-          <span className="absolute right-[18%] top-0 h-full w-px bg-white/10" />
-          <span className="absolute left-0 top-[42%] h-px w-full bg-white/10" />
-        </div>
+        <GridLines theme="dark" onImage variant="hero" />
 
-        <div className="relative z-10 flex flex-1 flex-col justify-between p-5 md:p-8">
-          <div className="flex items-start justify-between gap-6 pt-20 font-mono text-[10px] uppercase tracking-[0.14em] text-white/60 md:pt-4">
+
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1360px] flex-1 flex-col justify-between px-5 pb-5 pt-24 md:px-8 md:pb-8 md:pt-28">
+          <div className="flex items-start justify-between gap-6 font-mono text-[10px] uppercase tracking-[0.14em] text-white/60">
             <span>Sheet metal fabrication</span>
             <span>Delhi NCR only</span>
           </div>
@@ -136,7 +131,7 @@ export function Hero() {
                 <MagneticButton href="/contact">Request a quote</MagneticButton>
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-3 rounded-pill border border-white/30 px-5 py-3 text-sm text-white transition-colors hover:border-white/60"
+                  className="inline-flex h-[46px] items-center gap-3 border border-white/30 px-5 font-mono text-[11px] uppercase tracking-[0.14em] text-white transition-colors hover:border-white hover:bg-white/5"
                 >
                   See services
                   <svg

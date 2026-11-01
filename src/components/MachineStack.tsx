@@ -52,13 +52,13 @@ export function MachineStack() {
         <article
           key={m.name}
           data-stack-card
-          className={`rounded-[var(--radius-card)] border border-white/10 bg-graphite p-5 md:p-8 ${reduced ? "" : "md:sticky"}`}
-          style={{ top: `${96 + i * 18}px`, zIndex: i + 1 }}
+          className={`border border-line bg-graphite p-5 md:p-8 ${reduced ? "" : "md:sticky"}`}
+          style={{ top: `${80 + i * 18}px`, zIndex: i + 1 }}
         >
           <div className="grid gap-6 md:grid-cols-2 md:items-center md:gap-10">
             <div
               data-image-reveal
-              className="relative aspect-[16/10] overflow-hidden rounded-[20px] bg-steel-900"
+              className="relative aspect-[16/10] overflow-hidden border border-white/10 bg-steel-900"
             >
               <Image
                 src={m.image}
@@ -70,7 +70,7 @@ export function MachineStack() {
             </div>
             <div>
               <div
-                className={`flex h-9 w-9 items-center justify-center rounded-full ${i === 0 ? "bg-spark text-ink" : "bg-white/5 text-steel-300"}`}
+                className={`flex h-8 w-8 items-center justify-center border ${i === 0 ? "border-spark bg-spark text-ink" : "border-white/15 bg-white/5 text-steel-300"}`}
               >
                 <span className="font-mono text-[10px]">0{i + 1}</span>
               </div>

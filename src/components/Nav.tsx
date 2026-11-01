@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { links } from "@/lib/links";
 import { site } from "@/lib/site";
+import { GridLines } from "@/components/GridLines";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const menuLinks = [{ href: "/", label: "Home" }, ...links];
@@ -124,117 +125,113 @@ export function Nav() {
   return (
     <>
       <header
-        className={`fixed top-4 right-0 left-0 z-[80] px-3 transition-transform duration-500 md:px-4 ${hidden && !open ? "-translate-y-[140%]" : "translate-y-0"}`}
+        className={`fixed top-0 right-0 left-0 z-80 transition-transform duration-500 will-change-transform ${hidden && !open ? "-translate-y-full" : "translate-y-0"}`}
       >
         <div className="nav-drop">
           <nav
-            className={`rounded-2xl mx-auto flex max-w-[1360px] items-center justify-between border px-2 pl-4 py-2 backdrop-blur-xl transition-all duration-500 ${
+            className={`border-b backdrop-blur-xl transition-colors duration-500 ${
               light
-                ? "text-ink border-black/10 bg-white/80 shadow-[0_10px_60px_-20px_rgba(10,10,11,0.6)]"
-                : "border-white/20 bg-gradient-to-r from-white/10 via-white/5 to-white/10 text-white shadow-[0_10px_60px_-30px_rgba(255,74,28,0.4)]"
+                ? "text-ink border-ink/10 bg-white/92"
+                : "border-white/12 bg-ink/88 text-white"
             }`}
           >
-            <Link
-              href="/"
-              className="flex items-center gap-2.5 text-sm"
-              aria-label="Vijay Enterprises home"
-            >
-              <span className="relative h-2 w-2">
-                <span
-                  className="bg-spark absolute inset-0"
-                  aria-hidden="true"
-                />
-                <span
-                  className="bg-spark/30 absolute -inset-1 rounded-full blur-[2px]"
-                  aria-hidden="true"
-                />
-              </span>
-              <span className="font-display tracking-[-0.02em]">
-                Vijay Enterprises
-              </span>
-            </Link>
-            <div
-              className={`hidden items-center gap-0.5  transition-colors duration-500 md:flex`}
-            >
-              {links.map((l) => {
-                const active =
-                  pathname === l.href || pathname.startsWith(`${l.href}/`);
-                return (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    data-active={active}
-                    aria-current={active ? "page" : undefined}
-                    className={`nav-underline rounded-pill px-3.5 py-1.5 text-[13px] tracking-[-0.01em] transition-colors duration-300 ${
-                      light
-                        ? active
-                          ? "text-ink"
-                          : "text-ink/70 hover:text-ink"
-                        : active
-                          ? "text-white"
-                          : "text-white/80 hover:text-white"
-                    }`}
-                  >
-                    {l.label}
-                  </Link>
-                );
-              })}
-            </div>
-            <div className="flex items-center gap-2">
+            <div className="mx-auto grid h-14 w-full max-w-[1360px] grid-cols-[1fr_auto] items-stretch border-x border-line md:h-16 md:grid-cols-[auto_1fr_auto]">
               <Link
-                ref={quoteRef}
-                href="/contact"
-                data-cursor-enquire
-                onMouseMove={onQuoteMove}
-                onMouseLeave={onQuoteLeave}
-                className={`group hidden items-center gap-2.5 rounded-pill px-5 py-2 text-sm font-medium transition-all duration-300 ease-out will-change-transform md:inline-flex ${
-                  light
-                    ? "bg-spark text-ink shadow-[0_10px_50px_-18px_rgba(255,74,28,0.9)] hover:bg-[#ff5f30] hover:-translate-y-0.5"
-                    : "bg-white text-ink! hover:bg-spark hover:-translate-y-0.5 shadow-[0_12px_50px_-18px_rgba(255,255,255,0.7)] hover:shadow-[0_14px_60px_-14px_rgba(255,74,28,0.85)]"
-                }`}
+                href="/"
+                className="flex items-center gap-2.5 border-r border-line px-4 md:px-5"
+                aria-label="Vijay Enterprises home"
               >
-                Request a quote
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink/10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                  <svg
-                    width="9"
-                    height="9"
-                    viewBox="0 0 10 10"
-                    fill="none"
+                <span className="relative flex h-2 w-2 items-center justify-center">
+                  <span
+                    className="bg-spark absolute inset-0"
                     aria-hidden="true"
-                  >
-                    <path
-                      d="M1 9L9 1M9 1H1M9 1V9"
-                      stroke="currentColor"
-                      strokeWidth="1.2"
-                    />
-                  </svg>
+                  />
+                  <span
+                    className={`absolute -inset-[3px] border ${light ? "border-ink/25" : "border-white/35"}`}
+                    aria-hidden="true"
+                  />
+                </span>
+                <span className="font-display text-[13px] tracking-[-0.01em] md:text-sm">
+                  Vijay Enterprises
                 </span>
               </Link>
-              <button
-                ref={triggerRef}
-                onClick={() => setOpen(true)}
-                className={`group relative flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-300 md:hidden ${
-                  light
-                    ? "border-ink/15 hover:border-ink/40"
-                    : "border-white/30 hover:border-white/60"
-                }`}
-                aria-expanded={open}
-                aria-controls="mobile-menu"
-                aria-label="Open menu"
-              >
-                <span className="flex flex-col items-center justify-center gap-1">
-                  <span
-                    className={`block h-[1.5px] shrink-0 w-4 transition-all duration-300 ${
-                      light ? "bg-ink" : "bg-white"
-                    }`}
-                  />
-                  <span
-                    className={`block h-[1.5px] shrink-0 w-4 transition-all duration-300 ${
-                      light ? "bg-ink" : "bg-white"
-                    }`}
-                  />
-                </span>
-              </button>
+              <div className="hidden items-stretch transition-colors duration-500 md:flex">
+                {links.map((l) => {
+                  const active =
+                    pathname === l.href || pathname.startsWith(`${l.href}/`);
+                  return (
+                    <Link
+                      key={l.href}
+                      href={l.href}
+                      data-active={active}
+                      aria-current={active ? "page" : undefined}
+                      className={`flex h-full items-center border-r border-line px-4 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors duration-200 ${
+                        active
+                          ? light
+                            ? "bg-ink text-white!"
+                            : "bg-white text-ink!"
+                          : light
+                            ? "text-ink/65 hover:bg-ink/5 hover:text-ink"
+                            : "text-white/65 hover:bg-white/5 hover:text-white"
+                      }`}
+                    >
+                      {l.label}
+                    </Link>
+                  );
+                })}
+              </div>
+              <div className="flex items-stretch">
+                <Link
+                  ref={quoteRef}
+                  href="/contact"
+                  data-cursor-enquire
+                  onMouseMove={onQuoteMove}
+                  onMouseLeave={onQuoteLeave}
+                  className={`group hidden h-full items-center gap-2.5 border-l border-line px-4 font-mono text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-200 will-change-transform md:inline-flex ${
+                    light
+                      ? "bg-ink text-white! hover:bg-spark hover:text-ink!"
+                      : "bg-spark text-ink! hover:bg-white hover:text-ink!"
+                  }`}
+                >
+                  Request a quote
+                  <span className="flex h-5 w-5 items-center justify-center border border-current/30 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <svg
+                      width="8"
+                      height="8"
+                      viewBox="0 0 10 10"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M1 9L9 1M9 1H1M9 1V9"
+                        stroke="currentColor"
+                        strokeWidth="1.2"
+                      />
+                    </svg>
+                  </span>
+                </Link>
+                <button
+                  ref={triggerRef}
+                  onClick={() => setOpen(true)}
+                  className={`group flex h-full w-14 items-center justify-center border-l border-line transition-colors duration-300 md:hidden ${
+                    light
+                      ? "text-ink hover:bg-ink/5"
+                      : "text-white hover:bg-white/5"
+                  }`}
+                  aria-expanded={open}
+                  aria-controls="mobile-menu"
+                  aria-label="Open menu"
+                >
+                  <span className="flex flex-col items-center justify-center gap-1.5">
+                    <span
+                      className={`block h-px w-5 shrink-0 transition-all duration-300 ${light ? "bg-ink" : "bg-white"}`}
+                    />
+                    <span
+                      className={`block h-px w-5 shrink-0 transition-all duration-300 ${light ? "bg-ink" : "bg-white"}`}
+                    />
+                  </span>
+                </button>
+              </div>
             </div>
           </nav>
         </div>
@@ -249,47 +246,46 @@ export function Nav() {
           aria-label="Site menu"
           className="bg-ink fixed inset-0 z-[150] transition-[clip-path] duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]"
           style={{
-            clipPath: entered
-              ? "circle(150% at calc(100% - 44px) 44px)"
-              : "circle(0% at calc(100% - 44px) 44px)",
+            clipPath: entered ? "inset(0 0 0 0)" : "inset(0 0 100% 0)",
           }}
         >
-          <div className="flex h-full flex-col">
-            <div className="mt-4 px-3 md:px-4">
-              <div className="mx-auto flex h-14 w-full max-w-[1360px] items-center justify-between px-2 pl-4 md:px-6">
+          <GridLines theme="dark" variant="frame" showCrosshairs={false} />
+          <div className="relative z-[2] flex h-full flex-col">
+            <div className="border-b border-line">
+              <div className="mx-auto flex h-14 w-full max-w-[1360px] items-stretch justify-between border-x border-line">
                 <Link
                   href="/"
                   onClick={() => closeMenu()}
-                  className="flex items-center gap-2.5 text-sm"
+                  className="flex items-center gap-2.5 px-4 text-sm md:px-5"
                 >
-                  <span className="relative h-2 w-2">
+                  <span className="relative flex h-2 w-2 items-center justify-center">
                     <span
                       className="bg-spark absolute inset-0"
                       aria-hidden="true"
                     />
                     <span
-                      className="bg-spark/30 absolute -inset-1 rounded-full blur-[2px]"
+                      className="absolute -inset-[3px] border border-white/35"
                       aria-hidden="true"
                     />
                   </span>
-                  <span className="font-display tracking-[-0.02em]">
+                  <span className="font-display text-[13px] tracking-[-0.01em] md:text-sm">
                     Vijay Enterprises
                   </span>
                 </Link>
                 <button
                   ref={closeRef}
                   onClick={() => closeMenu(true)}
-                  className="group flex h-10 w-10 items-center justify-center rounded-full  transition-colors duration-300"
+                  className="group flex h-full w-14 items-center justify-center border-l border-line transition-colors duration-300 hover:bg-white/5"
                   aria-label="Close menu"
                 >
                   <span className="relative flex h-4 w-4 items-center justify-center">
                     <span
-                      className={`absolute block h-[1.5px] w-4 bg-white transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+                      className={`absolute block h-px w-5 bg-white transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] ${
                         entered ? "rotate-45" : "rotate-0"
                       }`}
                     />
                     <span
-                      className={`absolute block h-[1.5px] w-4 bg-white transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+                      className={`absolute block h-px w-5 bg-white transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] ${
                         entered ? "-rotate-45" : "rotate-0"
                       }`}
                     />
@@ -297,16 +293,16 @@ export function Nav() {
                 </button>
               </div>
             </div>
-            <div className="mx-auto flex w-full max-w-[1360px] flex-1 flex-col justify-center px-4 md:px-8">
-              <nav className="flex flex-col gap-3">
+            <div className="mx-auto flex w-full max-w-[1360px] flex-1 flex-col justify-center border-x border-line">
+              <nav className="flex flex-col">
                 {menuLinks.map((l, i) => (
                   <Link
                     key={l.href}
                     href={l.href}
                     onClick={() => closeMenu()}
-                    className="group flex items-baseline gap-5 md:gap-7"
+                    className="group flex items-baseline gap-5 border-b border-line px-4 py-2 transition-colors hover:bg-white/5 md:gap-7 md:px-6"
                   >
-                    <span className="text-steel-500 w-7 shrink-0 font-mono text-sm">
+                    <span className="text-steel-500 w-7 shrink-0 font-mono text-xs">
                       {i.toString().padStart(2, "0")}
                     </span>
                     <span className="block overflow-hidden pb-[0.06em]">
@@ -327,14 +323,16 @@ export function Nav() {
                 ))}
               </nav>
             </div>
-            <div className="mx-auto flex w-full max-w-[1360px] items-center justify-between px-4 py-6 md:px-8">
+            <div className="mx-auto flex w-full max-w-[1360px] items-center justify-between border-x border-t border-line px-4 py-5 md:px-6">
               <a
                 href={`mailto:${site.email}`}
-                className="text-steel-300 text-sm"
+                className="text-steel-300 text-sm hover:text-white"
               >
                 {site.email}
               </a>
-              <span className="text-steel-500 text-sm">Delhi NCR</span>
+              <span className="text-steel-500 font-mono text-[11px] uppercase tracking-[0.14em]">
+                Delhi NCR
+              </span>
             </div>
           </div>
         </div>

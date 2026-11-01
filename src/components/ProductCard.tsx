@@ -22,7 +22,7 @@ export function ProductCard({
   const cardContent = (
     <div
       data-image-reveal
-      className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-black/10 bg-steel-950 transition-all duration-500 hover:border-black/20 hover:shadow-xl [isolation:isolate] [transform:translateZ(0)] [-webkit-mask-image:-webkit-radial-gradient(white,black)]"
+      className="group relative aspect-[4/5] w-full overflow-hidden bg-steel-950 transition-colors duration-500 hover:bg-spark [isolation:isolate] [transform:translateZ(0)] [-webkit-mask-image:-webkit-radial-gradient(white,black)]"
       data-cursor="view"
       data-cursor-row
     >
@@ -37,13 +37,17 @@ export function ProductCard({
 
       {/* ── Minimalist Dark Vignette ── */}
       <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent transition-opacity duration-300 group-hover:from-ink/85" />
+      <span
+        className="pointer-events-none absolute inset-0 z-20 border border-transparent transition-colors duration-300 group-hover:border-spark"
+        aria-hidden="true"
+      />
 
       {/* ── Top Index & Minimal View Cue ── */}
       <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5">
-        <span className="font-mono text-xs text-white/50 transition-colors duration-300 group-hover:text-white/80">
+        <span className="border border-white/20 bg-ink/60 px-1.5 py-0.5 font-mono text-[10px] text-white/60 transition-colors duration-300 group-hover:border-spark group-hover:text-white">
           {formattedIndex}
         </span>
-        <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-ink/30 text-white backdrop-blur-md transition-all duration-300 group-hover:border-spark group-hover:bg-spark group-hover:text-white">
+        <span className="flex h-9 w-9 items-center justify-center border border-white/20 bg-ink/30 text-white backdrop-blur-md transition-all duration-300 group-hover:border-spark group-hover:bg-spark group-hover:text-ink!">
           <svg
             width="10"
             height="10"

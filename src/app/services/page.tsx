@@ -59,7 +59,7 @@ export default function ServicesPage() {
           <div className="mt-10 grid grid-cols-2 gap-3 md:flex md:items-center">
             {processChain.map((p, i) => (
               <div key={p.number} className="contents">
-                <div className="flex items-center gap-3 rounded-pill border border-steel-200 bg-white px-4 py-3 md:shrink-0">
+                <div className="flex items-center gap-3 border border-line bg-white px-4 py-3 md:shrink-0">
                   <span className="font-mono text-[10px] text-spark-ink">{p.number}</span>
                   <span className="text-sm">{p.label}</span>
                 </div>
@@ -94,7 +94,7 @@ export default function ServicesPage() {
         </Container>
       </Section>
 
-      <Section theme="light" className="py-[clamp(80px,10vw,150px)]">
+      <Section theme="light" grid="split-4-8" className="py-[clamp(80px,10vw,150px)]">
         <Container>
           <div className="grid gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-4">
@@ -136,7 +136,7 @@ export default function ServicesPage() {
           <h2 className="mt-6 max-w-[20ch] font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
             <MaskedLines lines={["From drawing", "to delivery."]} />
           </h2>
-          <div className="mt-10 grid gap-px border-y border-steel-200 bg-steel-200 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {orderSteps.map((s) => (
               <div key={s.number} className="bg-white py-6 sm:px-6 sm:py-7 lg:px-8 lg:py-8">
                 <span className="font-mono text-xs text-spark-ink">{s.number}</span>
@@ -173,7 +173,7 @@ export default function ServicesPage() {
                 </a>
                 .
               </p>
-              <Link href="/contact" className="mt-7 inline-flex items-center gap-3 rounded-pill bg-spark-deep px-5 py-3 text-sm text-white transition-colors hover:bg-spark-deep-hover">
+              <Link href="/contact" className="mt-7 inline-flex h-[46px] items-center gap-3 bg-spark-deep px-5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-spark hover:text-ink">
                 Request a quote
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
                   <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />

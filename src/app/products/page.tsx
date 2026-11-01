@@ -64,7 +64,7 @@ export default function ProductsPage() {
               </p>
               <Link href="/services" className="group mt-8 inline-flex items-center gap-3 text-sm">
                 See the process list
-                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                <span className="flex h-8 w-8 items-center justify-center border border-white/30 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
                     <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
                   </svg>
@@ -83,7 +83,7 @@ export default function ProductsPage() {
                     <span className="flex-1 font-display text-[clamp(1.75rem,3.5vw,3rem)] leading-none transition-transform duration-300 group-hover:translate-x-2">
                       {p.label}
                     </span>
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 transition-colors group-hover:border-white/50">
+                    <span className="flex h-8 w-8 items-center justify-center border border-white/20 transition-colors group-hover:border-spark group-hover:bg-spark group-hover:text-ink">
                       <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
                         <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
                       </svg>
@@ -111,10 +111,10 @@ export default function ProductsPage() {
             <div className="md:col-span-4 md:text-right">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 rounded-pill bg-spark-deep px-6 py-3 text-sm text-white transition-colors hover:bg-spark-deep-hover"
+                className="inline-flex h-[46px] items-center gap-3 bg-spark-deep px-6 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-spark hover:text-ink"
               >
                 Request a quote
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink/15">
+                <span className="flex h-6 w-6 items-center justify-center border border-current/30">
                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
                     <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
                   </svg>

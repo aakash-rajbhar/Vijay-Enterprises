@@ -4,14 +4,16 @@ import Link from "next/link";
 import { links } from "@/lib/links";
 import { site } from "@/lib/site";
 import { Grain } from "@/components/Grain";
+import { GridLines } from "@/components/GridLines";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-ink">
+    <footer data-nav-theme="dark" className="relative overflow-hidden border-t border-line bg-ink">
       <Grain />
+      <GridLines theme="dark" variant="frame" />
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 py-16 md:px-8">
         <div className="grid gap-10 md:grid-cols-12">
-          <div className="md:col-span-6">
+          <div className="md:col-span-6 md:border-r md:border-line md:pr-8">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 bg-spark" aria-hidden="true" />
               <span className="font-display text-lg">Vijay Enterprises</span>
@@ -20,8 +22,8 @@ export function Footer() {
               Sheet metal fabrication under one roof. Delhi NCR only.
             </p>
           </div>
-          <div className="md:col-span-3">
-            <p className="text-sm text-steel-500">Pages</p>
+          <div className="md:col-span-3 md:border-r md:border-line md:pl-8">
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">Pages</p>
             <nav className="mt-3 flex flex-col gap-2">
               {links.map((l) => (
                 <Link
@@ -34,8 +36,8 @@ export function Footer() {
               ))}
             </nav>
           </div>
-          <div className="md:col-span-3">
-            <p className="text-sm text-steel-500">Contact</p>
+          <div className="md:col-span-3 md:pl-8">
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">Contact</p>
             <div className="mt-3 flex flex-col gap-2 text-steel-300">
               <span>{site.address}</span>
               <a href={`mailto:${site.email}`} className="hover:text-white">
@@ -44,13 +46,13 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-12 flex flex-col gap-4 border-t border-steel-900 pt-6 md:flex-row md:items-center md:justify-between">
-          <p className="text-sm text-steel-500">
+        <div className="mt-12 flex flex-col gap-4 border-t border-line pt-6 md:flex-row md:items-center md:justify-between">
+          <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-steel-500">
             © Vijay Enterprises. All rights reserved.
           </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30"
+            className="flex h-10 w-10 items-center justify-center border border-white/30 transition-colors hover:border-white hover:bg-white/5"
             aria-label="Back to top"
           >
             <svg

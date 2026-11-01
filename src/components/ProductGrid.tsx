@@ -59,7 +59,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
   return (
     <>
       {/* ── 3-Column Engineering Grid with Strict Containment ── */}
-      <div className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid w-full gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
         {items.map((cat, i) => (
           <ProductCard
             key={cat.slug}
@@ -93,7 +93,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
             <div
               ref={dialogRef}
               data-lenis-prevent
-              className="modal-dialog-animate relative w-full max-w-3xl overflow-hidden rounded-[var(--radius-card)] border border-white/15 bg-graphite shadow-2xl [isolation:isolate]"
+              className="modal-dialog-animate relative w-full max-w-3xl overflow-hidden border border-line-strong bg-graphite [isolation:isolate]"
             >
               <div className="max-h-[92vh] overflow-y-auto overscroll-contain p-6 sm:p-8 md:p-10">
                 {/* Header */}
@@ -116,7 +116,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
                   <button
                     ref={closeRef}
                     onClick={() => setActive(null)}
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-white/50 hover:bg-white/10"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/20 text-white transition-colors hover:border-white/50 hover:bg-white/10"
                     aria-label="Close dialog"
                   >
                     <svg
@@ -140,7 +140,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
                 <div className="mt-6 grid gap-6 sm:grid-cols-12 sm:items-start">
                   {/* Image Preview */}
                   <div className="sm:col-span-5">
-                    <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-steel-900 [isolation:isolate] [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
+                    <div className="group relative aspect-[4/3] w-full overflow-hidden border border-white/10 bg-steel-900 [isolation:isolate] [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
                       <Image
                         src={active.image}
                         alt={`${active.name} - Vijay Enterprises`}
@@ -151,7 +151,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
                       <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 to-transparent" />
                     </div>
 
-                    <div className="mt-4 rounded-xl border border-white/5 bg-steel-950/60 p-3">
+                    <div className="mt-4 border border-white/10 bg-steel-950/60 p-3">
                       <p className="font-mono text-[10px] uppercase tracking-wider text-steel-500">
                         Workshop Routing
                       </p>
@@ -171,7 +171,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
                       </p>
 
                       {/* Highlights Grid */}
-                      <div className="mt-5 grid grid-cols-1 gap-3 rounded-xl border border-white/10 bg-steel-900/40 p-4">
+                      <div className="mt-5 grid grid-cols-1 gap-3 border border-white/10 bg-steel-900/40 p-4">
                         <div>
                           <p className="font-mono text-[10px] uppercase tracking-wider text-steel-500">
                             Specification & Tolerances
@@ -199,7 +199,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
                           {active.processes.map((proc) => (
                             <span
                               key={proc}
-                              className="rounded-full border border-white/15 bg-steel-900 px-3 py-1 font-mono text-xs text-steel-300"
+                              className="border border-white/15 bg-steel-900 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-steel-300"
                             >
                               {proc}
                             </span>
@@ -216,7 +216,7 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
                           {active.materials.map((mat) => (
                             <span
                               key={mat}
-                              className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-steel-300"
+                              className="border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-steel-300"
                             >
                               {mat}
                             </span>
@@ -230,15 +230,16 @@ export function ProductGrid({ limit }: { limit?: number } = {}) {
                       <Link
                         href={`/contact?product=${active.slug}`}
                         data-cursor-enquire
-                        className="inline-flex items-center gap-3 rounded-pill bg-spark px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-spark-deep"
+                        className="group inline-flex h-[46px] items-center gap-3 bg-spark px-6 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white! transition-all duration-200 hover:bg-white hover:text-ink!"
                       >
-                        Request quote for this part
+                        <span>Request quote for this part</span>
                         <svg
                           width="10"
                           height="10"
                           viewBox="0 0 10 10"
                           fill="none"
                           aria-hidden="true"
+                          className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                         >
                           <path
                             d="M1 9L9 1M9 1H1M9 1V9"

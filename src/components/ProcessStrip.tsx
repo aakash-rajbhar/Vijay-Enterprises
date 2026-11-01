@@ -40,7 +40,7 @@ function FloatingParticles({ progress }: { progress: number }) {
         return (
           <div
             key={i}
-            className="absolute rounded-full bg-spark/20"
+            className="absolute border bg-spark/20"
             style={{
               left: `${p.x}%`,
               top: `${p.y}%`,
@@ -158,7 +158,7 @@ function StageIndicatorDots({
           tabIndex={-1}
         >
           <span
-            className="absolute h-full w-full rounded-full border transition-all duration-500"
+            className="absolute h-full w-full border border transition-all duration-500"
             style={{
               borderColor:
                 i === active
@@ -170,7 +170,7 @@ function StageIndicatorDots({
             }}
           />
           <span
-            className="h-1 w-1 rounded-full transition-all duration-500"
+            className="h-1 w-1 border transition-all duration-500"
             style={{
               backgroundColor:
                 i === active
@@ -348,7 +348,7 @@ export function ProcessStrip() {
                 <div className="relative flex-1">
                   {/* The illustration card */}
                   <div
-                    className="relative overflow-hidden rounded-[var(--radius-card)] border border-white/10"
+                    className="relative overflow-hidden border border-white/10"
                     style={{
                       aspectRatio: "16/10",
                       transform: `perspective(1200px) rotateY(${-1 + progress * 2}deg) rotateX(${0.5 - progress * 1}deg)`,
@@ -364,7 +364,7 @@ export function ProcessStrip() {
                     {/* Top-left meta label */}
                     <div className="pointer-events-none absolute left-5 top-5 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-steel-500">
                       <span>Flat pattern</span>
-                      <span className="h-1 w-1 rounded-full bg-steel-500" />
+                      <span className="h-1 w-1 border bg-steel-500" />
                       <span>Finished part</span>
                     </div>
 
@@ -377,7 +377,7 @@ export function ProcessStrip() {
                         transition: "opacity 0.3s ease",
                       }}
                     >
-                      <div className="scroll-line h-4 w-[2px] rounded-full bg-white/10" />
+                      <div className="scroll-line h-4 w-[2px] border bg-white/10" />
                       <span>Scroll to advance</span>
                     </div>
                   </div>
@@ -402,7 +402,7 @@ export function ProcessStrip() {
                   }}
                 >
                   Request a quote
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/25 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                  <span className="flex h-8 w-8 items-center justify-center border border-white/25 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                     <svg
                       width="10"
                       height="10"
@@ -450,7 +450,7 @@ export function ProcessStrip() {
                       </p>
                     ) : null}
                   </div>
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] border border-white/10 bg-graphite">
+                  <div className="relative aspect-[16/10] overflow-hidden border border-white/10 bg-graphite">
                     <div data-snapshot className="h-full w-full">
                       <StageSnapshot stage={i} />
                     </div>
@@ -462,10 +462,10 @@ export function ProcessStrip() {
               <Link
                 href="/contact"
                 data-cursor-enquire
-                className="group inline-flex items-center gap-3 rounded-pill border border-white/25 px-6 py-3 text-sm text-white"
+                className="group inline-flex items-center gap-3 border border-white/25 px-6 py-3 text-sm text-white"
               >
                 Request a quote
-                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/25 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                <span className="flex h-8 w-8 items-center justify-center border border-white/25 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                   <svg
                     width="10"
                     height="10"
@@ -490,7 +490,7 @@ export function ProcessStrip() {
       <div className="hidden motion-reduce:block">
         <div className="mx-auto max-w-[1360px] px-5 md:px-8">
           <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] border border-white/10 bg-graphite">
+            <div className="relative aspect-[16/10] overflow-hidden border border-white/10 bg-graphite">
               <StageSnapshot stage={6} />
             </div>
             <div>
@@ -537,7 +537,7 @@ export function ProcessStrip() {
                   className="group inline-flex items-center gap-3 text-sm text-white"
                 >
                   Request a quote
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/25 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                  <span className="flex h-8 w-8 items-center justify-center border border-white/25 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                     <svg
                       width="10"
                       height="10"

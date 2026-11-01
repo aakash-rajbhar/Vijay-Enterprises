@@ -68,7 +68,7 @@ export function ServiceAccordion({ items }: { items: readonly Item[] }) {
               </span>
               <span className="hidden max-w-[32ch] text-right text-sm text-steel-300 md:block">{item.description}</span>
               <span className="hidden font-mono text-xs text-steel-500 lg:block">{item.spec}</span>
-              <span className={`ml-2 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/30 transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}>
+              <span className={`ml-2 flex h-8 w-8 shrink-0 items-center justify-center border border-white/30 transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}>
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
                   <path d="M5 1V9M1 5H9" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
@@ -95,7 +95,7 @@ export function ServiceAccordion({ items }: { items: readonly Item[] }) {
       <div
         ref={preview}
         aria-hidden="true"
-        className={`pointer-events-none absolute left-0 top-0 z-30 hidden h-[220px] w-[170px] overflow-hidden rounded-[22px] border border-white/20 transition-opacity duration-200 lg:block ${hovered !== null ? "opacity-100" : "opacity-0"}`}
+        className={`pointer-events-none absolute left-0 top-0 z-30 hidden h-[220px] w-[170px] overflow-hidden border border-white/20 transition-opacity duration-200 lg:block ${hovered !== null ? "opacity-100" : "opacity-0"}`}
       >
         {hovered !== null && (
           <Image src={items[hovered].image} alt="" fill sizes="170px" className="object-cover grayscale contrast-110" />

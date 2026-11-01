@@ -64,7 +64,7 @@ const SATELLITE_HOLES = [
   { x: 0.04, z: -0.34, r: 0.04 },
   { x: 0.04, z: 0.34, r: 0.04 },
   { x: -0.22, z: 0, r: 0.04 },
-  { x: 0.30, z: 0, r: 0.04 },
+  { x: 0.3, z: 0, r: 0.04 },
 ];
 
 // 3 Industrial ventilation slots (capsule shapes)
@@ -278,11 +278,7 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
     ) as THREE.Shape;
 
     // Add circular holes
-    const allCircles = [
-      ...MOUNT_HOLES,
-      CENTER_HOLE,
-      ...SATELLITE_HOLES,
-    ];
+    const allCircles = [...MOUNT_HOLES, CENTER_HOLE, ...SATELLITE_HOLES];
     allCircles.forEach((h) => {
       const p = new THREE.Path();
       p.absarc(h.x, -h.z, h.r, 0, Math.PI * 2, true);
@@ -461,11 +457,7 @@ function Model({ progress }: { progress: MutableRefObject<number> }) {
     torch.current.position.set(currentTorchX, Y + 0.02, 0);
 
     bead.current.visible = w > 0;
-    bead.current.scale.set(
-      1 - 0.3 * cool,
-      Math.max(w, 0.001),
-      1 - 0.3 * cool,
-    );
+    bead.current.scale.set(1 - 0.3 * cool, Math.max(w, 0.001), 1 - 0.3 * cool);
     // Center bead over the welded portion so far
     const currentBeadCenter = weldStartX + (weldLen * w) / 2;
     bead.current.position.set(currentBeadCenter, Y + 0.015, 0);
@@ -706,7 +698,7 @@ function StaticProcess({ stages }: { stages: ProcessStage[] }) {
   return (
     <div className="mx-auto max-w-[1360px] px-5 py-16 md:px-8 md:py-24">
       <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-[var(--radius-window)] border border-white/10 bg-graphite">
+        <div className="relative aspect-[16/10] overflow-hidden border border-line bg-graphite">
           <StageSnapshot stage={6} />
         </div>
         <ol className="border-t border-white/10">
@@ -922,7 +914,7 @@ export function ProcessScroll({ stages }: { stages: ProcessStage[] }) {
 
 const CSS = `
 .ps {
-  --ps-bg1: #14161a;
+  --ps-bg1: #0a0a0b;
   --ps-bg2: #08090b;
   --ps-ink: #ffffff;
   --ps-mute: #a2a8b3;
@@ -1048,7 +1040,7 @@ const CSS = `
   display: inline-block;
   padding: 6px 14px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 9999px;
+  border-radius: 0;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.12em;
@@ -1108,7 +1100,7 @@ const CSS = `
 .ps-dot-indicator {
   width: 7px;
   height: 7px;
-  border-radius: 50%;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.25);
   transition: all 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
@@ -1119,7 +1111,7 @@ const CSS = `
 
 .ps-dot-btn.is-on .ps-dot-indicator {
   width: 18px;
-  border-radius: 9999px;
+  border-radius: 0;
   background: var(--ps-accent);
   box-shadow: 0 0 10px rgba(255, 74, 28, 0.6);
 }
@@ -1143,7 +1135,7 @@ const CSS = `
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 1.25rem;
+  border-radius: 0;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: radial-gradient(130% 110% at 50% 20%, rgba(26, 29, 34, 0.6), rgba(9, 10, 12, 0.95));
@@ -1173,14 +1165,14 @@ const CSS = `
   pointer-events: none;
   background: rgba(10, 10, 12, 0.6);
   padding: 4px 10px;
-  border-radius: 9999px;
+  border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .ps-pulse-dot {
   width: 6px;
   height: 6px;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--ps-accent);
   box-shadow: 0 0 8px var(--ps-accent);
   animation: ps-pulse 2s infinite ease-in-out;
@@ -1206,7 +1198,7 @@ const CSS = `
   pointer-events: none;
   background: rgba(10, 10, 12, 0.6);
   padding: 4px 10px;
-  border-radius: 9999px;
+  border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -1229,7 +1221,7 @@ const CSS = `
   }
 
   .ps-canvas-card {
-    border-radius: 1rem;
+    border-radius: 0;
   }
 
   .ps-content-panel {

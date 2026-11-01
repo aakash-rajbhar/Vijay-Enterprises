@@ -14,7 +14,6 @@ import { ProcessScroll } from "@/components/ProcessScroll";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { servicesList } from "@/lib/services";
 import { machines } from "@/lib/machines";
-import { productCategories } from "@/lib/products";
 import { processStages } from "@/lib/process";
 import { ProductGrid } from "@/components/ProductGrid";
 
@@ -51,7 +50,7 @@ export default function HomePage() {
               className="group inline-flex items-center gap-3 text-sm"
             >
               About the workshop
-              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink/20 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+              <span className="flex h-8 w-8 items-center justify-center border border-ink/20 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
                 <svg
                   width="10"
                   height="10"
@@ -97,7 +96,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section theme="light" className="pb-[clamp(80px,12vw,180px)]">
+      <Section theme="light" className="py-[clamp(80px,12vw,180px)]">
         <Container>
           <Eyebrow>By the numbers</Eyebrow>
           <div className="mt-8">
@@ -122,8 +121,7 @@ export default function HomePage() {
                 },
                 {
                   value: 5,
-                  suffix: " processes",
-                  label: "Machines and capacity",
+                  label: "Processes under one roof",
                   caption: "Cut · Shear · Bend · Weld · Fabricate",
                 },
               ]}
@@ -179,12 +177,12 @@ export default function HomePage() {
               Machine details
             </Link>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-10 grid gap-px border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
             {machines.map((m, i) => (
               <GlassCard key={m.name}>
                 <div
                   data-image-reveal
-                  className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-steel-900"
+                  className="relative aspect-[4/3] overflow-hidden bg-steel-900"
                 >
                   <Image
                     src={m.image}
@@ -196,7 +194,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div
-                  className={`mt-6 flex h-9 w-9 items-center justify-center rounded-full ${i === 0 ? "bg-spark text-ink" : "bg-ink/5 text-ink"}`}
+                  className={`mt-6 flex h-8 w-8 items-center justify-center ${i === 0 ? "bg-spark text-ink" : "border border-ink/15 text-ink"}`}
                 >
                   <span className="font-mono text-[10px]">0{i + 1}</span>
                 </div>
@@ -213,7 +211,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section theme="light" className="pb-[clamp(80px,12vw,180px)]">
+      <Section theme="light" className="py-[clamp(80px,12vw,180px)]">
         <Container>
           <div className="flex items-end justify-between gap-6">
             <div>
@@ -235,13 +233,17 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section theme="mist" className="py-[clamp(80px,12vw,180px)]">
+      <Section
+        theme="mist"
+        grid="split-5-7"
+        className="py-[clamp(80px,12vw,180px)]"
+      >
         <Container>
           <div className="grid gap-10 md:grid-cols-12 md:items-center md:gap-16">
             <div className="md:col-span-5">
               <div
                 data-image-reveal
-                className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-window)] border border-black/5 bg-steel-900"
+                className="relative aspect-[4/5] overflow-hidden border border-line bg-steel-900"
               >
                 <Image
                   src="/images/placeholder/placeholder-founder.jpg"
@@ -263,8 +265,8 @@ export default function HomePage() {
               </p>
               <p className="mt-6 max-w-[54ch] text-lg text-steel-500">
                 Vijay Enterprises is a founder-led workshop in New Delhi.
-                Cutting, shearing, bending, welding and fabrication stay with one
-                team, so a drawing stays with one supplier from first cut to
+                Cutting, shearing, bending, welding and fabrication stay with
+                one team, so a drawing stays with one supplier from first cut to
                 finished part.
               </p>
               <Link
@@ -272,7 +274,7 @@ export default function HomePage() {
                 className="group mt-8 inline-flex items-center gap-3 text-sm"
               >
                 Read about the workshop
-                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink/20 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                <span className="flex h-8 w-8 items-center justify-center border border-ink/20 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
                   <svg
                     width="10"
                     height="10"

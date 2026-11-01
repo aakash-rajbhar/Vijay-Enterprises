@@ -60,11 +60,11 @@ export default function AboutPage() {
         imageAlt="Sheet metal fabrication process at Vijay Enterprises"
       />
 
-      <Section theme="light" className="py-[clamp(80px,10vw,150px)]">
+      <Section theme="light" grid="split-5-7" className="py-[clamp(80px,10vw,150px)]">
         <Container>
           <div className="grid gap-10 md:grid-cols-12 md:items-center md:gap-16">
             <div className="md:col-span-5">
-              <div data-image-reveal className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-window)] border border-black/5 bg-steel-900">
+              <div data-image-reveal className="relative aspect-[4/5] overflow-hidden border border-line bg-steel-900">
                 <Image
                   src="/images/placeholder/placeholder-founder.jpg"
                   alt="Portrait of Vijay Rajbhar, founder of Vijay Enterprises"
@@ -88,7 +88,7 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section theme="dark" className="py-[clamp(80px,10vw,150px)]">
+      <Section theme="dark" grid="split-5-7" className="py-[clamp(80px,10vw,150px)]">
         <Container>
           <div className="grid gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-5">

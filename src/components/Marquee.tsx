@@ -42,7 +42,7 @@ export function Marquee() {
   const items = "Laser cutting · Shearing · Bending · Welding · Fabrication · Machine parts · Delhi NCR · ";
 
   return (
-    <div className="overflow-hidden border-y border-steel-900 bg-ink py-4">
+    <div className="relative overflow-hidden border-y border-line bg-ink py-4">
       <div
         ref={ref}
         className="flex whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.18em] text-steel-500"

@@ -4,6 +4,7 @@ import { Container, Section } from "@/components/Section";
 import { Eyebrow } from "@/components/Eyebrow";
 import { MaskedLines } from "@/components/MaskedLines";
 import { QuoteForm } from "@/components/QuoteForm";
+import { GridLines } from "@/components/GridLines";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 
 function ContactSection({ product }: { product?: string }) {
   return (
-    <Section theme="light" className="py-[clamp(60px,8vw,120px)]">
+    <Section theme="light" grid="split-7-5" className="py-[clamp(60px,8vw,120px)]">
       <Container>
         <div className="grid gap-8 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-7">
@@ -36,7 +37,7 @@ function ContactSection({ product }: { product?: string }) {
           </div>
 
           <div className="md:col-span-5">
-            <div data-nav-theme="dark" className="rounded-[var(--radius-card)] bg-ink p-6 text-white md:p-8">
+            <div data-nav-theme="dark" className="border border-line bg-ink p-6 text-white md:p-8">
               <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-steel-500">Workshop</p>
               <p className="mt-4 font-display text-2xl leading-tight">{site.address}</p>
               <a href={`mailto:${site.email}`} className="mt-3 inline-block text-sm text-steel-300 underline underline-offset-4 hover:text-white">
@@ -46,7 +47,7 @@ function ContactSection({ product }: { product?: string }) {
                 Email before visiting so someone is available to review the drawing. Quotes and delivery are within Delhi NCR only.
               </p>
 
-              <div className="mt-6 overflow-hidden rounded-[22px] border border-white/10">
+              <div className="mt-6 overflow-hidden border border-white/15">
                 <iframe
                   src={site.mapEmbed}
                   title="Vijay Enterprises location in Okhla Phase 1, New Delhi"
@@ -94,9 +95,10 @@ async function ContactData({ searchParams }: { searchParams: Promise<{ product?:
 export default async function ContactPage({ searchParams }: { searchParams: Promise<{ product?: string }> }) {
   return (
     <>
-      <header data-nav-theme="dark" className="relative overflow-hidden bg-ink px-5 pb-12 pt-32 md:px-8 md:pb-16 md:pt-40">
+      <header data-nav-theme="dark" className="relative overflow-hidden border-b border-line bg-ink pb-12 pt-32 md:pb-16 md:pt-40">
         <span className="pointer-events-none absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_70%_30%,rgba(255,74,28,0.08),transparent_60%)]" aria-hidden="true" />
-        <Container className="relative px-0 md:px-0">
+        <GridLines theme="dark" onImage variant="hero" />
+        <Container className="relative z-[2]">
           <Eyebrow>Contact</Eyebrow>
           <h1 className="mt-6 max-w-[14ch] font-display text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.95] tracking-[-0.04em]">
             Send the drawing. Get a quote.
@@ -111,7 +113,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
         fallback={
           <Section theme="light" className="py-[clamp(60px,8vw,120px)]">
             <Container>
-              <div className="h-[520px] animate-pulse rounded-[var(--radius-card)] bg-steel-200/50" />
+              <div className="h-[520px] animate-pulse border border-line bg-steel-200/50" />
             </Container>
           </Section>
         }

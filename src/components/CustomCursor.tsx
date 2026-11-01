@@ -1,13 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useFinePointer } from "@/hooks/useFinePointer";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
-const textSelector =
-  "p, h1, h2, h3, h4, h5, h6, li, label, input, textarea, select, option";
-const interactiveSelector =
-  "a, button, [role='button'], [data-cursor], [data-cursor-row]";
 const sparkColors = ["#fff6d8", "#ffd166", "#ff9a2e", "#ff4a1c"];
 
 type Spark = {
@@ -22,9 +18,7 @@ type Spark = {
 };
 
 export function CustomCursor() {
-  const dot = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
-  const [visible, setVisible] = useState(true);
   const reduced = usePrefersReducedMotion();
   const finePointer = useFinePointer();
   const enabled = finePointer && !reduced;
@@ -32,10 +26,7 @@ export function CustomCursor() {
   useEffect(() => {
     if (!enabled) return;
 
-    const root = document.documentElement;
     const ctx = canvas.current?.getContext("2d") ?? null;
-    let x = 0;
-    let y = 0;
     let width = 0;
     let height = 0;
     let dpr = 1;
@@ -43,31 +34,6 @@ export function CustomCursor() {
     let last = 0;
     let running = false;
     const sparks: Spark[] = [];
-
-    const setPosition = (clientX: number, clientY: number) => {
-      x = clientX;
-      y = clientY;
-      if (dot.current) {
-        dot.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      }
-    };
-
-    const move = (e: PointerEvent) => setPosition(e.clientX, e.clientY);
-    window.addEventListener("pointermove", move, { passive: true });
-
-    const over = (e: PointerEvent) => {
-      setPosition(e.clientX, e.clientY);
-      const target = e.target instanceof Element ? e.target : null;
-      const isText = Boolean(target?.closest(textSelector));
-      const isInteractive = Boolean(target?.closest(interactiveSelector));
-      const showCustom = !isText && !isInteractive;
-      setVisible(showCustom);
-      root.classList.toggle("custom-cursor-active", showCustom);
-    };
-    window.addEventListener("pointerover", over, { passive: true });
-
-    const leave = () => root.classList.remove("custom-cursor-active");
-    window.addEventListener("pointerleave", leave);
 
     const resize = () => {
       if (!canvas.current || !ctx) return;
@@ -159,12 +125,8 @@ export function CustomCursor() {
 
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("pointermove", move);
-      window.removeEventListener("pointerover", over);
-      window.removeEventListener("pointerleave", leave);
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointerdown", burst);
-      root.classList.remove("custom-cursor-active");
       if (ctx) ctx.clearRect(0, 0, width, height);
     };
   }, [enabled]);
@@ -172,19 +134,11 @@ export function CustomCursor() {
   if (!enabled) return null;
 
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[120]">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-[9999]"
+    >
       <canvas ref={canvas} className="h-full w-full" />
-      <div
-        ref={dot}
-        className="pointer-events-none fixed left-0 top-0 will-change-transform [transform:translate3d(-100px,-100px,0)]"
-        style={{ opacity: visible ? 1 : 0, transition: "opacity 180ms ease" }}
-      >
-        <div className="relative h-5 w-5 -translate-x-1/2 -translate-y-1/2">
-          <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-spark/80" />
-          <span className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-spark/80" />
-          <span className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 bg-white" />
-        </div>
-      </div>
     </div>
   );
 }

@@ -87,7 +87,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
     const href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     return (
-      <div className="rounded-[var(--radius-card)] border border-steel-200 bg-white p-6 md:p-8" role="status" aria-live="polite">
+      <div className="border border-line bg-white p-6 md:p-8" role="status" aria-live="polite">
         <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-spark-ink">Email ready</p>
         <h2 className="mt-4 font-display text-3xl leading-tight">Your email app should open.</h2>
         <p className="mt-4 max-w-[48ch] text-sm text-steel-500">
@@ -95,7 +95,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
         </p>
         <a
           href={href}
-          className="mt-6 inline-flex items-center gap-3 rounded-pill bg-spark-deep px-5 py-3 text-sm text-white transition-colors hover:bg-spark-deep-hover"
+          className="mt-6 inline-flex h-[46px] items-center gap-3 bg-spark-deep px-5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-spark"
         >
           Open the email again
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
@@ -114,11 +114,11 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
   }
 
   const inputBase =
-    "h-14 w-full rounded-[14px] border bg-white px-4 text-sm text-ink outline-none transition-shadow placeholder:text-steel-500 focus:ring-2 focus:ring-spark focus:ring-offset-2";
-  const labelBase = "mb-2 block text-[0.8125rem] text-ink";
+    "h-14 w-full border bg-white px-4 text-sm text-ink outline-none transition-shadow placeholder:text-steel-500 focus:ring-2 focus:ring-spark focus:ring-offset-2";
+  const labelBase = "mb-2 block font-mono text-[10px] uppercase tracking-[0.12em] text-ink";
 
   return (
-    <form onSubmit={onSubmit} noValidate className="rounded-[var(--radius-card)] border border-steel-200 bg-white p-6 md:p-8">
+    <form onSubmit={onSubmit} noValidate className="border border-line bg-white p-6 md:p-8">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label className={labelBase} htmlFor="field-name">
@@ -130,7 +130,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
             onChange={set("name")}
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? "error-name" : undefined}
-            className={`${inputBase} ${errors.name ? "border-spark" : "border-steel-200"}`}
+            className={`${inputBase} ${errors.name ? "border-spark" : "border-line"}`}
             placeholder="Your name"
             autoComplete="name"
           />
@@ -144,7 +144,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
             id="field-company"
             value={values.company}
             onChange={set("company")}
-            className={`${inputBase} border-steel-200`}
+            className={`${inputBase} border-line`}
             placeholder="Company name"
             autoComplete="organization"
           />
@@ -160,7 +160,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
             onChange={set("email")}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "error-email" : undefined}
-            className={`${inputBase} ${errors.email ? "border-spark" : "border-steel-200"}`}
+            className={`${inputBase} ${errors.email ? "border-spark" : "border-line"}`}
             placeholder="you@company.com"
             autoComplete="email"
           />
@@ -177,7 +177,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
               onChange={set("need")}
               aria-invalid={Boolean(errors.need)}
               aria-describedby={errors.need ? "error-need" : undefined}
-              className={`${inputBase} appearance-none pr-12 ${errors.need ? "border-spark" : "border-steel-200"}`}
+              className={`${inputBase} appearance-none pr-12 ${errors.need ? "border-spark" : "border-line"}`}
             >
               <option value="">Choose a service or product</option>
               <optgroup label="Services">
@@ -211,7 +211,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
             id="field-material"
             value={values.material}
             onChange={set("material")}
-            className={`${inputBase} border-steel-200`}
+            className={`${inputBase} border-line`}
             placeholder="e.g. MS, 3 mm"
           />
         </div>
@@ -225,7 +225,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
             onChange={set("quantity")}
             aria-invalid={Boolean(errors.quantity)}
             aria-describedby={errors.quantity ? "error-quantity" : undefined}
-            className={`${inputBase} ${errors.quantity ? "border-spark" : "border-steel-200"}`}
+            className={`${inputBase} ${errors.quantity ? "border-spark" : "border-line"}`}
             placeholder="e.g. 25 pieces"
           />
           {errors.quantity && <p id="error-quantity" className="mt-2 text-xs text-spark-deep">{errors.quantity}</p>}
@@ -239,7 +239,7 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
             value={values.message}
             onChange={set("message")}
             rows={4}
-            className="w-full rounded-[14px] border border-steel-200 bg-white px-4 py-3 text-sm text-ink outline-none transition-shadow placeholder:text-steel-500 focus:ring-2 focus:ring-spark focus:ring-offset-2"
+            className="w-full border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition-shadow placeholder:text-steel-500 focus:ring-2 focus:ring-spark focus:ring-offset-2"
             placeholder="What the part has to do, finish, deadline, delivery location in Delhi NCR"
           />
         </div>
@@ -251,10 +251,10 @@ export function QuoteForm({ defaultProduct }: { defaultProduct?: string }) {
         </p>
         <button
           type="submit"
-          className="inline-flex h-12 items-center justify-center gap-3 rounded-pill bg-spark-deep px-6 text-sm text-white transition-colors hover:bg-spark-deep-hover"
+          className="inline-flex h-12 items-center justify-center gap-3 bg-spark-deep px-6 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white! transition-colors hover:bg-spark hover:text-ink!"
         >
           Send enquiry
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink/15">
+          <span className="flex h-6 w-6 items-center justify-center border border-current/30">
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
               <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" strokeWidth="1.2" />
             </svg>
