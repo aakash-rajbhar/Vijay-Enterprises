@@ -67,7 +67,7 @@ export function Hero() {
 
         <div className="relative z-10 flex flex-1 flex-col justify-between p-5 md:p-8">
           <div className="flex items-start justify-between gap-6 pt-20 font-mono text-[10px] uppercase tracking-[0.14em] text-white/60 md:pt-4">
-            <span>Tughlakabad, New Delhi</span>
+            <span>Sheet metal fabrication</span>
             <span>Delhi NCR only</span>
           </div>
 
@@ -84,7 +84,7 @@ export function Hero() {
                 <MaskedLines lines={["Precision metal work,", "cut to your drawing."]} delay={0.15} scroll={false} />
               </h1>
               <p className="mt-5 text-base text-steel-300 md:ml-auto md:max-w-[46ch]">
-                Laser cutting, shearing, bending, welding and fabrication under one roof in Tughlakabad, New Delhi.
+                Laser cutting, shearing, bending, welding and fabrication under one roof.
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-3 md:justify-end">
                 <MagneticButton href="/contact">Request a quote</MagneticButton>

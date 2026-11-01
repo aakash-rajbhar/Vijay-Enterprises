@@ -41,7 +41,7 @@ export const servicesList = [
     description: "Parts and assemblies built to drawing.",
     spec: "Cut · Shear · Bend · Weld",
     detail:
-      "Parts and assemblies built to drawing in Tughlakabad, New Delhi. Cutting, shearing, bending, and welding stay with one team, so one supplier answers for the finished part.",
+      "Parts and assemblies built to drawing. Cutting, shearing, bending, and welding stay with one team, so one supplier answers for the finished part.",
     image: "/images/products/coversandpanels.webp",
   },
   {

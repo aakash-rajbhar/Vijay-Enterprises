@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact | Vijay Enterprises",
   description:
-    "Request a quote from Vijay Enterprises in Tughlakabad Village, New Delhi. Email your drawing, material, thickness, quantity and delivery location. Delhi NCR only.",
+    "Request a quote from Vijay Enterprises in Okhla Phase 1, New Delhi. Email your drawing, material, thickness, quantity and delivery location. Delhi NCR only.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact | Vijay Enterprises",
@@ -49,7 +49,7 @@ function ContactSection({ product }: { product?: string }) {
               <div className="mt-6 overflow-hidden rounded-[22px] border border-white/10">
                 <iframe
                   src={site.mapEmbed}
-                  title="Vijay Enterprises location in Tughlakabad Village, New Delhi"
+                  title="Vijay Enterprises location in Okhla Phase 1, New Delhi"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   allowFullScreen

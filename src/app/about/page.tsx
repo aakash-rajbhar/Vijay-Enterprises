@@ -11,11 +11,11 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About | Vijay Enterprises",
   description:
-    "Vijay Enterprises is a founder-led metal fabrication workshop in Tughlakabad Village, New Delhi, led by Vijay Rajbhar with 30+ years in the metal industry.",
+    "Vijay Enterprises is a founder-led metal fabrication workshop in New Delhi, led by Vijay Rajbhar with 30+ years in the metal industry.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About | Vijay Enterprises",
-    description: "A founder-led metal fabrication workshop in Tughlakabad Village, New Delhi, with 30+ years of experience.",
+    description: "A founder-led metal fabrication workshop in New Delhi, with 30+ years of experience.",
     url: "/about",
   },
 };
@@ -55,7 +55,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         lines={["Thirty years of", "working with metal."]}
-        lead="A founder-led fabrication workshop in Tughlakabad Village, New Delhi. Cutting, shearing, bending, welding and fabrication under one team, drawing-led from first cut to finished part."
+        lead="A founder-led fabrication workshop in New Delhi. Cutting, shearing, bending, welding and fabrication under one team, drawing-led from first cut to finished part."
         image="/images/placeholder/placeholder-hero.jpg"
         imageAlt="Sheet metal fabrication process at Vijay Enterprises"
       />
@@ -94,7 +94,7 @@ export default function AboutPage() {
             <div className="md:col-span-5">
               <Eyebrow>The workshop</Eyebrow>
               <h2 className="mt-6 font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em]">
-                <MaskedLines lines={["Tughlakabad Village."]} />
+                <MaskedLines lines={["Okhla Phase 1."]} />
               </h2>
               <p className="mt-5 max-w-[42ch] text-steel-300">{site.address}</p>
               <p className="mt-4 max-w-[42ch] text-sm text-steel-500">

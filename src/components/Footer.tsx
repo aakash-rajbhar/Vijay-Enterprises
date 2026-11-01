@@ -17,8 +17,7 @@ export function Footer() {
               <span className="font-display text-lg">Vijay Enterprises</span>
             </div>
             <p className="mt-4 max-w-[40ch] text-steel-300">
-              Sheet metal fabrication under one roof in Tughlakabad, New Delhi.
-              Delhi NCR only.
+              Sheet metal fabrication under one roof. Delhi NCR only.
             </p>
           </div>
           <div className="md:col-span-3">

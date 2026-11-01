@@ -502,8 +502,8 @@ export function ProcessStrip() {
                 Seven steps under one roof
               </h3>
               <p className="mt-4 max-w-[44ch] text-base leading-relaxed text-steel-300">
-                One roof in Tughlakabad, New Delhi. From drawing to finished
-                part, each step stays with one supplier.
+                From drawing to finished part, each step stays with one
+                supplier.
               </p>
               <ol className="mt-8 grid gap-5">
                 {stages.map((s) => (

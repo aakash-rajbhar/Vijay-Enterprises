@@ -12,10 +12,10 @@ export function JsonLd() {
         url: site.url,
         email: site.email,
         description:
-          "Founder-led sheet metal fabrication workshop in Tughlakabad Village, New Delhi, offering laser cutting, shearing, bending, welding and fabrication under one roof.",
+          "Founder-led sheet metal fabrication workshop in New Delhi, offering laser cutting, shearing, bending, welding and fabrication under one roof.",
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Tughlakabad Village",
+          streetAddress: "Okhla Phase 1",
           addressLocality: "New Delhi",
           addressRegion: "Delhi",
           postalCode: "110020",

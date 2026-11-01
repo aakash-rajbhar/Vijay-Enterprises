@@ -58,6 +58,6 @@ export const processStages: ProcessStage[] = [
     number: "07",
     label: "Fabricate",
     description: "The finished part is ready for delivery within Delhi NCR.",
-    fact: "One roof · Tughlakabad, New Delhi",
+    fact: "One roof",
   },
 ];

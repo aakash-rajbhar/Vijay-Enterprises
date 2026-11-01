@@ -34,7 +34,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
   description:
-    "Laser cutting, shearing, bending, welding and fabrication under one roof in Tughlakabad, New Delhi. Delhi NCR only. Email for quotes.",
+    "Laser cutting, shearing, bending, welding and fabrication under one roof in Delhi NCR. Email for quotes.",
   metadataBase: new URL(site.url),
   applicationName: site.name,
   category: "Manufacturing",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     "sheet metal fabrication Delhi",
     "laser cutting Delhi NCR",
     "CNC bending New Delhi",
-    "metal fabrication Tughlakabad",
+    "metal fabrication Okhla Phase 1",
     "custom machine parts Delhi",
   ],
   authors: [{ name: site.name }],

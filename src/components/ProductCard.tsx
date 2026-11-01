@@ -32,7 +32,7 @@ export function ProductCard({
         alt={`${product.name} - Vijay Enterprises`}
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        className="object-cover grayscale contrast-110 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+        className="object-cover grayscale contrast-110 transition-[transform,filter] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:grayscale-0"
       />
 
       {/* ── Minimalist Dark Vignette ── */}
@@ -65,9 +65,6 @@ export function ProductCard({
 
       {/* ── Minimalist Bottom Label: Just Title ── */}
       <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 transition-transform duration-300 ease-out">
-        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/60">
-          Products
-        </p>
         <h3 className="mt-1 font-display text-2xl text-white font-medium tracking-tight transition-colors duration-200 group-hover:text-spark">
           {product.name}
         </h3>

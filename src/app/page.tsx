@@ -21,7 +21,7 @@ import { ProductGrid } from "@/components/ProductGrid";
 export const metadata: Metadata = {
   title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
   description:
-    "Laser cutting, shearing, bending, welding and fabrication under one roof in Tughlakabad, New Delhi. Delhi NCR only. Email your drawing for a quote.",
+    "Laser cutting, shearing, bending, welding and fabrication under one roof in Delhi NCR. Email your drawing for a quote.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Vijay Enterprises | Sheet Metal Fabrication in Delhi NCR",
@@ -80,8 +80,8 @@ export default function HomePage() {
                 <MaskedLines lines={["From sheet to part."]} />
               </h2>
               <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-steel-300">
-                Seven steps under one roof in Tughlakabad, New Delhi. Follow the
-                sheet from layout to finished part.
+                Seven steps under one roof. Follow the sheet from layout to
+                finished part.
               </p>
             </div>
             <Link
@@ -262,10 +262,10 @@ export default function HomePage() {
                 30+ years in the metal industry
               </p>
               <p className="mt-6 max-w-[54ch] text-lg text-steel-500">
-                Vijay Enterprises is a founder-led workshop in Tughlakabad
-                Village, New Delhi. Cutting, shearing, bending, welding and
-                fabrication stay with one team, so a drawing stays with one
-                supplier from first cut to finished part.
+                Vijay Enterprises is a founder-led workshop in New Delhi.
+                Cutting, shearing, bending, welding and fabrication stay with one
+                team, so a drawing stays with one supplier from first cut to
+                finished part.
               </p>
               <Link
                 href="/about"
