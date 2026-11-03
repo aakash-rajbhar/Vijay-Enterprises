@@ -163,7 +163,7 @@ export default function ServicesPage() {
           </h2>
           <div className="border-line bg-line mt-10 grid gap-px border sm:grid-cols-2 lg:grid-cols-4">
             {orderSteps.map((s) => (
-              <div key={s.number} className="bg-white py-6 sm:px-6 sm:py-7 lg:px-8 lg:py-8">
+              <div key={s.number} className="bg-white px-6 py-6 sm:py-7 lg:px-8 lg:py-8">
                 <span className="text-spark-ink font-mono text-xs">{s.number}</span>
                 <h3 className="font-display mt-3 text-2xl leading-none">{s.title}</h3>
                 <p className="text-steel-500 mt-3 max-w-[32ch] text-sm">{s.desc}</p>
@@ -192,8 +192,19 @@ export default function ServicesPage() {
                 ))}
               </ul>
               <p className="text-steel-500 mt-6 max-w-[58ch] text-sm">
-                Work is quoted and delivered within Delhi NCR only. No phone number is published;
-                email{" "}
+                Work is quoted and delivered within Delhi NCR only. Call{" "}
+                {site.phones.map((phone, i) => (
+                  <span key={phone}>
+                    {i > 0 && " or "}
+                    <a
+                      href={`tel:${phone.replace(/\s/g, "")}`}
+                      className="hover:text-ink underline underline-offset-4"
+                    >
+                      {phone}
+                    </a>
+                  </span>
+                ))}
+                , or email{" "}
                 <a
                   href={`mailto:${site.email}`}
                   className="hover:text-ink underline underline-offset-4"

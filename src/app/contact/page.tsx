@@ -47,6 +47,17 @@ function ContactSection({ product }: { product?: string }) {
                 Workshop
               </p>
               <p className="font-display mt-4 text-2xl leading-tight">{site.address}</p>
+              <div className="mt-3 flex flex-col gap-1">
+                {site.phones.map((phone) => (
+                  <a
+                    key={phone}
+                    href={`tel:${phone.replace(/\s/g, "")}`}
+                    className="text-steel-300 text-sm underline underline-offset-4 hover:text-white"
+                  >
+                    {phone}
+                  </a>
+                ))}
+              </div>
               <a
                 href={`mailto:${site.email}`}
                 className="text-steel-300 mt-3 inline-block text-sm underline underline-offset-4 hover:text-white"

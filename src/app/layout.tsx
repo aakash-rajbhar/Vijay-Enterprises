@@ -6,7 +6,6 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { Footer } from "@/components/Footer";
 import { ImageReveal } from "@/components/ImageReveal";
 import { JsonLd } from "@/components/JsonLd";
-import { MobileQuoteFab } from "@/components/MobileQuoteFab";
 import { Nav } from "@/components/Nav";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
@@ -101,7 +100,6 @@ export default function RootLayout({
           <Nav />
           <main id="main">{children}</main>
           <Footer />
-          <MobileQuoteFab />
         </SmoothScrollProvider>
       </body>
     </html>

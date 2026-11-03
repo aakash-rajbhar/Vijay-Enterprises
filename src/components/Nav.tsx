@@ -302,9 +302,23 @@ export function Nav() {
               </nav>
             </div>
             <div className="border-line mx-auto flex w-full max-w-[1360px] items-center justify-between border-x border-t px-4 py-5 md:px-6">
-              <a href={`mailto:${site.email}`} className="text-steel-300 text-sm hover:text-white">
-                {site.email}
-              </a>
+              <div className="flex flex-col gap-1">
+                {site.phones.map((phone) => (
+                  <a
+                    key={phone}
+                    href={`tel:${phone.replace(/\s/g, "")}`}
+                    className="text-steel-300 text-sm hover:text-white"
+                  >
+                    {phone}
+                  </a>
+                ))}
+                <a
+                  href={`mailto:${site.email}`}
+                  className="text-steel-300 text-sm hover:text-white"
+                >
+                  {site.email}
+                </a>
+              </div>
               <span className="text-steel-500 font-mono text-[11px] tracking-[0.14em] uppercase">
                 Delhi NCR
               </span>

@@ -11,6 +11,7 @@ export function JsonLd() {
         name: site.name,
         url: site.url,
         email: site.email,
+        telephone: site.phones.map((phone) => phone.replace(/\s/g, "")),
         description:
           "Founder-led sheet metal fabrication workshop in New Delhi, offering laser cutting, shearing, bending, welding and fabrication under one roof.",
         address: {

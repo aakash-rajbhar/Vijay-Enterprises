@@ -42,6 +42,15 @@ export function Footer() {
             </p>
             <div className="text-steel-300 mt-3 flex flex-col gap-2">
               <span>{site.address}</span>
+              {site.phones.map((phone) => (
+                <a
+                  key={phone}
+                  href={`tel:${phone.replace(/\s/g, "")}`}
+                  className="hover:text-white"
+                >
+                  {phone}
+                </a>
+              ))}
               <a href={`mailto:${site.email}`} className="hover:text-white">
                 {site.email}
               </a>
